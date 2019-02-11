@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'yxpyxp1970578978@163.com'),
-        'name' => env('MAIL_FROM_NAME', '点击验证'),
+        'name' => env('MAIL_FROM_NAME', 'shop'),
     ],
 
     /*

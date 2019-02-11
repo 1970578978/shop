@@ -40,6 +40,23 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">验证码</label>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <input id="captcha"  class="form-control" type="captcha" name="captcha" value="{{ old('captcha')  }}" required>
+                                        @if($errors->has('captcha'))
+                                            <div class="col-md-12">
+                                                <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
