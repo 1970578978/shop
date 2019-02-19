@@ -52,6 +52,7 @@ class LoginController extends Controller
             'password' => 'required|string',
             'captcha' => 'required|captcha',
         ],[
+            'password.required' => '必须填写密码',
             'captcha.required' => '请填写验证码',
             'captcha.captcha' => '验证码错误',
         ]);

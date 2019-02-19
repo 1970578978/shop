@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'zh',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'zh_cn',
+    'faker_locale' => 'zh',
 
     /*
     |--------------------------------------------------------------------------
@@ -158,7 +158,7 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+        //Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
@@ -167,6 +167,7 @@ return [
          */
         Mews\Captcha\CaptchaServiceProvider::class,
         Germey\Geetest\GeetestServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
 
         /*
          * Application Service Providers...

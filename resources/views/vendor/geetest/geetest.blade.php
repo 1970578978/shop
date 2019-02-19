@@ -16,6 +16,7 @@
             captchaObj.appendTo("#{{ $captchaid }}");
             captchaObj.onReady(function() {
                 $("#wait-{{ $captchaid }}")[0].className = "hide";
+                $(".hide").css("display","none");
             });
             if ('{{ $product }}' == 'popup') {
                 captchaObj.bindOn($('#{{ $captchaid }}').closest('form').find(':submit'));

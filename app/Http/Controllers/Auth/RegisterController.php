@@ -53,6 +53,22 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'geetest_challenge' => ['required', 'geetest'],  //新增后台检验验证
+        ],
+        [
+            'name.required' => '用户名不能为空',
+            'name.string' => '用户名必须是字符串',
+            'name.max' => '用户名不能超过200',
+            'email.required' => '邮箱必须填写',
+            'email.string' => '邮箱必须是字符串',
+            'email.email' => '邮箱格式不对',
+            'email.max' => '仅支持长度小于255的邮箱',
+            'email.unique' => '该邮箱已被注册',
+            'password.required' => '请填写密码',
+            'password.string' => '密码必须为字符串',
+            'password.min' => '密码必须包含6位',
+            'password.confirmed' => '两次密码不一致',
+            'geetest_challenge.required' => '必须要进行验证',
+            'geetest_challenge.geetest' => '验证不正确',
         ]);
     }
 
