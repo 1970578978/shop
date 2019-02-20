@@ -165,9 +165,10 @@ return [
         /*
          * Package Service Providers...
          */
-        Mews\Captcha\CaptchaServiceProvider::class,
-        Germey\Geetest\GeetestServiceProvider::class,
-        Overtrue\LaravelLang\TranslationServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,   //图片验证码
+        Germey\Geetest\GeetestServiceProvider::class, //极验扩展包
+        Overtrue\LaravelLang\TranslationServiceProvider::class, //语言扩展包
+        Encore\Admin\AdminServiceProvider::class, //后台管理服务
 
         /*
          * Application Service Providers...
