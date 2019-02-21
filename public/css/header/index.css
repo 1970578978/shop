@@ -1,0 +1,37 @@
+@import "./_global.css";
+/* Carousel */
+.carousel_scroll{width: 100%; height:100%; background: green; overflow: hidden; position: relative;}
+.carousel_outer{height: 100%; transition: transform 400ms}
+.carousel_item{height: 100%; float: left; background-position: center; background-repeat: no-repeat}
+.carousel_scroll .carousel_indi{position: absolute; right: 0; bottom: 0; padding: 0; width: 100%; height: 55px; list-style: none; margin: 0; z-index: 1; display: flex; justify-content: center}
+.carousel_indi li{width: 35px; height: 55px; float: left; display: flex; align-items: center; justify-content: center;}
+.carousel_indi li span{content: ""; display: block; width: 12px; height: 12px; float: left; border-radius: 50%; background-color: #bbb; cursor: pointer;}
+.carousel_indi li span:hover{background-color: #555 }
+.carousel_indi li span.active{background-color: #0078d7; animation: bling 500ms forwards; border: 2px solid #f5f5f5}
+.carousel_slogan{width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: flex-start; flex-wrap: nowrap}
+.carousel_slogan .title{width: 100%; height: 61%; background: none;}
+.main_title{width: 100%; height: 100px; background: none; display: flex; align-items: flex-end; justify-content: center; -webkit-text-stroke-width: .5px; padding: 40px 0}
+.sub_title{width: 100%; height: 50px; text-align: center; font: 600 15px/15px "Microsoft YaHei"; text-shadow: 0 0 10px rgba(0, 0, 0, .66); color: #fff; }
+.m_container span{font: 900 2.2rem/1.2 "Microsoft YaHei"; display: inline-block; transform-origin: bottom; text-shadow: 0 0 8px rgba(0, 0, 0, .76); opacity: 0;}
+.m_container span.bling{animation: jumpinTypo 5.5s linear infinite;}
+/* 36 words limit */
+.m_container span:nth-of-type(1){animation-delay: .10s}.m_container span:nth-of-type(3){animation-delay: .20s}.m_container span:nth-of-type(4){animation-delay: .25s}.m_container span:nth-of-type(2){animation-delay: .15s}.m_container span:nth-of-type(5){animation-delay: .30s}.m_container span:nth-of-type(6){animation-delay: .35s}.m_container span:nth-of-type(7){animation-delay: .40s}.m_container span:nth-of-type(8){animation-delay: .45s}.m_container span:nth-of-type(9){animation-delay: .50s}.m_container span:nth-of-type(10){animation-delay: .55s}.m_container span:nth-of-type(11){animation-delay: .60s}.m_container span:nth-of-type(12){animation-delay: .65s}.m_container span:nth-of-type(13){animation-delay: .70s}.m_container span:nth-of-type(14){animation-delay: .75s}.m_container span:nth-of-type(15){animation-delay: .80s}.m_container span:nth-of-type(16){animation-delay: .85s}.m_container span:nth-of-type(17){animation-delay: .90s}.m_container span:nth-of-type(18){animation-delay: 1s}.m_container span:nth-of-type(19){animation-delay: 1.05s}.m_container span:nth-of-type(20){animation-delay: 1.10s}.m_container span:nth-of-type(21){animation-delay: 1.15s}.m_container span:nth-of-type(22){animation-delay: 1.20s}.m_container span:nth-of-type(23){animation-delay: 1.25s}.m_container span:nth-of-type(24){animation-delay: 1.30s}.m_container span:nth-of-type(25){animation-delay: 1.35s}.m_container span:nth-of-type(26){animation-delay: 1.40s}.m_container span:nth-of-type(27){animation-delay: 1.45s}.m_container span:nth-of-type(28){animation-delay: 1.50s}.m_container span:nth-of-type(29){animation-delay: 1.55s}.m_container span:nth-of-type(30){animation-delay: 1.60s}.m_container span:nth-of-type(31){animation-delay: 1.65s}.m_container span:nth-of-type(32){animation-delay: 1.70s}.m_container span:nth-of-type(33){animation-delay: 1.75s}.m_container span:nth-of-type(34){animation-delay: 1.80s}.m_container span:nth-of-type(35){animation-delay: 1.85s}.m_container span:nth-of-type(36){animation-delay: 1.90s}
+
+/* header */
+.header{height: 400px;}
+.header::after{content: ""; display: block; width: 100%; height: 45px; background: url(../img/pat.svg) repeat-x; position: absolute; bottom: -45px; transform: rotate(180deg); background-size: 135px 45px; box-shadow:inset 0px -15px 18px -15px rgba(0, 0, 0, .66);}
+.header-container{width: 100%; height: 400px; position: absolute; left: 0; top: 0; z-index: 0}
+.banner-container{background-color: transparent; border: 0}
+@media only screen and (min-width:48em){ /* sm */
+}
+@media only screen and (min-width:62em){ /* md */
+    .carousel_scroll .carousel_indi{width: auto; display: block; padding: 0 25px}
+    .carousel_slogan{align-items: flex-end}
+    .m_container span{font-size: 2.75rem}
+    .main_title{-webkit-text-stroke-width: 2px}
+    .header-container{height: 670px;}
+    .header{position: relative; height: 670px;}
+}
+@media only screen and (min-width:75em){ /* lg */
+    .main_title{-webkit-text-stroke-width: 2px}
+}
