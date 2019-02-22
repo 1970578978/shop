@@ -17,5 +17,11 @@
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+use Encore\Admin\Grid\Column;
+
+//扩展列url显示
+Column::extend('displayUrl', function ($value, $color='green') {
+    return "<a href='$value' target='_blank' style='color: $color'>$value</span>";
+});
 
 Encore\Admin\Form::forget(['map', 'editor']);
