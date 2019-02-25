@@ -169,6 +169,7 @@ return [
         Germey\Geetest\GeetestServiceProvider::class, //极验扩展包
         Overtrue\LaravelLang\TranslationServiceProvider::class, //语言扩展包
         Encore\Admin\AdminServiceProvider::class, //后台管理服务
+        Laravel\Passport\PassportServiceProvider::class,//api passport认证扩展包
 
         /*
          * Application Service Providers...

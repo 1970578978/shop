@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +48,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ModelNotFoundException or $exception instanceof NotFoundHttpException) {  //设置json请求就返回 json格式的404数据否则返回页面
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'error' => 'Resource not found.'
+                ],404);
+            }
+        }
         return parent::render($request, $exception);
     }
 }

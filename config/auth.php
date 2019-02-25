@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',//更改认证方式为passport
             'provider' => 'users',
         ],
     ],
