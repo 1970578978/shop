@@ -25,5 +25,5 @@ Route::post('register', 'Api\PassportController@register');
  
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-details', 'Api\PassportController@getDetails');
+    Route::post('confirm', 'Api\auth\VerificationController@verificationEmail');
 });
- 

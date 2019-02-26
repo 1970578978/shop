@@ -25,7 +25,7 @@ class PassportController extends Controller
             $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->accessToken;
             $success['name'] =  $user->name;
-            return response()->json(['success' => $success], $this->successStatus);
+            return response()->json($success, config('app.http_code.succes'));
         }else{
             return response()->json(['error'=>'账号密码不正确'], 401);
         }
@@ -57,17 +57,21 @@ class PassportController extends Controller
         ]);
 
         if ($validator->fails()) {  //验证失败返回错误信息
-            return response()->json(['error'=>$validator->errors()], 401);           
+            return response()->json(['error'=>$validator->errors()], config('app.http_code.failed'));           
         }
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        //$user = User::create($input);
-        //$success['token'] =  $user->createToken('MyApp')->accessToken;
-        //$success['name'] =  $user->name;
-        $success['name'] = $input['name'];
+        $user = User::create($input);
+        $success['token'] =  $user->createToken('MyApp')->accessToken;
+        $success['name'] =  $user->name;
+        $success['email_token'] = time().$user->id.str_random(40);
+        //添加验证邮箱token
+        $user->email_token = $success['email_token'];
+        $user->save();
+        //发送验证邮件
         $to = $input['email'];
-        $subject = config('app.name');
+        $subject = '验证邮箱';
         Mail::send(
             'index.email', 
             ['data' => $success], 
@@ -75,7 +79,9 @@ class PassportController extends Controller
                 $message->to($to)->subject($subject); 
             }
         );
-        return response()->json(['success'=>$success], $this->successStatus);
+        $message['name'] = $success['name'];
+        $message['token'] = $success['token'];
+        return response()->json($message, config('app.http_code.created'));
     }
 
     /**
@@ -85,6 +91,6 @@ class PassportController extends Controller
      */
     public function getDetails(){
         $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
+        return response()->json($user, config('app.http_code.succes'));
     }
 }

@@ -232,4 +232,19 @@ return [
         'Geetest' => Germey\Geetest\Geetest::class,
     ],
 
+
+    //添加http响应码
+    'http_code' => [
+        'succes' => 200,//OK，标准的响应成功状态码
+        'created' => 201,//用于 store 操作
+        'no_conten' => 204,//操作执行成功，但是没有返回任何内容
+        'part_content' => 206,//返回部分资源时使用
+        'failed' => 400,//请求验证失败
+        'unauth' => 401,//用户需要认证
+        'forbidden' => 403,//用户认证通过但是没有权限执行该操作
+        'no_found' => 404,//请求资源不存在
+        'server_error' => 500,//通常我们并不会显示返回这个状态码，除非程序异常中断
+        'server_unavailable' => 503,//一般也不会显示返回，通常用于排查问题用
+    ],
+
 ];

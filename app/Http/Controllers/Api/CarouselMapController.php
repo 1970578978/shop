@@ -10,6 +10,9 @@ class CarouselMapController extends Controller
 {
     //展示轮播图数据
     public function show(){
-        return IndexCarousel::where('is_enable', 1)->select('img_local','img_title','img_url')->orderBy('sort', 'asc')->get();
+        
+        return config('app.http_code.created');
+        //dd(time());
+        //return IndexCarousel::where('is_enable', 1)->select('img_local','img_title','img_url')->orderBy('sort', 'asc')->get();
     }
 }
