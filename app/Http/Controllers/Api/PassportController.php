@@ -23,11 +23,12 @@ class PassportController extends Controller
     public function login(){
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')->accessToken;
-            $success['name'] =  $user->name;
-            return response()->json($success, config('app.http_code.succes'));
+            $message['token'] = $user->createToken('MyApp')->accessToken;
+            $message['name'] =  $user->name;
+
+            return response()->json($message, config('app.http_code.succes'));
         }else{
-            return response()->json(['error'=>'账号密码不正确'], 401);
+            return response()->json(['error'=>'账号密码不正确'], config('app.http_code.failed'));
         }
     }
 
@@ -40,7 +41,7 @@ class PassportController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,16',
             'email' => 'required|email|max:255|unique:users',
-            'password' => ['required', 'min:6', 'regex:/^[A-Za-z0-9-_]+$/u'],
+            'password' => ['required', 'min:6', 'regex:/^[A-Za-z0-9-_!@#$%^&*()]+$/u'],
             'c_password' => 'required|same:password',
         ], [
             'name.required' => '用户名不能为空',
@@ -53,10 +54,12 @@ class PassportController extends Controller
             'password.required' => '请填写密码',
             'password.regex' => '密码只支持英文、数字、横杠和下划线',
             'password.min' => '密码必须包含6位',
+            'c_password.required' => '必须填写确认密码',
             'c_password.same' => '两次密码不一致',
         ]);
 
         if ($validator->fails()) {  //验证失败返回错误信息
+
             return response()->json(['error'=>$validator->errors()], config('app.http_code.failed'));           
         }
 
@@ -81,6 +84,7 @@ class PassportController extends Controller
         );
         $message['name'] = $success['name'];
         $message['token'] = $success['token'];
+
         return response()->json($message, config('app.http_code.created'));
     }
 
@@ -91,6 +95,7 @@ class PassportController extends Controller
      */
     public function getDetails(){
         $user = Auth::user();
+
         return response()->json($user, config('app.http_code.succes'));
     }
 }

@@ -15,5 +15,6 @@ return [
 
     'failed' => '用户名密码错误',
     'throttle' => '尝试登陆次数太多请 :seconds 秒后再尝试。',
+    'Unauthenticated' => '请先登录',
     //'auth.failed' => '用户名密码错误2',
 ];
