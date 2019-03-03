@@ -8,8 +8,8 @@ use App\User;
 use App\Models\auth\PasswordResets;
 use Illuminate\Support\Facades\Crypt;//加解密
 use Illuminate\Contracts\Encryption\DecryptException;//加解密异常
-use Illuminate\Support\Facades\Mail; //发送邮件类
 use Validator;//返回错误
+use App\Jobs\SendEmail;//使用队列
 
 /**
  * 忘记密码控制器
@@ -23,7 +23,8 @@ class ForgotPasswordController extends Controller
      */
     public function passwordEmail(Request $request){
         $email = $request->input('email');
-        if(empty(User::where('email', $email)->first())){
+        $user = User::where('email', $email)->first();
+        if(empty($user)){
 
             return response()->json(['error' => '该邮箱还没有被注册'], config('app.http_code.failed'));
         }
@@ -37,18 +38,20 @@ class ForgotPasswordController extends Controller
         ]);
         $password_resets->token = $hash_token;
         $password_resets->save();
-        return response()->json(['message' => $token_crypt], config('app.http_code.succes'));
 
-        //发送重置密码邮件
-        $to = $email;
-        $subject = '重置密码';
-        Mail::send(
-            'index.email', 
-            ['data' => $token_crypt], 
-            function ($message) use($to, $subject) { 
-                $message->to($to)->subject($subject); 
-            }
-        );
+        $emailMessage['email'] = $email;
+        $emailMessage['name'] = $user->name;
+        $emailMessage['url'] = Route('resetpassword').'?token='.$token_crypt;
+        $emailMessage['operating'] = '重置密码';
+
+        //组合队列需要的数据
+        $emailData['email'] = $email;
+        $emailData['subject'] = '重置密码';
+        $emailData['view'] = 'index.email';
+        $emailData['data'] = $$emailMessage;
+        SendEmail::dispatch($emailData)->onConnection('database');    //分发队列任务
+
+        return response()->json(['message' => '重置邮件已发送'], config('app.http_code.succes'));
 
     }
 
@@ -84,7 +87,7 @@ class ForgotPasswordController extends Controller
             return response()->json(['error' => '重置连接异常'], config('app.http_code.failed'));
         }
 
-        $time = (int)str_limit($token, 10, '') + (int)config('app.resent_time')*60;
+        $time = (int)str_limit($token, 10, '') + config('app.email_message.resent_time')*60;
         if(time() > $time){ //如果超过有效期
 
             return response()->json(['error' => '连接已失效'], config('app.http_code.failed'));

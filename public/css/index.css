@@ -1,4 +1,7 @@
+@charset "UTF-8";
 @import "./_global.css";
+ul{list-style: none; margin: 0; padding: 0}
+ul li{padding: 0}
 /* Carousel */
 .carousel_scroll{width: 100%; height:100%; background: green; overflow: hidden; position: relative;}
 .carousel_outer{height: 100%; transition: transform 400ms}
@@ -19,9 +22,20 @@
 
 /* header */
 .header{height: 400px;}
-.header::after{content: ""; display: block; width: 100%; height: 45px; background: url(../img/pat.svg) repeat-x; position: absolute; bottom: -45px; transform: rotate(180deg); background-size: 135px 45px; box-shadow:inset 0px -15px 18px -15px rgba(0, 0, 0, .66);}
+/* .header::after{content: ""; display: block; width: 100%; height: 45px; background: url(../img/pat.svg) repeat-x; position: absolute; bottom: -45px; transform: rotate(180deg); background-size: 135px 45px; box-shadow:inset 0px -15px 18px -15px rgba(0, 0, 0, .66);} */
 .header-container{width: 100%; height: 400px; position: absolute; left: 0; top: 0; z-index: 0}
 .banner-container{background-color: transparent; border: 0}
+
+/* under & + carousel */
+.under-car{width: 100%; height: auto; background-color: none; padding-top: 45px; display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 45px}
+.under-car img{width: auto}
+.under-car em{display: block; font-style: normal; width: 100%; font-size: 20px; line-height: 30px; text-align: center; color: #333}
+.under-car p{font-size: 14px; color: #999; text-align: center; line-height: 21px}
+.under-car-node-pic{height: auto; background-color: red; background-repeat: no-repeat; padding: 0}
+
+.left-21{height: 450px; background: red; padding: 0}
+.right-21{background: orange}
+.right-41{height: 225px; background: green}
 @media only screen and (min-width:48em){ /* sm */
 }
 @media only screen and (min-width:62em){ /* md */

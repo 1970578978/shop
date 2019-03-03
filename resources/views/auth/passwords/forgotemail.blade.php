@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ config('app.name', 'Laravel') }}-找回密码</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/login_reg.css">
+    <link rel="stylesheet" href="./css/found_pass.css">
+</head>
+<body>
+    <div class="elemall-container login">
+        <div class="login-box">
+            <div class="box-top_fixed">
+                <div class="logo-header flex-center">
+                    <div class="for-loading-ani">
+                        <img class="trans-all-200" src="./mall.svg" alt="logo-header" id="logo-icon">
+                        <div class="loading-ani flex-center">
+                            <div class="loading-box trans-all-200">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-text-setting flex-center logo-name"><span class="tit found_pass"></span></div>
+            </div>
+            <div class="box-bottom">
+                <div class="found-pass">
+                    <div class="enter-name trans-all-200" style="margin-bottom: 10px">
+                        <input class="md-text-setting" type="text" name="enter-name">
+                        <div class="place-holder">电子邮件地址</div>
+                        <div class="err-words"><span class="flex-center"><i class="md-ico">&#xe000;</i></span><span class="md-text-setting"></span></div>
+                    </div>
+                    <p class="md-text-setting" id="fp_tip_pre" style="color: #757575">填写您注册所用的邮件地址</p>
+                    <div class="some-words">
+                        <div class="newLink">
+                            <span class="trans-bc-500" id="toggle-info-content">详细信息</span>
+                        </div>
+                        <div class="nextStep">
+                            <div class="btn-next flex-center trans-all-200" tabindex="0" id="identifyNow" style="position: relative; overflow: hidden">
+                                <span>确定</span>
+                                <div id="cover-nextStep">
+                                    <span><span class="md-text-setting hidden" id="cover-timer"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-content md-text-setting hidden" style="margin-top: 15px">
+                        <p style="line-height: 1.75rem; font-size: 16px">填写您注册所用的邮件地址，点击下方的“确定”按钮，我们稍后会向您的电子邮箱发送一封邮件，登录并点击邮箱中的蓝色链接即可进行重置密码操作。</p>
+                        <p style="line-height: 1.75rem; font-size: 14px; padding-top: 20px; color: #808283">此邮件可能会被自动拦截，如未收到邮件，请检查邮件的垃圾箱。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/_global.js"></script>
+<script src="./js/found_pass.js"></script>
+</html>

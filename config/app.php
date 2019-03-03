@@ -248,6 +248,16 @@ return [
     ],
 
     //重置密码验证链接有效期(分钟)
-    'resent_time' => 100
+    'email_message' => [
+        'resent_message' => '您收到此电子邮件是因为我们收到了您账户的密码重置的请求。点击下方蓝色按钮即可跳转到重置密码的界面。',
+        'verifi_message' => '为保证你能正常使用本网站的功能，请点击验证你的邮箱。',
+        'resent_time' => 100,
+        'verifi_time' => 60,
+    ],
+
+    //添加网站配置信息
+    'page' => [
+        'copyright' => '© '.env('APP_NAME', 'Laravel').' Inc. All Rights Reserved.'
+    ]
 
 ];

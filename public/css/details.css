@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import "./_global.css";
+
+/* Bread crumb */
+.fixed-top-page-shell{width: 100%; height: 50px; position: fixed; background: #fff; z-index: 2; box-shadow: 0px 15px 18px -20px rgba(0, 0, 0, .66); transition: transform 100ms linear; transform: translateY(-110%); display: flex; justify-content: center}
+.fixed-top-page-shell.slideDown{transform: translateY(0)}
+.page-progress{position: absolute; width: 100%; height: 2px; background-color: #aaa; top: 0; left: 0; z-index: 2}
+.progress-bar{width: 100%; height: 100%; left: -100%; background-color: #4082fc; position: absolute; transition: transform 10ms linear}
+
+
+.main-body{padding: 0; width: 100%}
+div.fadepart{max-width: 1600px; height: 50px;}
+
+.body-limit{max-width: 1600px; height: auto; min-height: 20px}
+.bread_crumb{overflow-y: hidden; position: relative; background-color: #f6f6f6}
+.bread_crumb ol{list-style: none; height: 50px; background: none; padding: 0; margin: 0}
+.bread_crumb ol::before{content: ""; width: 75px; height: 100%; display: block; float: left; background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDBWMHoiLz48cGF0aCBkPSJNMTIgM0wyIDEyaDN2OGg2di02aDJ2Nmg2di04aDNMMTIgM3ptNSAxNWgtMnYtNkg5djZIN3YtNy44MWw1LTQuNSA1IDQuNVYxOHoiLz48cGF0aCBvcGFjaXR5PSIuMyIgZD0iTTcgMTAuMTlWMThoMnYtNmg2djZoMnYtNy44MWwtNS00LjV6Ii8+PC9zdmc+) no-repeat center}
+.bread_crumb ol li{padding: 0; min-width: 40px; height: 100%; padding: 0 0 0 10px; text-align: center; font: 400 16px/16px "Microsoft YaHei"; display: inline-flex; align-items: center; justify-content: center; color: #aaa; opacity: 0; animation: shift linear 150ms forwards}
+.bread_crumb ol a{cursor: pointer; text-decoration: none; color: #111; position: relative}
+.bread_crumb ol a:hover::after, .bread_crumb ol a.now::after{content: ""; display: block; width: 100%; height: 2px; background: #4082ff; position: absolute; bottom: -15px}
+.bread_crumb ol a:hover{color: #999;}
+.bread_crumb ol li::before{content: "/"; padding-right: 10px; font-weight: bold; color: #aaa}
+.bread_crumb ol li:first-child{padding: 0}
+.bread_crumb ol li:first-child::before{display: none}
+.bread_crumb ol li:last-child{color: #555}
+.bread_crumb ol li:last-child::after{content: "";}
+/* Tap Bar */
+ul{margin: 0}
+.container-flowing{overflow: hidden;}
+.tab_case{height: 50px; background-color: #fff}
+.tab_case ul{list-style-type: none; width: 100%; height: 100%; padding: 0}
+.tab_case ul li{width: 100px; height: 100%; float: left; display: flex; align-items: center; justify-content: center; cursor: pointer;}
+.tab_case ul li a{display: block; font: 400 16px/16px "Microsoft YaHei"; color: #aaa; pointer-events: none}
+.tab_case ul li:hover a{color: #ccc}
+.tab_case li:first-child a{position: relative}
+.tab_case .active a{color: #0078d7;}
+.tab_case .active:hover a{color: #7ca6ff; pointer-events: none}
+.u_line{display: block; height: 2px; position: absolute; background: #0078d7; bottom: -10px;}
+.u_before, .u_after{position: absolute; content: ""; display: block; width: 100%; height: 200%; left: 0; top: -50%}
+.u_before{left: -100%; background-color: #fff; transition: transform 200ms}
+.u_after{left: 0; background-color: #fff; transition: transform 200ms;}
+/* Carousel */
+.carousel_scroll{width: 100%; height: 475px; background: none; overflow: hidden; position: relative;}
+.carousel_outer{height: 100%; transition: transform 400ms}
+.carousel_item{height: 100%; float: left;}
+.carousel_scroll .carousel_indi{position: absolute; right: 0; bottom: 35px; padding: 0; width: auto; height: 55px; list-style: none; margin: 0; padding: 0 25px; z-index: 0}
+.carousel_indi li{width: 35px; height: 55px; float: left; display: flex; align-items: center; justify-content: center;}
+.carousel_indi li span{content: ""; display: block; width: 12px; height: 12px; float: left; border-radius: 50%; background-color: #bbb; cursor: pointer;}
+.carousel_indi li span.active{background-color: #0078d7; animation: bling 500ms forwards; border: 2px solid #f5f5f5}
+.carousel_slogan{width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: flex-end; flex-wrap: nowrap}
+.carousel_slogan .title{width: 100%; height: 61%; background: none;}
+.main_title{width: 100%; height: 100px; background: none; display: flex; align-items: center; justify-content: center; -webkit-text-stroke-width: 2px}
+.sub_title{width: 100%; height: 50px; text-align: center; font: 600 15px/15px "Microsoft YaHei"; text-shadow: 0 0 10px rgba(0, 0, 0, .66); color: #fff; }
+.m_container span{font: 900 2.75rem/1.2 "Microsoft YaHei"; display: inline-block; transform-origin: bottom; text-shadow: 0 0 8px rgba(0, 0, 0, .76); }
+.m_container span.bling{animation: showHeaderTypo 5.5s linear infinite;}
+
+.carousel_scroll .fav{position: absolute; top: 0; right: 0; width: 64px; z-index: 1; opacity: .9; flex-wrap: wrap; margin-top: 20px; animation: fade 1s 3s forwards}
+.carousel_scroll .favico{margin: 4px}
+@keyframes fade{
+    to{opacity: 0;}
+}
+/* --- */
+.product-tags-inner{width: 90%; margin: 0 auto; padding: 10px 4%; background-color: #fff; transform: translateY(-35px); border-radius: 8px; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)}
+.title-tag{margin-top: 10px; position: relative;}
+.title-tag .product-logo{width: 100px; height: 100px; position: absolute; left: 0; top: 0; border-radius: 8px; background: royalblue; overflow: hidden}
+.product-logo:hover .ico-cover{opacity: 1;}
+.product-logo .ico-cover{width: 100%; height: 100%; background-color: rgba(0, 0, 0, .76); opacity: 0;}
+.product-logo i.md-ico{color: #f5f5f5; font-size: 30px; cursor: pointer;}
+
+.title-tag p.p_title{font-weight: bold; font-size: 20px; margin: 10px 0; width: calc(100% - 170px); line-height: 25px}
+.title-tag p.p_title_inf{font-weight: normal; font-size: 14px; margin: 5px 0 5px; color: #bbb;}
+.share-btn{height: 100%; width: 50px; position: absolute; right: 0; top: 0}
+.share-btn i.md-ico{padding: 8px; cursor: pointer; border-radius: 50%; color: rgba(0, 0, 0, .66); font-size: 20px}
+.share-btn i.md-ico:active{background-color: rgba(0, 0, 0, .1);}
+.price-tag{margin-top: 10px; height: 40px;}
+.price-tag .badges{float: right; height: 100%;}
+.price-tag .badges .badge{float: left; font-weight: 600; padding-right: 10px; height: 100%; color: #d13239}
+
+.price-tag span.price{padding-right: 15px; position: relative; font-weight: 600; font-size: 30px; color: #d13239  ; margin-top: 10px; height: auto; width: auto; line-height: 35px}
+.price-tag span.price::before{content: "￥"; width: 15px; position: absolute; right: 0; top: 0; font-size: 14px; font-weight: 600; color: #bbb; line-height: 14px}
+.vary-tag{width: auto; padding: 0 10px; height: 45px; background: none; box-sizing: border-box; border-top: 1px solid rgba(0, 0, 0, .06); position: relative;}
+.vary-tag .tag-th, .vary-tag .tag-tb, .vary-tag .tag-tb{display: inline-flex; height: 100%; font-size: 16px; font-weight: 600; color: rgba(0, 0, 0, .55); position: relative;}
+.vary-tag .tag-tb{color: #999; padding-left: 10px; font-size: 14px}
+.vary-tag .tag-te{position: absolute; width: 30px; height: 100%; right: 0; top: 0; background-color: none}
+.vary-tag .tag-te .product-pieces{height: 100%; position: absolute; right: 45px; padding-right: 10px; font-size: 16px; font-weight: 600; color: #d13239}
+.vary-tag .tag-te i.md-ico{color: #bbb; border-radius: 4px; cursor: pointer;}
+
+@keyframes shift{
+    from{transform: translateX(-40px); opacity: 0;}
+    to{transform: translateX(0); opacity: 1;}
+}
+@media only screen and (min-width:48em){
+    .fixed-top-page-shell{display: block}
+}
+@media only screen and (min-width:62em){
+    .carousel_scroll{height: 400px}
+    .fixed-top-page-shell{display: block}
+    .title-tag p.p_title{padding-left: 110px}
+    .title-tag p.p_title_inf{padding-left: 110px}
+    .title-tag{min-height: 120px}
+    .share-btn i.md-ico:hover{background-color: rgba(0, 0, 0, .06)}
+    .tag-te i.md-ico{padding: 2px; border-radius: 50%!important}
+    .tag-te i.md-ico:hover{background-color: rgba(0, 0, 0, .06)}
+    .product-tags-inner{width: auto; margin: 0; padding: 0; transform: translateY(0); border-radius: 0; box-shadow: unset}
+
+}

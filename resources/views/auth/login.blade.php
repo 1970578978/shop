@@ -1,91 +1,90 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('登录') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('邮箱') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ config('app.name', 'Laravel') }}-登录</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/login_reg.css">
+</head>
+<body>
+    <div class="elemall-container login">
+        <div class="login-box">
+            <div class="box-top_fixed">
+                <div class="logo-header flex-center">
+                    <div class="for-loading-ani">
+                        <img class="trans-all-200" src="./mall.svg" alt="logo-header" id="logo-icon">
+                        <div class="loading-ani flex-center">
+                            <div class="loading-box trans-all-200">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('密码') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    </div>
+                </div>
+                <div class="md-text-setting flex-center logo-name"><span class="tit"></span></div>
+            </div>
+            <div class="box-bottom">
+                <div class="bottom_outer trans-all-200">
+                    <div class="name-pass">
+                        <div class="enter-name trans-all-200">
+                            <input class="md-text-setting" type="text" name="enter-name">
+                            <div class="place-holder">电子邮件地址</div>
+                            <div class="err-words"><span class="flex-center"><i class="md-ico">&#xe000;</i></span><span class="md-text-setting"></span></div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">验证码</label>
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <!-- <input id="captcha"  class="form-control" type="captcha" name="captcha" value="{{ old('captcha')  }}" required> -->
-                                        @if($errors->has('captcha'))
-                                            <div class="col-md-12">
-                                                <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="col-md-6">
-                                    {!! Geetest::render('embed') !!}
-                                        <!-- <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()"> -->
+                        <div class="enter-pass trans-all-200" style="margin-bottom: 0">
+                            <input class="md-text-setting" type="password" name="enter-pass">
+                            <div class="clear off flex-center" id="on-off-box">
+                                <div class="inner-clear trans-bc-500">
+                                    <div id="lb" class="flex-center"><i class="press md-ico">&#xe417;</i></div>
+                                    <div id="lt" class="flex-center">
+                                        <div class="lt-viewport flex-center"><span></span><span></span></div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="place-holder">输入您的密码</div>
+                            <div class="err-words"><span class="flex-center"><i class="md-ico">&#xe000;</i></span><span class="md-text-setting"></span></div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('记住我') }}
-                                    </label>
+                        <div class="some-words">
+                            <div class="newLink">
+                                <span class="trans-bc-500" data-href="{{ route('register') }}">注册一个账户</span>
+                            </div>
+                            <div class="nextStep">
+                                <div class="btn-next flex-center trans-all-200" tabindex="0" id="identifyNow">
+                                    <span>登录</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('登录') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('忘记密码') }}
-                                    </a>
-                                @endif
+                        <div class="some-words" style="justify-content: flex-end; padding-top: 12px">
+                            <div class="newLink" style="justify-content: flex-end">
+                                <span class="trans-bc-500" style="margin: 0 -8px 0 0" data-href="{{ route('forgotpassword') }}">找回密码</span>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="identify">
+                        <div class="err-words person-pin" style="padding-bottom: 10px"><span class="flex-center"><i class="md-ico" style="color: #4082fc;">&#xe55a;</i></span><span class="md-text-setting"></span></div>
+                        <div class="enter-identify trans-all-200">
+                            <!-- <div class="ques">
+                                <div class="B1"></div>
+                                <div class="B2"></div>
+                                <div class="B3"></div>
+                                <div class="B4"></div>
+                            </div> -->
+                        </div>
+                        <div class="some-words" style="justify-content: flex-start; padding-top: 12px">
+                            <div class="newLink" style="justify-content: flex-start">
+                                <span class="trans-bc-500" id="back_">返回</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+</body>
+<script src="./js/_global.js"></script>
+<script src="./js/login.js"></script>
+</html>

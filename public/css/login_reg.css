@@ -1,0 +1,157 @@
+@charset "UTF-8";
+@import "./_global.css";
+/* body{background: url(../img/login_pat.svg) repeat left top; background-size: 800px 600px; animation: bg_move 60s linear infinite; -webkit-animation: bg_move 60s linear infinite; -moz-animation: bg_move 60s linear infinite; -o-animation: bg_move 60s linear infinite;} */
+body{width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center}
+.elemall-container{width: 100%; height: 100%; background-color: none; display: flex; align-items: center}
+.login-box, .register-box{height: 100%; width: 100%; background: #fff; padding: 0 40px;}
+.register-box{position: relative; overflow: hidden;}
+.box-top_fixed{height: 110px; width: 100%;}
+.translateX-50p{transform: translateX(-50%)}
+.register-box .logo-name{justify-content: flex-start; padding-top: 10px}
+
+.hidden{display: none}
+.for-loading-ani{background: none; width: 100%; height: 100%;}
+.for-loading-ani.nowLoading{transform: translateY(-35px)}
+.for-loading-ani img{display: block; margin: 0 auto; height: 35px;}
+.for-loading-ani .loading-ani{width: 100%; height: 35px; background-color: none}
+.loading-box{width: 78px; height: 100%; background-color: none; position: relative; transform: scale(0)}
+.loading-box span{display: block; position: absolute; top: 11px; width: 14px; height: 14px; border-radius: 50%; background-color: #4082fc;}
+.loading-box span:nth-child(1){left: 8px; animation: ellipsis0 .6s infinite}
+.loading-box span:nth-child(2){left: 8px; animation: ellipsis1 .6s infinite}
+.loading-box span:nth-child(3){left: 32px; animation: ellipsis2 .6s infinite}
+.loading-box span:nth-child(4){left: 56px; animation: ellipsis3 .6s infinite}
+
+.tit::after{content: "登录"}
+.tit.welcome::after{content: "欢迎"}
+.tit.identifying::after{content: "身份验证"}
+.tit.register::after{content: "账号注册"}
+.tit.identify-your-email::after{content: "验证您的邮箱"}
+.tit.found_pass::after{content: "找回密码"}
+.tit.upadte_pass::after{content: "重置密码"}
+
+.info-content{margin-top: 40px}
+
+.box-bottom{width: 100%; padding-top: 10px}
+.logo-header{margin-top: 35px; height: 35px; overflow: hidden;}
+.logo-name{font-size: 24px; padding-top: 16px; line-height: 32px; color: #202124}
+.enter-name, .enter-pass, .enter-identify, .enter-nickname, .enter-passconfirm{width: 100%; height: 56px; box-sizing: border-box; border: 1px solid #dadce0; border-radius: 4px; position: relative; transition-property: border-color;}
+.enter-identify{border: 2px solid #1a73e8}
+
+.enter-pass{margin-top: 45px}
+.enter-name .place-holder, .enter-pass .place-holder, .enter-nickname .place-holder-reg, .enter-pass .place-holder-reg, .enter-passconfirm .place-holder-reg{position: absolute; left: 8px; padding: 0 8px; bottom: 17px; font-size: 17px; background-color: #fff; color: #80868b; transform-origin: 0px 22px; transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1); pointer-events: none}
+.enter-name.reg .place-holder-reg, .enter-nickname.reg .place-holder-reg, .enter-pass.reg .place-holder-reg, .enter-passconfirm.reg .place-holder-reg{position: absolute; bottom: 9px; left: 6px; font-size: 16px; color: #5f6368; padding: 0 6px; background-color: #fff; transform-origin: 0px 19px; transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),opacity 150ms cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none}
+
+input[name="enter-name"], input[name="enter-pass"], input[name="enter-name-reg"], input[name="enter-nickname-reg"], input[name="enter-pass-reg"], input[name="enter-passconfirm-reg"]{width: 100%; border: 0; border-radius: 4px; height: 100%; box-sizing: border-box; display: block; outline: none; padding: 13px 15px; font-size: 17px}
+input[name="enter-pass"]{width: calc(100% - 52px)}
+input[name="enter-pass"] + .clear{width: 52px; height: 100%; background: #fff; position: absolute; right: 0; top: 0; border-top-right-radius: 4px; border-bottom-right-radius: 4px}
+input[name="enter-name-reg"], input[name="enter-nickname-reg"], input[name="enter-pass-reg"], input[name="enter-passconfirm-reg"]{padding: 7px 11px; font-size: 14px; color: #202124}
+input[name="enter-pass-reg"]{padding-right: 40px}
+
+.clear .inner-clear:active, .clear .inner-clear.sm:active{width: 52px; height: 52px; position: relative; background: rgba(66, 133, 244, 0.3); border-radius: 50%}
+.clear .inner-clear.sm:active{width: 34px; height: 34px;}
+.clear.on.flex-center #lt{opacity: 0; display: flex;}
+.clear.on.flex-center #lb{color: #1a73e8}
+.clear.off.flex-center #lt{opacity: 1; display: flex}
+#lb, #lt{position: absolute; left: 0; top: 0; width: 100%; height: 100%; color: rgba(0, 0, 0, .65)}
+#lb{background: none}#lt{background-color: none}
+#lt{opacity: 0; display: none}
+.lt-viewport{width: 3px; height: 24px; background-color: none;transform: rotate(-45deg)}
+.lt-viewport span{width: 50%; height: 100%;}
+.lt-viewport span:first-child{background-color: #666}
+.lt-viewport span:last-child{background-color: #fff}
+
+.enter-name, .enter-nickname, .enter-pass, .enter-passconfirm{margin-bottom: 42px}
+.enter-name.fill, .enter-pass.fill, .enter-name.fill, .enter-nickname.fill, .enter-pass.fill, .enter-passconfirm.fill{border: 2px solid #1a73e8;}
+.enter-name.focus .place-holder, .enter-pass.focus .place-holder, .enter-nickname.focus .place-holder, .enter-pass.focus .place-holder, .enter-passconfirm.focus .place-holder{transform: translateY(-30px) scale(.75); color: #1a73e8}
+.enter-name.reg.focus .place-holder-reg, .enter-nickname.reg.focus .place-holder-reg, .enter-pass.reg.focus .place-holder-reg, .enter-passconfirm.reg.focus .place-holder-reg{transform: translateY(-22px) scale(.75); color: #1a73e8}
+.enter-name.failed, .enter-pass.failed, .enter-nickname.failed, .enter-pass.failed, .enter-passconfirm.failed{border-color: #d13239}.enter-name.failed .place-holder, .enter-pass.failed .place-holder, .enter-name-reg.failed .place-holder{color: #d13239}
+.err-words{height: 21px; padding-top: 8px; display: none; justify-content: flex-start; align-items: center; color: #d13239;}
+.err-words span:first-child{width: 13px; height: 13px;}
+.err-words span:first-child i{font-size: 13px; line-height: 13px}
+.err-words span:last-child{height: 14px; font-size: 14px; padding-left: 5px; line-height: 14px}
+.err-words.isEmpty, 
+.err-words.error-format, 
+.err-words.pass-wrong, 
+.err-words.invalid, 
+.err-words.pass-isEmpty, 
+.err-words.account-lost, 
+.err-words.person-pin, 
+.err-words.nickname-pre,
+.err-words.nickname-isEmpty,
+.err-words.nickname-isOverflow,
+.err-words.pass-weak,
+.err-words.pass-notSame,
+.err-words.pass-invalid,
+.err-words.name-isRegistered
+{display: flex}
+.err-words.isEmpty span:last-child::after{content: "请输入您的电子邮件地址"}
+.err-words.invalid span:last-child::after{content: "电子邮件地址格式不正确"}
+.err-words.error-format span:last-child::after{content: "输入格式不正确"}
+.err-words.account-lost span:last-child::after{content: "用户不存在"}
+.err-words.person-pin span:last-child::after{content: "点击下方蓝色区域进行验证"; color: #4082fc}
+
+.err-words.pass-wrong span:last-child::after{content: "密码错误，请重试， 点击“找回密码”以重置密码"}
+.err-words.pass-isEmpty span:last-child::after{content: "请输入密码"}
+
+.err-words.nickname-isEmpty span:last-child::after{content: "请输入用户名"}
+.err-words.name-isRegistered span:last-child::after{content: "用户已注册，点击“登录已有账号”跳转至登录界面"; font-size: 10px; color: #37a658}
+.err-words.name-isRegistered span:first-child .md-ico{color: #37a658}
+.err-words.nickname-isOverflow span:last-child::after{content: "用户名长度控制在10以内"}
+
+.err-words.pass-weak span:last-child::after{content: "密码长度6位及以上"}
+.err-words.pass-invalid span:last-child::after{content: "密码仅支持字母、数字和英文常用标点符号"}
+.err-words.pass-notSame span:last-child::after{content: "两次输入密码不一致"}
+
+.enter-nickname .err-words.pre, .input-passwords .err-words.pre, .enter-name.reg .err-words.pre{display: flex;}
+.enter-nickname .err-words.pre .md-ico, .input-passwords .err-words.pre .md-ico, .enter-name.reg .err-words.pre .md-ico{color: #757575}
+.enter-nickname .err-words.pre span:last-child::after{content: "字符长度在10以内，不会包含空格"; color: #757575}
+.enter-name.reg .err-words.pre span:last-child::after{content: "您需要证实此电子邮件属于您"; color: #757575}
+.input-passwords .err-words.pre span:last-child::after{content: "密码长度6位及以上（英文、数字和符号组合）"; color: #757575;}
+
+.some-words{width: 100%; height: 50px; padding-top: 40px; display: flex;}
+.newLink{width: 50%; height: 100%; display: flex; align-items: center}
+.newLink span{padding: 8px; border-radius: 3px; margin-left: -8px; font-size: 14px; font-weight: 600; letter-spacing: .25px; color: #1a73e8}
+.newLink span:hover, .newLink span:focus{background-color: #f6fafe; cursor: pointer;}
+.nextStep{width: 50%; height: 100%; display: flex; align-items: center; justify-content: flex-end}
+.nextStep .btn-next{width: 88px; height: 36px; border-radius: 4px; background-color: #1a73e8; cursor: pointer; outline: none}
+.nextStep .btn-next.disabled{background-color: transparent; pointer-events: none; cursor: default}
+.nextStep .btn-next.disabled span{color: #ccc; margin-left: -20px}
+.nextStep .btn-next:hover, .nextStep .btn-next:focus{background: #287ae6; -webkit-box-shadow: 0 1px 1px 0 rgba(66,133,244,0.45), 0 1px 3px 1px rgba(66,133,244,0.3); box-shadow: 0 1px 1px 0 rgba(66,133,244,0.45), 0 1px 3px 1px rgba(66,133,244,0.3);}
+.nextStep .btn-next.disabled:hover, .nextStep .btn-next.disabled:focus{background: transparent; -webkit-box-shadow: none; box-shadow: none;}
+.nextStep .btn-next{box-sizing: border-box; border: 1px solid rgba(0, 0, 0, 0.1)}
+.nextStep .btn-next.disabled:focus{box-sizing: border-box; border: 1px solid rgba(0, 0, 0, 0.1)}
+.nextStep .btn-next span{font-weight: 500; font-size: 15px; color: #fff; letter-spacing: .25px}
+.box-bottom{width: 100%; overflow: hidden;}
+.bottom_outer{width: 200%; display: flex;}
+.name-pass, .identify{width: 50%; padding: 0 8px}
+.translateX-50p .name-pass{opacity: 0}
+
+#cover-nextStep{width: 100%; height: 100%; position: absolute; top: 0; left: 0}
+#cover-nextStep > span{position: absolute; width: 40px; height: 100%; right: 0; background-color: none; display: flex; justify-content: center; align-items: center}
+#cover-nextStep > span > span{text-indent: 1em; line-height: 15px}
+/* .ques{width: 298px; height: 100%; background-color: red; display: inline-flexbox} */
+.reg{height: 40px;}
+.form-part{padding-top: 35px}
+.img-right-display{position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: url(../_test/muti.jpg) no-repeat bottom center; background-size: 100%; display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap}
+.web-slogan, .web-slogan .md-text-setting{font-size: 40px; font-weight: 700; color: #202143; margin-top: 60px}
+.pass-strength{padding: 20px 18px; color: #4082f5}
+.pass-strength._s_::after{content: "低";}
+.pass-strength._m_::after{content: "中";}
+.pass-strength._l_::after{content: "高";}
+@media only screen and (min-width:48em){
+    .elemall-container{min-height: 512px;}
+    .login-box, .register-box{height: 440px; border:1px solid #dadce0; border-radius: 8px; padding-top: 48px; padding-bottom: 36px;}
+    .elemall-container.login{width: 450px;}
+    .elemall-container.register{width: 450px;}
+    .logo-header{margin-top: 0}
+    .fore-cover{align-items: flex-start}
+    .alert-box{margin: 0}
+    /* .box-top_fixed{padding-top: 48px} */
+}
+@media only screen and (min-width:62em){
+    .elemall-container.register{width: 750px;}
+    .register-box .logo-name{padding-top: 5px}
+}
+@media only screen and (min-width:75em){
+
+}

@@ -1,47 +1,49 @@
 // Carousel
-// const slogan = 
-// [
-//     {
-//         title: "第一张01234567",
-//         animation: "showHeaderTypo",
-//         sub: "这是第一张幻灯片的注释",
-//         bg: "./_test/0.png",
-//         icons_color: "#fff",
-//         strokeColor: "blue"
-//     },
-//     {
-//         title: "7654321灯片的注",
-//         animation: "jellyTypo",
-//         sub: "这是第二张幻灯片的注释",
-//         strokeColor: "#597FE0",
-//         bg: "./_test/1.png",
-//         icons_color: "#597FE0"
-//     },
-//     {
-//         title: "第一张01234567",
-//         animation: "stampTypo",
-//         sub: "这是第三张幻灯片的注释",
-//         color: "#000",
-//         strokeColor: "#fff",
-//         bg: "./_test/2.png",
-//         icons_color: "#fff"
-//     },
-//     {
-//         title: "7654321灯片的注",
-//         sub: "这是第四张幻灯片的注释",
-//         color: "#000",
-//         strokeColor: "#fff",
-//         bg: "./_test/3.png",
-//         icons_color: "#fff"
-//     }
-// ];
+const slogan__ = 
+[
+    {
+        title: "第一张01234567",
+        animation: "showHeaderTypo",
+        sub: "这是第一张幻灯片的注释",
+        bg: "./_test/0.png",
+        icons_color: "#fff",
+        strokeColor: "blue"
+    },
+    {
+        title: "7654321灯片的注",
+        animation: "jellyTypo",
+        sub: "这是第二张幻灯片的注释",
+        strokeColor: "#597FE0",
+        bg: "./_test/1.png",
+        icons_color: "#597FE0"
+    },
+    {
+        title: "第一张01234567",
+        animation: "stampTypo",
+        sub: "这是第三张幻灯片的注释",
+        color: "#000",
+        strokeColor: "#fff",
+        bg: "./_test/2.png",
+        icons_color: "#fff"
+    },
+    {
+        title: "7654321灯片的注",
+        sub: "这是第四张幻灯片的注释",
+        color: "#000",
+        strokeColor: "#fff",
+        bg: "./_test/3.png",
+        icons_color: "#fff"
+    }
+];
 window.onload = function(){
     my_utils.Ajax({
-        method: "GET",
+        method: "POST",
         url: "http://shop.com/api/carousel_map",
         success: function(data){
-            console.log(JSON.parse(data))
-            // new contributeCarousel(document.getElementById("carousel_scroll"), JSON.parse(data));
+            new contributeCarousel(document.getElementById("carousel_scroll"), data);
+        },
+        error: function(){
+            new contributeCarousel(document.getElementById("carousel_scroll"), slogan__);
         }
     })
     prev_menuBtnColor = "#fff";

@@ -1,0 +1,79 @@
+/* Tap Bar */
+.container-flowing{overflow: hidden;}
+.tab_case{min-width: 400px; height: 50px; background-color: #fff}
+.tab_case ul{list-style-type: none; width: 100%; height: 100%; padding: 0}
+.tab_case ul li{width: 55px; height: 100%; float: left; display: flex; align-items: center; justify-content: center; cursor: pointer;}
+.tab_case ul li a{display: block; font: 400 16px/16px "Microsoft YaHei"; color: #aaa; pointer-events: none}
+.tab_case ul li:hover a{color: #ccc}
+.tab_case li:first-child a{position: relative}
+.tab_case .active a{color: #0078d7;}
+.tab_case .active:hover a{color: #7ca6ff; pointer-events: none}
+.u_line{display: block; height: 2px; position: absolute; background: #0078d7; bottom: -10px;}
+.u_before, .u_after{position: absolute; content: ""; display: block; width: 100%; height: 200%; left: 0; top: -50%}
+.u_before{left: -100%; background-color: #fff; transition: transform 200ms}
+.u_after{left: 0; background-color: #fff; transition: transform 200ms;}
+
+.tab_container{width: 100%; height: 400px; background-color: none; position: relative; overflow: hidden;}
+.tab_container .tab_content{width: 100%; height: 100%; position: absolute; left: 0; top: 0; opacity: 0; transform: scale(.95)}
+
+.fading{transform: scale(1); animation: fade 300ms forwards}
+.enlarging{animation: enlarge 300ms 150ms forwards}
+
+@keyframes fade{
+    0%{opacity: 1; transform: scale(1)}
+    99%{opacity: 0; transform: scale(1.05)}
+    100%{transform: scale(.8); z-index: -1}
+}
+@keyframes enlarge{
+    from{opacity: 0; transform: scale(.95)}
+    to{opacity: 1; transform: scale(1); z-index: 1}
+}
+
+/* Bread crumb */
+.bread_crumb{overflow-y: hidden}
+.bread_crumb ol{list-style: none; height: 55px; background: none; padding: 0;}
+.bread_crumb ol::before{content: ""; width: 40px; height: 100%; display: block; float: left; background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAgMjB2LTZoNHY2aDV2LThoM0wxMiAzIDIgMTJoM3Y4eiIvPjwvc3ZnPg==) no-repeat right center}
+/* .bread_crumb ul::after{content: ""; display: block; clear: both;} */
+.bread_crumb ol li{padding: 0; min-width: 40px; height: 100%; padding: 0 0 0 10px; text-align: center; font: 400 16px/16px "Microsoft YaHei"; display: inline-flex; align-items: center; justify-content: center; color: #aaa; opacity: 0; animation: shift linear 150ms forwards}
+.bread_crumb ol a{cursor: pointer;}
+.bread_crumb ol a:hover{color: #999;}
+.bread_crumb ol li::after{content: "/"; padding-left: 10px; font-weight: bold; color: #aaa}
+.bread_crumb ol li:last-child{color: #555}
+.bread_crumb ol li:last-child::after{content: "";}
+
+@keyframes shift{
+    from{transform: translateX(-40px); opacity: 0;}
+    to{transform: translateX(0); opacity: 1;}
+}
+
+/* Carousel */
+.carousel_scroll{width: 100%; height: 670px; background: none; overflow: hidden; position: relative;}
+.carousel_outer{height: 100%; transition: transform 400ms}
+.carousel_item{height: 100%; float: left;}
+.carousel_scroll .carousel_indi{position: absolute; right: 0; bottom: 0; padding: 0; width: auto; height: 55px; list-style: none; margin: 0; padding: 0 25px; z-index: 1}
+.carousel_indi li{width: 35px; height: 55px; float: left; display: flex; align-items: center; justify-content: center;}
+.carousel_indi li span{content: ""; display: block; width: 12px; height: 12px; float: left; border-radius: 50%; background-color: #bbb; cursor: pointer;}
+.carousel_indi li span:hover{background-color: #555 }
+.carousel_indi li span.active{background-color: #0078d7; animation: bling 500ms forwards; border: 2px solid #f5f5f5}
+.carousel_slogan{width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: flex-end; flex-wrap: nowrap}
+.carousel_slogan .title{width: 100%; height: 61%; background: none;}
+.main_title{width: 100%; height: 100px; background: none; display: flex; align-items: center; justify-content: center; -webkit-text-stroke-width: 2px}
+.sub_title{width: 100%; height: 50px; text-align: center; font: 600 15px/15px "Microsoft YaHei"; text-shadow: 0 0 10px rgba(0, 0, 0, .66); color: #fff; }
+.m_container span{font: 900 2.75rem/1.2 "Microsoft YaHei"; display: inline-block; transform-origin: bottom; text-shadow: 0 0 8px rgba(0, 0, 0, .76); }
+.m_container span.bling{animation: showHeaderTypo 5.5s linear infinite;}
+
+
+/* 36 words limit */
+.m_container span:nth-of-type(1){animation-delay: .10s}.m_container span:nth-of-type(3){animation-delay: .20s}.m_container span:nth-of-type(4){animation-delay: .25s}.m_container span:nth-of-type(2){animation-delay: .15s}.m_container span:nth-of-type(5){animation-delay: .30s}.m_container span:nth-of-type(6){animation-delay: .35s}.m_container span:nth-of-type(7){animation-delay: .40s}.m_container span:nth-of-type(8){animation-delay: .45s}.m_container span:nth-of-type(9){animation-delay: .50s}.m_container span:nth-of-type(10){animation-delay: .55s}.m_container span:nth-of-type(11){animation-delay: .60s}.m_container span:nth-of-type(12){animation-delay: .65s}.m_container span:nth-of-type(13){animation-delay: .70s}.m_container span:nth-of-type(14){animation-delay: .75s}.m_container span:nth-of-type(15){animation-delay: .80s}.m_container span:nth-of-type(16){animation-delay: .85s}.m_container span:nth-of-type(17){animation-delay: .90s}.m_container span:nth-of-type(18){animation-delay: 1s}.m_container span:nth-of-type(19){animation-delay: 1.05s}.m_container span:nth-of-type(20){animation-delay: 1.10s}.m_container span:nth-of-type(21){animation-delay: 1.15s}.m_container span:nth-of-type(22){animation-delay: 1.20s}.m_container span:nth-of-type(23){animation-delay: 1.25s}.m_container span:nth-of-type(24){animation-delay: 1.30s}.m_container span:nth-of-type(25){animation-delay: 1.35s}.m_container span:nth-of-type(26){animation-delay: 1.40s}.m_container span:nth-of-type(27){animation-delay: 1.45s}.m_container span:nth-of-type(28){animation-delay: 1.50s}.m_container span:nth-of-type(29){animation-delay: 1.55s}.m_container span:nth-of-type(30){animation-delay: 1.60s}.m_container span:nth-of-type(31){animation-delay: 1.65s}.m_container span:nth-of-type(32){animation-delay: 1.70s}.m_container span:nth-of-type(33){animation-delay: 1.75s}.m_container span:nth-of-type(34){animation-delay: 1.80s}.m_container span:nth-of-type(35){animation-delay: 1.85s}.m_container span:nth-of-type(36){animation-delay: 1.90s}
+@keyframes bling{
+    from{transform: scale(.8);}
+    to{transform: scale(1.5); box-shadow: 0 0 2px rgba(0, 0, 0, .16);}
+}
+@keyframes showHeaderTypo{
+    0%{opacity:0;-webkit-transform:rotate(0);transform:rotate(0);}
+    4%{-webkit-transform:rotate(10deg);transform:rotate(10deg)}
+    8%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}
+    12%{opacity:1;-webkit-transform:rotate(3deg);transform:rotate(3deg)}
+    16%{-webkit-transform:rotate(-3deg);transform:rotate(-3deg)}
+    20%{opacity:1;-webkit-transform:rotate(0);transform:rotate(0)}
+}

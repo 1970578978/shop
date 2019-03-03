@@ -1,6 +1,7 @@
 // Events Functions
 // Objects
 var t = document.createElement("a");
+const baseURL = "http://shop.com/";
 // 
 var menu_button = document.getElementById("menu_button") || t;
 var my_cart = document.getElementById("my_cart") || t;
@@ -23,9 +24,23 @@ var my_utils = new my_utils();
 var searchList = document.getElementById("search-list") || t;
 var prev_menuBtnColor = "#fff";
 
+var http_code = {
+    "200": "success",
+    "201": "created",
+    "204": "no_conten",
+    "206": "part_content",
+    "400": "failed",
+    "401": "unauth",
+    "403": "forbidden",
+    "404": "no_found",
+    "500": "server_error",
+    "503": "server_unavailable"
+}
 var regExps = {
     "email": /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
-    "phone": /^1(3|4|5|7|8)\d{9}$/
+    "phone": /^1(3|4|5|7|8)\d{9}$/,
+    "onlyEN_NUM": /[a-zA-Z0-9]/g,
+    "symbols": /(\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\=|\+|\-|\ |\{|\}|\:|\||\<|\>|\?|\[|\]|\;|\'|\\|\,|\.|\"|\/|\-)/g
 }
 // Must Run
 refreshCart();
@@ -270,17 +285,24 @@ function my_utils(){
     };
     this.Ajax = function(opt){
         /** 封装 Ajax 函数
-         * @param {string} opt.type http 连接的方式
+         * @param {string} opt.method http 连接的方式
          * @param {string} opt.url 发送请求的 url
          * @param {boolean} opt.async 是否为异步请求，true 异步，false 同步
          * @param {object} opt.data 发送的参数，格式类型为 Object
+         * @param {string} opt.dataType 发送的参数类型，格式类型为 String
+         * @param {string} opt.contentType 发送的数据格式类型，格式类型为 String
+         * @param {function} opt.beforeSend ajax 发送前调用的函数，本身会回调一个 xmlHttpRequest 对象
          * @param {function} opt.success ajax 发送并接受成功调用的函数
+         * @param {function} opt.error ajax 发送失败调用的函数
          */
         opt = opt || {};
-        opt.method = opt.method.toUpperCase() || "POST";
-        opt.url = opt.url || "";
-        opt.async = opt.async || true;
-        opt.data = opt.data || null;
+        opt.method = opt.method.toUpperCase() || "POST"; //
+        opt.url = opt.url || ""; //
+        opt.async = opt.async || true; //
+        opt.data = opt.data || null; //
+        opt.dataType = opt.dataType || "json";
+        opt.contentType = opt.contentType || "application/x-www-form-urlencoded;charset=utf-8";
+        opt.beforeSend = opt.beforeSend || function(){};
         opt.success = opt.success || function(){};
         opt.error = opt.error || function(){};
         var xmlHttp = null;
@@ -289,6 +311,7 @@ function my_utils(){
         }else{
             xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        xmlHttp.responseType = opt.dataType;
         var params = [];
         for(var key in opt.data){
             params.push(key + "=" + opt.data[key]);
@@ -296,18 +319,21 @@ function my_utils(){
         var postData = params.join("&");
         if(opt.method.toUpperCase() === "POST"){
             xmlHttp.open(opt.method, opt.url, opt.async);
-            xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+            opt.beforeSend(xmlHttp);
+            // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+            xmlHttp.setRequestHeader("Content-Type", opt.contentType);
             xmlHttp.send(postData);
         }else if(opt.method.toUpperCase() === "GET"){
             xmlHttp.open(opt.method, opt.url + "?" + postData, opt.async);
+            opt.beforeSend(xmlHttp);
             xmlHttp.send(null);
         }
         xmlHttp.onreadystatechange = function(){
-            if(xmlHttp.readyState == 4){
-                if(xmlHttp.status == 200){
-                    opt.success(xmlHttp.responseText);
+            if(xmlHttp.readyState === 4){
+                if(xmlHttp.status === 200){
+                    opt.success(xmlHttp.response, xmlHttp.status)
                 }else{
-                    opt.error(xmlHttp.satus);
+                    opt.error(xmlHttp.response, xmlHttp.status)
                 }
             }
         }
@@ -455,3 +481,177 @@ function volSetRipple(selector, offset){
         createRipple(Cont[z], offset);
     }
 };
+function contributeFocus(name_attr){
+    var ele = document.getElementsByName(name_attr)[0];
+    var ele_ph = ele.parentNode.getElementsByClassName("place-holder")[0] || ele.parentNode.getElementsByClassName("place-holder-reg")[0];
+    ele.onfocus = function(){
+        my_utils.addClass(this.parentNode, "focus");
+        my_utils.addClass(this.parentNode, "fill");
+        classListExist(ele.parentNode, "failed") || (ele_ph.style.color = "#1a73e8");
+        ELE.globalTimer.baseLogoTimer = 
+        setTimeout(function(){
+            new loading("reverse");
+            clearTimeout(ELE.globalTimer.baseLogoTimer);
+        }, 200)
+    }
+    ele.onblur = function(){
+        this.value || my_utils.removeClass(this.parentNode, "focus");
+        my_utils.removeClass(this.parentNode, "fill")
+        classListExist(ele.parentNode, "failed") || (ele_ph.style.color = "#80868b");
+    }
+};
+function putTip(judge, obj){
+    var classes = ["pre", "isEmpty", "invalid", "error-format", "pass-isEmpty", "pass-wrong", "account-lost", "nickname-isEmpty", "nickname-isOverflow", "pass-weak", "pass-notSame", "pass-invalid"];
+    var errWords = obj.getElementsByClassName("err-words")[0];
+    var ele_ph = obj.getElementsByClassName("place-holder")[0] || obj.getElementsByClassName("place-holder-reg")[0];
+    for(var c=0; c<classes.length; c++){
+        my_utils.removeClass(errWords, classes[c]);
+    }
+    !judge || (
+        my_utils.addClass(obj, "failed") || 
+        my_utils.addClass(errWords, judge) || 
+        (ele_ph.style.color = "#d13239") ||
+        obj.getElementsByTagName("input")[0].focus()
+    )
+    judge || (ele_ph.style.color = "#80868b");
+    judge || my_utils.removeClass(obj, "failed");
+}
+function identifyID(val, exist_bool){
+    var Res = [];
+    var valstr = val.replace(/\ /g, "");
+    valstr || Res.push("isEmpty");
+    exist_bool === "PASS" ? Res.push("") : (
+        exist_bool === false ? Res.push("account-lost") : 
+        Res.push("account-had")
+    );
+    // exist_bool ? Res.push("account-had") : Res.push("account-lost");
+    valstr.match(regExps["email"]) || Res.push("notEmail");
+    // valstr.match(regExps["phone"]) || Res.push("notPhone");
+    valstr.match(regExps["email"]) && Res.push("isEmail");
+    // valstr.match(regExps["phone"]) && Res.push("isPhone");
+    var resp = Res.indexOf("isEmpty") !== -1 ?
+        "isEmpty": (
+            Res.indexOf("isEmail") === -1 ?
+            "invalid": (
+                exist_bool ==="PASS" ? 
+                "" : (
+                    Res.indexOf("account-had") === -1 ?
+                    "account-lost" : ""
+                )
+
+            )
+        );
+    var n_data = [];
+    n_data.push(resp, Res);
+    return n_data;
+}
+function identifyPass(val, exist_bool){
+    var Res = [];
+    val || Res.push("pass-isEmpty");
+    exist_bool === "PASS" ? Res.push("") : (
+        exist_bool === true ? Res.push("") : 
+        Res.push("pass-wrong")
+    );
+    // exist_bool || Res.push("pass-wrong"); // 密码错误...
+    var resp = Res.indexOf("pass-isEmpty") !== -1 ? 
+        "pass-isEmpty": (
+            Res.indexOf("pass-wrong") !== -1 ? 
+            "pass-wrong": ""
+        );
+    return resp;
+}
+function identifyPassReg(val, val_){
+    var Res = [];
+    val || Res.push("1st-isEmpty");
+    val_ || Res.push("2nd-isEmpty");
+    val.replace(regExps["onlyEN_NUM"], "").replace(regExps["symbols"], "") && Res.push("1st-invalid");
+    val_.replace(regExps["onlyEN_NUM"], "").replace(regExps["symbols"], "") && Res.push("2nd-invalid");
+    val.length < 6 && Res.push("1st-weak");
+    val_.length < 6 && Res.push("2nd-weak");
+    val !== val_ && Res.push("pass-notSame");
+    var resp = Res.indexOf("1st-isEmpty") !== -1 ?
+    "pass-isEmpty" : (
+        Res.indexOf("1st-invalid") !== -1 ? 
+        "pass-invalid" : (
+            Res.indexOf("1st-weak") !== -1 ?
+            "pass-weak" : (
+                Res.indexOf("pass-notSame") !== -1 ?
+                "pass-notSame" : ""
+            )
+        )
+    )
+    var n_data = [];
+    n_data.push(resp, Res);
+    return n_data;
+}
+function loading(sign){
+    var that = this;
+    var forLoadingAni = ELE["logo-part"] ? ELE["logo-part"]["for-loading-ani"] : t;
+    var loadingBox = ELE["logo-part"] ? ELE["logo-part"]["loading-box"] : t;
+    var logoIcon = ELE["logo-part"] ? ELE["logo-part"]["logo-icon"] : t;
+    this.setTimer = function(fn){
+        ELE.globalTimer.logoTimer = setTimeout(function(){
+            if(fn) fn();
+            clearTimeout(ELE.globalTimer.logoTimer);
+        }, 200);
+    };
+    this.setEle = function(ele, scaleRate){
+        ele.style.transform = "scale(" + scaleRate +")";
+    }
+    sign === "reverse" ? (
+        that.setEle(loadingBox, 0) ||
+        that.setTimer(function(){
+            my_utils.removeClass(forLoadingAni, "nowLoading");
+            that.setEle(logoIcon, 1);
+        })
+    ) : (
+        that.setEle(logoIcon, 0) || 
+        that.setTimer(function(){
+            my_utils.addClass(forLoadingAni, "nowLoading");
+            that.setEle(loadingBox, 1);
+        })
+    );
+}
+function onoff_pass(obj, target){
+    obj.addEventListener("mousedown", function(){
+        my_utils.removeClass(this, "off");
+        my_utils.addClass(this, "on");
+        target.type = "text";
+        this.addEventListener("mouseup", function(){
+            my_utils.removeClass(this, "on");
+            my_utils.addClass(this, "off");
+            target.type = "password";
+        })
+    });
+    obj.addEventListener("touchstart", function(){
+        my_utils.removeClass(this, "off");
+        my_utils.addClass(this, "on");
+        target.type = "text";
+        this.addEventListener("touchend", function(){
+            my_utils.removeClass(this, "on");
+            my_utils.addClass(this, "off");
+            target.type = "password";
+        }, {"passive": true});
+    }, {"passive": true});
+}
+function contributeLinks(){
+    var linkGroup = document.getElementsByClassName("newLink");
+    for(var i=0; i<linkGroup.length; i++){
+        var spans = linkGroup[i].getElementsByTagName("span");
+        for(var j=0; j<spans.length; j++){
+            spans[j].onclick = function(){
+                var tmp_href = this.dataset.href || window.location.href;
+                window.location = tmp_href;
+            }
+        }
+    }
+};
+function getFocus(){
+    var inputGroup = document.getElementsByTagName("input");
+    for(var a=0; a<inputGroup.length; a++){
+        !inputGroup[a].value || 
+        classListExist(inputGroup[a].parentNode, "focus") || 
+        my_utils.addClass(inputGroup[a].parentNode, "focus") ||
+        (inputGroup[a].parentNode.getElementsByClassName("place-holder-reg")[0].style.color = "#5f6368");
+    }
+}

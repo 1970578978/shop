@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use App\Jobs\SendEmail;//使用队列发送邮件
 use Illuminate\Support\Facades\Mail; //发送邮件类
 
 class PassportController extends Controller
@@ -66,24 +67,37 @@ class PassportController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
+        $success['email'] = $input['email'];
         $success['name'] =  $user->name;
-        $success['email_token'] = time().$user->id.str_random(40);
+
+        $access_token =  $user->createToken('MyApp')->accessToken;
+        $email_token = time().$user->id.str_random(40);
+
+        $success['url'] = 'http://shop.com/verifi?access_token='.$access_token.'&email_token='.$email_token;
         //添加验证邮箱token
-        $user->email_token = $success['email_token'];
+        $user->email_token = $email_token;
         $user->save();
-        //发送验证邮件
-        $to = $input['email'];
-        $subject = '验证邮箱';
+
+        $success['operating'] = '验证邮箱';
+        //使用队列发送验证邮件
+        
+        $emailData['email'] = $input['email'];
+        $emailData['subject'] = '验证邮箱';
+        $emailData['view'] = 'email.verifyemail';
+        $emailData['data'] = $success;
+        //SendEmail::dispatch($emailData)->onConnection('database');//使用队列
+        $to = $emailData['email'];
+        $subject = $emailData['subject'];
         Mail::send(
-            'index.email', 
-            ['data' => $success], 
+            $emailData['view'],
+            ['data' => $emailData['data']],
             function ($message) use($to, $subject) { 
                 $message->to($to)->subject($subject); 
             }
         );
+
         $message['name'] = $success['name'];
-        $message['token'] = $success['token'];
+        $message['token'] = $access_token;
 
         return response()->json($message, config('app.http_code.created'));
     }
