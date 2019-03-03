@@ -1,3 +1,4 @@
+@charset "utf-8";
 @import "./_global.css";
 ul{list-style: none; margin: 0; padding: 0}
 ul li{padding: 0}

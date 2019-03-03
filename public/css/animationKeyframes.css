@@ -1,3 +1,4 @@
+@charset "utf-8";
 @keyframes bling{from{transform:scale(.8);}to{transform:scale(1.5);box-shadow:002pxrgba(0,0,0,.16);}}
 @-webkit-keyframes bling{from{transform:scale(.8);}to{transform:scale(1.5);box-shadow:002pxrgba(0,0,0,.16);}}
 @-moz-keyframes bling{from{transform:scale(.8);}to{transform:scale(1.5);box-shadow:002pxrgba(0,0,0,.16);}}

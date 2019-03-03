@@ -1,3 +1,4 @@
+@charset "utf-8";
 .slideDown{display: flex; justify-content: flex-end; align-items: center; margin: 20px 0 10px; color: #1155cc; font-size: 15px; line-height: 24px;}
 .slideDown span{ cursor: pointer;}
 .box-bottom{overflow: unset}
