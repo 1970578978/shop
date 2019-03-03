@@ -55,6 +55,7 @@ ELE.identifyBtn.onclick = function(){
                 my_utils.Ajax({
                     "url": baseURL + "api/register",
                     "method": "POST",
+                    "dataType": "text",
                     "data": {
                         email: ELE.idInput.value.replace(/ /g, ""),
                         name: ELE.nicknameInput.value,
@@ -65,11 +66,11 @@ ELE.identifyBtn.onclick = function(){
                         oXML.setRequestHeader("Accept", "application\/json");
                     },
                     success: function(res, code){
-                        my_utils.setCookie("token", res.token, 1);
+                        my_utils.setCookie("token", JSON.parse(res).token, 1);
                         window.location = baseURL + "needEmail";
                     },
                     error: function(err, code){
-                        
+                        console.log(err, code)
                     }
                 })
             ) : (

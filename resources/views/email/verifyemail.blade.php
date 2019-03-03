@@ -64,12 +64,3 @@
 </body>
 </html>
 
-            <!-- <p>如果您点击「{{ $data['operating'] }}」按钮出现问题，请点击或复制下方链接到浏览器中开启：<a href="">{{ $data['url'] }}</a></p>
-        </div>
-    </div>
-    <div class="content-email-footer">
-        <p class="md-text-setting">{{ config('app,page.copyright') }}</p>
-    </div>
-</body>
-
-</html> -->

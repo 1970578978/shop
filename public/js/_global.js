@@ -318,7 +318,7 @@ function my_utils(){
         }
         xmlHttp.onreadystatechange = function(){
             if(xmlHttp.readyState == 4){
-                if(xmlHttp.status == 200){
+                if(xmlHttp.status >= 200 && xmlHttp.status < 300){
                     opt.success(xmlHttp.responseText, xmlHttp.status);
                 }else{
                     opt.error(xmlHttp.responseText, xmlHttp.status)
@@ -405,6 +405,7 @@ function my_utils(){
         var oDate=new Date();
         oDate.setDate(oDate.getDate()+t);
         document.cookie=key+"="+encodeURIComponent(value)+";expires="+oDate.toUTCString();
+        console.log(document.cookie)
         if(that.getCookie(key)){
             alert('设置成功');
         }else{

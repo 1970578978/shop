@@ -23,7 +23,15 @@ class SendEmail implements ShouldQueue
      * 发送邮件的参数
      */
     protected $emailData;
-    
+    /**
+     * Determine the time at which the job should timeout.
+     *
+     * @return \DateTime
+     */
+    public function retryUntil()
+    {
+        return now()->addSeconds(5);
+    }
     /**
      * Create a new job instance.
      *

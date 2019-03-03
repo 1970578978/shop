@@ -57,12 +57,12 @@ class VerificationController extends Controller
         
         $emailMessage['email'] = $user->email;
         $emailMessage['name'] = $user->name;
-        $emailMessage['url'] = Route('verifiEmail').'?access_token='.$access_token.'&email_token='.$email_token;
+        $emailMessage['url'] = Route('verifiEmail').'?access_token='.$success['token'].'&email_token='.$success['email_token'];
         $emailMessage['operating'] = '验证邮箱';
         //使用队列发送邮件
         $emailData['email'] = $user->email;
         $emailData['subject'] = '验证邮箱';
-        $emailData['view'] = 'index.email';
+        $emailData['view'] = 'email.verifyemail';
         $emailData['data'] = $emailMessage;
         SendEmail::dispatch($emailData)->onConnection('database');    //分发队列任务
         

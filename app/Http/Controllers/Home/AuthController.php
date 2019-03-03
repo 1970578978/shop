@@ -47,12 +47,19 @@ class AuthController extends Controller
     }
 
     /**
-     * 显示验证邮箱页面
+     * 显示验证邮箱的页面,是用户点开邮箱连接后的页面
      */
     public function verifi_email(Request $request){
         $data['token'] = $request->access_token;
         $data['email_token'] = $request->email_token;
 
-        return view('auth.verifiemail')->with(['data' => $data]);
+        return view('auth.verify.verifiemail')->with(['data' => $data]);
+    }
+
+    /**
+     * 用户注册成功之后显示需要验证邮箱并且重新发送验证邮箱的页面
+     */
+    public function need_verify_email(){
+        return view('auth.verify.needemail');
     }
 }

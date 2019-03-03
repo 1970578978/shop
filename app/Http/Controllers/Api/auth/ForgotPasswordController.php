@@ -47,8 +47,8 @@ class ForgotPasswordController extends Controller
         //组合队列需要的数据
         $emailData['email'] = $email;
         $emailData['subject'] = '重置密码';
-        $emailData['view'] = 'index.email';
-        $emailData['data'] = $$emailMessage;
+        $emailData['view'] = 'email.verifyemail';
+        $emailData['data'] = $emailMessage;
         SendEmail::dispatch($emailData)->onConnection('database');    //分发队列任务
 
         return response()->json(['message' => '重置邮件已发送'], config('app.http_code.succes'));
