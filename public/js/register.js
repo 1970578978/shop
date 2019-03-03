@@ -65,10 +65,11 @@ ELE.identifyBtn.onclick = function(){
                         oXML.setRequestHeader("Accept", "application\/json");
                     },
                     success: function(res, code){
+                        my_utils.setCookie("token", res.token, 1);
+                        window.location = baseURL + "needEmail";
                     },
                     error: function(err, code){
-                        console.log(err)
-                        console.log("code_err_error", code);
+                        
                     }
                 })
             ) : (

@@ -45,7 +45,22 @@
 contributeLinks();
 var resendBtn = document.getElementById("identifyNow");
 resendBtn.onclick = function(){
-    my_utils.setCookie("token", "012132132131", 200)
+    var token = my_utils.getCookie("token");
+    my_utils.Ajax({
+        "url": baseURL + "api/resend-email",
+        "method": "POST",
+        "beforeSend": function(oXML){
+            oXML.setRequestHeader("Accept", "application\/json");
+            oXML.setRequestHeader("Authorization", "Bearer\ " + token);
+        },
+        success: function(res, code){
+            console.log(res, code)
+        },
+        error: function(err, code){
+            console.log(err, code)
+        }
+    });
+    my_utils.setCookie("token", "012132132131", 1)
 }
 </script>
 </body></html>
