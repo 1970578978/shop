@@ -3,14 +3,15 @@ window.onload = function(){
     volSetRipple(".newLink span");
     renderPage(4);
     my_utils.Ajax({
-        "url": baseURL + "api/register",
+        "url": baseURL + "api/confirm",
         "method": "POST",
+        "dataType": "text",
         "data": {
             "email_token": ELE.code_e_tooken
         },
         "beforeSend": function(oXML){
             oXML.setRequestHeader("Accept", "application\/json");
-            oXML.setRequestHeader("Authorization:", "Bearer\ " + ELE.code_tooken);
+            oXML.setRequestHeader("Authorization", "Bearer\ " + ELE.code_tooken);
         },
         success: function(res, code){
             console.log(res);

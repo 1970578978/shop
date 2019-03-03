@@ -73,7 +73,7 @@ class PassportController extends Controller
         $access_token =  $user->createToken('MyApp')->accessToken;
         $email_token = time().$user->id.str_random(40);
 
-        $success['url'] = 'http://shop.com/verifi?access_token='.$access_token.'&email_token='.$email_token;
+        $success['url'] = Route('verifiEmail').'?access_token='.$access_token.'&email_token='.$email_token;
         //添加验证邮箱token
         $user->email_token = $email_token;
         $user->save();

@@ -45,4 +45,14 @@ class AuthController extends Controller
 
         return view('auth.passwords.reset')->with(['email' => $email, 'token' => $origin_token]);
     }
+
+    /**
+     * 显示验证邮箱页面
+     */
+    public function verifi_email(Request $request){
+        $data['token'] = $request->access_token;
+        $data['email_token'] = $request->email_token;
+
+        return view('auth.verifiemail')->with(['data' => $data]);
+    }
 }

@@ -23,3 +23,4 @@ Route::get('/register', 'Home\AuthController@register')->name('register');
 Route::get('/login', 'Home\AuthController@login')->name('login');
 Route::get('forgot-password', 'Home\AuthController@forgot_password')->name('forgotpassword');
 Route::get('resent-password', 'Home\AuthController@reset_password')->name('resetpassword');
+Route::get('verifi-email', 'Home\AuthController@verifi_email')->name('verifiEmail');

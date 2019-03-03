@@ -57,7 +57,7 @@ class VerificationController extends Controller
         
         $emailMessage['email'] = $user->email;
         $emailMessage['name'] = $user->name;
-        $emailMessage['url'] = 'http://shop.com/verifi?access_token='.$access_token.'&email_token='.$email_token;
+        $emailMessage['url'] = Route('verifiEmail').'?access_token='.$access_token.'&email_token='.$email_token;
         $emailMessage['operating'] = '验证邮箱';
         //使用队列发送邮件
         $emailData['email'] = $user->email;

@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="elemall-container register">
-        <div class="register-box" style="overflow: auto">
+        <div class="register-box" style="overflow: unset">
             <div class="row">
                 <div class="col-md-6 col-xs-12">
                     <div class="logo-header"><img src="./mall.svg" alt="logo-ico" width="30px" height="30px"></div>
@@ -66,7 +66,7 @@
                 <div class="have-a-look col-md-6 col-xs-12 xs-d-none md-d-block">
                     <div class="img-right-display">
                         <div class="web-slogan pre-text-setting">
-                            <p class="md-text-setting" style="line-height: 100%">注册 EleMall</p>
+                            <p class="md-text-setting" style="line-height: 100%">注册 {{ config('app.name', 'Laravel') }}</p>
                             <p style="font-weight: 300; opacity: .95;">享受更优质的使用</p>
                         </div>
                     </div>
