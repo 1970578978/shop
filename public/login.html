@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mall - 登录</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/login_reg.css">
+</head>
+<body>
+    <div class="elemall-container login">
+        <div class="login-box">
+            <div class="box-top_fixed">
+                <div class="logo-header flex-center">
+                    <div class="for-loading-ani">
+                        <img class="trans-all-200" src="./mall.svg" alt="logo-header" id="logo-icon">
+                        <div class="loading-ani flex-center">
+                            <div class="loading-box trans-all-200">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-text-setting flex-center logo-name"><span class="tit"></span></div>
+            </div>
+            <div class="box-bottom">
+                <div class="bottom_outer trans-all-200">
+                    <div class="name-pass">
+                        <div class="enter-name trans-all-200">
+                            <input class="md-text-setting" type="text" name="enter-name">
+                            <div class="place-holder">电子邮件地址</div>
+                            <div class="err-words"><span class="flex-center"><i class="md-ico">&#xe000;</i></span><span class="md-text-setting"></span></div>
+                        </div>
+                        <div class="enter-pass trans-all-200" style="margin-bottom: 0">
+                            <input class="md-text-setting" type="password" name="enter-pass">
+                            <div class="clear off flex-center" id="on-off-box">
+                                <div class="inner-clear trans-bc-500">
+                                    <div id="lb" class="flex-center"><i class="press md-ico">&#xe417;</i></div>
+                                    <div id="lt" class="flex-center">
+                                        <div class="lt-viewport flex-center"><span></span><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="place-holder">输入您的密码</div>
+                            <div class="err-words"><span class="flex-center"><i class="md-ico">&#xe000;</i></span><span class="md-text-setting"></span></div>
+                        </div>
+                        <div class="some-words">
+                            <div class="newLink">
+                                <span class="trans-bc-500" data-href="./register.html">注册一个账户</span>
+                            </div>
+                            <div class="nextStep">
+                                <div class="btn-next flex-center trans-all-200" tabindex="0" id="identifyNow">
+                                    <span>登录</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="some-words" style="justify-content: flex-end; padding-top: 12px">
+                            <div class="newLink" style="justify-content: flex-end">
+                                <span class="trans-bc-500" style="margin: 0 -8px 0 0" data-href="./found_pass.html">找回密码</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="identify">
+                        <div class="err-words person-pin" style="padding-bottom: 10px"><span class="flex-center"><i class="md-ico" style="color: #4082fc;">&#xe55a;</i></span><span class="md-text-setting"></span></div>
+                        <div class="enter-identify trans-all-200">
+                            <!-- <div class="ques">
+                                <div class="B1"></div>
+                                <div class="B2"></div>
+                                <div class="B3"></div>
+                                <div class="B4"></div>
+                            </div> -->
+                        </div>
+                        <div class="some-words" style="justify-content: flex-start; padding-top: 12px">
+                            <div class="newLink" style="justify-content: flex-start">
+                                <span class="trans-bc-500" id="back_">返回</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/_global.js"></script>
+<script src="./js/login.js"></script>
+</html>

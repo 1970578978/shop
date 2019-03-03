@@ -1,7 +1,6 @@
 // Events Functions
 // Objects
 var t = document.createElement("a");
-const baseURL = "http://shop.com/";
 // 
 var menu_button = document.getElementById("menu_button") || t;
 var my_cart = document.getElementById("my_cart") || t;
@@ -24,18 +23,6 @@ var my_utils = new my_utils();
 var searchList = document.getElementById("search-list") || t;
 var prev_menuBtnColor = "#fff";
 
-var http_code = {
-    "200": "success",
-    "201": "created",
-    "204": "no_conten",
-    "206": "part_content",
-    "400": "failed",
-    "401": "unauth",
-    "403": "forbidden",
-    "404": "no_found",
-    "500": "server_error",
-    "503": "server_unavailable"
-}
 var regExps = {
     "email": /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
     "phone": /^1(3|4|5|7|8)\d{9}$/,
@@ -311,6 +298,7 @@ function my_utils(){
         }else{
             xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        opt.beforeSend(xmlHttp);
         xmlHttp.responseType = opt.dataType;
         var params = [];
         for(var key in opt.data){
@@ -319,21 +307,19 @@ function my_utils(){
         var postData = params.join("&");
         if(opt.method.toUpperCase() === "POST"){
             xmlHttp.open(opt.method, opt.url, opt.async);
-            opt.beforeSend(xmlHttp);
             // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
             xmlHttp.setRequestHeader("Content-Type", opt.contentType);
             xmlHttp.send(postData);
         }else if(opt.method.toUpperCase() === "GET"){
             xmlHttp.open(opt.method, opt.url + "?" + postData, opt.async);
-            opt.beforeSend(xmlHttp);
             xmlHttp.send(null);
         }
         xmlHttp.onreadystatechange = function(){
-            if(xmlHttp.readyState === 4){
-                if(xmlHttp.status === 200){
-                    opt.success(xmlHttp.response, xmlHttp.status)
+            if(xmlHttp.readyState == 4){
+                if(xmlHttp.status == 200){
+                    opt.success(xmlHttp.responseText);
                 }else{
-                    opt.error(xmlHttp.response, xmlHttp.status)
+                    opt.error(xmlHttp.status);
                 }
             }
         }

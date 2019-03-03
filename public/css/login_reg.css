@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import "./_global.css";
 /* body{background: url(../img/login_pat.svg) repeat left top; background-size: 800px 600px; animation: bg_move 60s linear infinite; -webkit-animation: bg_move 60s linear infinite; -moz-animation: bg_move 60s linear infinite; -o-animation: bg_move 60s linear infinite;} */
 body{width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center}
@@ -26,6 +25,8 @@ body{width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: fl
 .tit.identifying::after{content: "身份验证"}
 .tit.register::after{content: "账号注册"}
 .tit.identify-your-email::after{content: "验证您的邮箱"}
+.tit.invalid-link::after{content: "无效的链接"}
+.tit.reg-ok::after{content: "邮箱验证成功"}
 .tit.found_pass::after{content: "找回密码"}
 .tit.upadte_pass::after{content: "重置密码"}
 
@@ -126,6 +127,9 @@ input[name="enter-pass-reg"]{padding-right: 40px}
 .name-pass, .identify{width: 50%; padding: 0 8px}
 .translateX-50p .name-pass{opacity: 0}
 
+.inf_plain{line-height: 1.75rem; font-size: 16px}
+.inf_grey{line-height: 1.75rem; font-size: 14px; padding-top: 20px; color: #808283}
+
 #cover-nextStep{width: 100%; height: 100%; position: absolute; top: 0; left: 0}
 #cover-nextStep > span{position: absolute; width: 40px; height: 100%; right: 0; background-color: none; display: flex; justify-content: center; align-items: center}
 #cover-nextStep > span > span{text-indent: 1em; line-height: 15px}
@@ -133,6 +137,7 @@ input[name="enter-pass-reg"]{padding-right: 40px}
 .reg{height: 40px;}
 .form-part{padding-top: 35px}
 .img-right-display{position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: url(../_test/muti.jpg) no-repeat bottom center; background-size: 100%; display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap}
+.img-right-display.reg_success{background: url(../_test/rs-1.png) no-repeat center 70%; background-size: 100%;}
 .web-slogan, .web-slogan .md-text-setting{font-size: 40px; font-weight: 700; color: #202143; margin-top: 60px}
 .pass-strength{padding: 20px 18px; color: #4082f5}
 .pass-strength._s_::after{content: "低";}

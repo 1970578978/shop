@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>keyframes + clock</title>
+    <style>
+        body{background-color: red}
+        section{width: 250px; height: 250px; display: block}
+        .normal{background: white; border-radius: 6px}
+        .normal .n_clock{width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;}
+        .normal .n_clock .plate{width: 220px; height: 220px; border: 6px solid #ccc; border-radius: 50%; box-shadow: 0 0 5px rgba(0, 0, 0, .16) inset; position: relative}
+        .normal .n_clock .plate.plate_cover{z-index: 4}
+        
+        .plate .plate_ruler{position: absolute; background: none; opacity: 1; list-style: none; width: calc(100% + 12px); height: calc(100% + 12px); left: -6px; top: -6px; margin: 0; padding: 0}
+        .plate .plate_ruler .ruler_container{width: 100%; height: 100%; position: relative; background: none; margin: 0; padding: 0; z-index: 0}
+        .fir_layer, .sec_layer{width: 100%; height: 100%; margin: 0; padding: 0;}
+        .fir_layer{position: relative; z-index: 3}
+        .sec_layer{z-index: 2}
+        .fir_layer .fg, .sec_layer .fg{width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: flex; justify-content: center; align-items: center}
+        .fir_layer .fg li, .sec_layer .fg li{width: 85%; height: 85%; border-radius: 50%; background: white; list-style: none;}
+        .sec_layer .fg li{width: 88%; height: 88%;}
+        .fir_layer .bg, .sec_layer .bg{width: 100%; height: 100%; position: relative;}
+        .sec_layer .bg{position: absolute; top: 0; left: 0}
+        .fir_layer .bg li, .sec_layer .bg li{width: 100%; height: 100%; width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: flex; justify-content: center; margin: 0; padding: 0; background: none}
+        .fir_layer .bg li span, .sec_layer .bg li span{display: block; width: 1.5px; height: 100%; background: black;}
+        .sec_layer .bg li span{background: #303030}
+        .sec_layer .bg li span{width: 1.5px}
+        .fir_layer .bg li:last-child{-webkit-transform: rotate(90deg); transform: rotate(90deg)}
+        .sec_layer .bg li:nth-child(1){-webkit-transform: rotate(30deg); transform: rotate(30deg)}
+        .sec_layer .bg li:nth-child(2){-webkit-transform: rotate(60deg); transform: rotate(60deg)}
+        .sec_layer .bg li:nth-child(3){-webkit-transform: rotate(120deg); transform: rotate(120deg)}
+        .sec_layer .bg li:nth-child(4){-webkit-transform: rotate(150deg); transform: rotate(150deg)}
+
+        .normal .n_clock .plate .n_sec, .normal .n_clock .plate .n_min, .normal .n_clock .plate .n_hou{position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: none; display: flex; justify-content: center;}
+        .normal .n_clock .plate .n_sec.running{animation: n_sec 60s infinite linear; -webkit-animation: n_sec 60s infinite linear; -moz-animation: n_sec 60s infinite linear; -o-animation: n_sec 60s infinite linear}
+        .normal .n_clock .plate .n_min.running{animation: n_min 3600s infinite linear; -webkit-animation: n_min 3600s infinite linear; -moz-animation: n_min 3600s infinite linear; -o-animation: n_min 3600s infinite linear; }
+        .normal .n_clock .plate .n_hou.running{animation: n_hour 43200s infinite linear; -webkit-animation: n_hour 43200s infinite linear; -moz-animation: n_hour 43200s infinite linear; -o-animation: n_hour 43200s infinite linear; }
+        .normal .n_clock .plate .n_sec .line_box, .normal .n_clock .plate .n_min .line_box, .normal .n_clock .plate .n_hou .line_box{width: 2.5px; height: 94%; padding-top: 6%; background: none}
+        .normal .n_clock .plate .n_min .line_box{width: 4px; height: 88%; padding-top: 12%; background: none}
+        .normal .n_clock .plate .n_hou .line_box{width: 4px; height: 80%; padding-top: 20%; background: none}
+        .normal .n_clock .plate .n_sec .line_box span{display: block; height: 66%; width: 100%; background: #e30404; border-radius: 1.25px}
+        .normal .n_clock .plate .n_min .line_box span{display: block; height: 54%; width: 100%; background: #444; border-radius: 2px}
+        .normal .n_clock .plate .n_hou .line_box span{display: block; height: 50%; width: 100%; background: black; border-radius: 2px}
+    </style>
+</head>
+<body>
+    <section class="normal">
+        <div class="n_clock">
+            <div class="plate">
+                <ul class="plate_ruler">
+                    <ul class="ruler_container">
+                        <ul class="fir_layer"><!-- 12 6 点 以及 3 9 点（长刻度）-->
+                            <div class="bg">
+                                <li><span></span></li>
+                                <li><span></span></li>
+                            </div>
+                            <div class="fg"><li></li></div>
+                        </ul>
+                        <ul class="sec_layer">
+                            <div class="bg">
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                            </div>
+                            <div class="fg"><li></li></div>
+                        </ul>
+                    </ul>
+                </ul>
+                <div class="n_min" id="n_min"><div class="line_box"><span></span></div></div>
+                <div class="n_hou" id="n_hou"><div class="line_box"><span></span></div></div>
+                <div class="n_sec" id="n_sec"><div class="line_box"><span></span></div></div>
+            </div>
+        </div>
+        <div class="plate plate_cover"></div>
+    </section>
+</body>
+<script>
+    var oDate = new Date(),
+        numHours = oDate.getHours(),
+        numMinutes = oDate.getMinutes(),
+        numSeconds = oDate.getMilliseconds()/1000 + oDate.getSeconds();
+    
+    var n_min = document.getElementById("n_min");
+    var n_hou = document.getElementById("n_hou");
+    var n_sec = document.getElementById("n_sec");
+
+    var oStyle = document.createElement("style");
+
+    var now_sec_deg = 6*numSeconds,
+        now_min_deg = 6*numMinutes+numSeconds/10,
+        now_hou_deg = to12Format(numHours)*30+numMinutes/2+numSeconds/120;
+
+    var kits = ["", "-webkit-", "-moz-", "-o-"];
+    var strCSS = "";
+    for(var idx in kits){
+        var kit = kits[idx];
+        var tmp = 
+        `
+            @${kit}keyframes n_sec {
+                from{-webkit-transform: rotate(${now_sec_deg}deg); transform: rotate(${now_sec_deg}deg)}
+                to{-webkit-transform: rotate(${now_sec_deg+360}deg); transform: rotate(${now_sec_deg+360}deg)}
+            }
+            @${kit}keyframes n_min {
+                from{-webkit-transform: rotate(${now_min_deg}deg); transform: rotate(${now_min_deg}deg)}
+                to{-webkit-transform: rotate(${now_min_deg+360}deg); transform: rotate(${now_min_deg+360}deg)}
+            }
+            @${kit}keyframes n_hour {
+                from{-webkit-transform: rotate(${now_hou_deg}deg); transform: rotate(${now_hou_deg}deg)}
+                to{-webkit-transform: rotate(${now_hou_deg+360}deg); transform: rotate(${now_hou_deg+360}deg)}
+            }
+        `;
+        strCSS+= tmp;
+    }
+
+    var oTextCSS = document.createTextNode(strCSS);
+    oStyle.appendChild(oTextCSS);
+    document.head.append(oStyle);
+    running(n_min, n_hou, n_sec);
+    function running(){
+        for(var i in arguments){
+            arguments[i].classList.add("running");
+        }
+        console.log(arguments);
+    }
+    function to12Format(num){ // 转换12小时制
+        var numTwelve;
+        num > 12?numTwelve=num%12:numTwelve=num;
+        return numTwelve;
+    }
+    // console.log(document.styleSheets)
+</script>
+</html>

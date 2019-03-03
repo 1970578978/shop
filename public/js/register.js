@@ -66,11 +66,11 @@ ELE.identifyBtn.onclick = function(){
                     },
                     success: function(res, code){
                         console.log(res);
-                        console.log("http_success_code", code)
+                        console.log("code_res_success", code);
                     },
                     error: function(err, code){
                         console.log(err)
-                        console.log("http_error_code", code)
+                        console.log("code_err_error", code);
                     }
                 })
             ) : (
