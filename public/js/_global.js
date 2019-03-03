@@ -1,4 +1,5 @@
 // Events Functions
+const baseURL = "http://shop.com/";
 // Objects
 var t = document.createElement("a");
 // 
@@ -298,7 +299,6 @@ function my_utils(){
         }else{
             xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        opt.beforeSend(xmlHttp);
         xmlHttp.responseType = opt.dataType;
         var params = [];
         for(var key in opt.data){
@@ -307,19 +307,21 @@ function my_utils(){
         var postData = params.join("&");
         if(opt.method.toUpperCase() === "POST"){
             xmlHttp.open(opt.method, opt.url, opt.async);
+            opt.beforeSend(xmlHttp);
             // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
             xmlHttp.setRequestHeader("Content-Type", opt.contentType);
             xmlHttp.send(postData);
         }else if(opt.method.toUpperCase() === "GET"){
             xmlHttp.open(opt.method, opt.url + "?" + postData, opt.async);
+            opt.beforeSend(xmlHttp);
             xmlHttp.send(null);
         }
         xmlHttp.onreadystatechange = function(){
             if(xmlHttp.readyState == 4){
                 if(xmlHttp.status == 200){
-                    opt.success(xmlHttp.responseText);
+                    opt.success(xmlHttp.responseText, xmlHttp.status);
                 }else{
-                    opt.error(xmlHttp.status);
+                    opt.error(xmlHttp.responseText, xmlHttp.status)
                 }
             }
         }
