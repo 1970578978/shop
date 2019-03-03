@@ -65,8 +65,6 @@ ELE.identifyBtn.onclick = function(){
                         oXML.setRequestHeader("Accept", "application\/json");
                     },
                     success: function(res, code){
-                        console.log(res);
-                        console.log("code_res_success", code);
                     },
                     error: function(err, code){
                         console.log(err)
