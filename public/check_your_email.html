@@ -41,5 +41,11 @@
         </div>
     </div>
 <script src="./js/_global.js"></script>
-<script>contributeLinks();</script>
+<script>
+contributeLinks();
+var resendBtn = document.getElementById("identifyNow");
+resendBtn.onclick = function(){
+    my_utils.setCookie("token", "012132132131", 200)
+}
+</script>
 </body></html>
