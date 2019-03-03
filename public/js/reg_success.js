@@ -2,6 +2,25 @@ window.onload = function(){
     contributeLinks();
     volSetRipple(".newLink span");
     renderPage(4);
+    my_utils.Ajax({
+        "url": baseURL + "api/register",
+        "method": "POST",
+        "data": {
+            "email_token": ELE.code_e_tooken
+        },
+        "beforeSend": function(oXML){
+            oXML.setRequestHeader("Accept", "application\/json");
+            oXML.setRequestHeader("Authorization:", "Bearer\ " + ELE.code_tooken);
+        },
+        success: function(res, code){
+            console.log(res);
+            console.log("code_res_success", code);
+        },
+        error: function(err, code){
+            console.log(err)
+            console.log("code_err_error", code);
+        }
+    })
 }
 var ELE = {
     "tit": document.getElementById("tit_edit"),
