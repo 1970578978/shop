@@ -23,6 +23,7 @@ var max_list_size = 6;
 var my_utils = new my_utils();
 var searchList = document.getElementById("search-list") || t;
 var prev_menuBtnColor = "#fff";
+var windowHeight = window.innerHeight;
 
 var regExps = {
     "email": /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
@@ -71,7 +72,7 @@ menu_button.onclick = function(){
         document.body.style.overflow = "auto";
         setMenuBtnColor(prev_menuBtnColor);
     }else{
-        setMenuBtnColor("#fff");
+        setMenuBtnColor(prev_menuBtnColor);
         my_utils.addClass(that, "active");
         my_utils.addClass(menu_box, "flip");
         header_banner.style.position = "fixed";
@@ -94,17 +95,20 @@ cartList.onclick = function(e){
     stopBubble(e);
 }
 search_bar.onfocus = function(){
-    search_panel.style.display = "block";
-    classListExist(menu_box, "flip") || my_utils.addClass(search_panel, "flip");
-    my_utils.addClass(menu_button, "active");
-    
-    setMenuBtnColor("#636161");
-    classListExist(search_panel, "flip") || my_utils.addClass(search_panel, "flip");
-    classListExist(search_panel, "flip") && my_utils.removeClass(menu_box, "flip");
-    header_banner.style.position = "fixed";
-    document.body.style.overflow = "hidden";
+    if(document.body.clientWidth < 992){
+        search_panel.style.display = "block";
+        classListExist(menu_box, "flip") || my_utils.addClass(search_panel, "flip");
+        my_utils.addClass(menu_button, "active");
+        
+        setMenuBtnColor("#636161");
+        classListExist(search_panel, "flip") || my_utils.addClass(search_panel, "flip");
+        classListExist(search_panel, "flip") && my_utils.removeClass(menu_box, "flip");
+        header_banner.style.position = "fixed";
+        document.body.style.overflow = "hidden";
+    }
 }
 window.onresize = function(){
+    windowHeight = window.innerHeight;
     if(document.body.clientWidth >= 768 && search_panel.className === "search_panel flip"){
         my_utils.removeClass(menu_button, "active");
         my_utils.removeClass(search_panel, "flip");
@@ -380,7 +384,7 @@ function my_utils(){
             currentTime = 0,
             increment = 20;
             
-        var animateScroll = function(){        
+        var animateScroll = function(){
             currentTime += increment;
             var val = Math.easeInOutQuad(currentTime, start, change, duration);
             element.scrollTop = val;

@@ -1,0 +1,84 @@
+.banner-container{background-color: #fff}
+.control-view{width: 100%; height: 60px; background-color: none}
+.sort-by, .display-as{float: left; height: auto; display: flex; padding: 8px; margin: 10px 0; cursor: pointer; border-radius: 4px; align-items: center; position: relative; -webkit-tap-highlight-color: transparent}
+.sort-by:hover, .display-as:hover{background-color: #eee}
+.display-as{float: right;}
+.selection{line-height: 24px; font-size: 13px; display: block; float: left; padding: 0 8px}
+
+.under-selection{width: 165px; height: auto; position: absolute; left: 0; top: 0; background-color: #fff; border-radius: 4px; box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2); overflow: hidden; transform: translateY(-20px); z-index: -1; opacity: .1;}
+.under-selection.shown{transform: translateY(0); opacity: 1; z-index: 3;}
+.display-as .under-selection{right: 0; left: unset}
+.under-selection-list{width: 100%; height: 40px;}
+.under-selection-list:not(:first-child):hover{background-color: #eee}
+.icon-stamp{width: 40px; height: 40px; float: left;}
+.text-stamp{height: 40px; float: left;}
+.icon-stamp .md-ico{font-size: 20px}
+.text-stamp span{font-size: 16px; }
+
+.page_title{font-weight: 500; font-size: 20px; padding-top: 22px; color: #787980}
+
+.my_cart-main-list{width: calc(100% - 10px); height: 200px; box-shadow: var(--shadow-elevation-1dp_-_box-shadow); border-radius: 4px; background-color: #fff; margin-bottom: 20px; padding: 5px; padding-top: 10px}
+.my_cart-main-list-l{height: 130px; width:130px; float: left; position: relative; background-color: none}
+.my_cart-main-list-l .l-pic{width: 100%; height: 100%; background-repeat: no-repeat; background-position: center}
+/* .my_cart-main-list-l .l-del_btn{position: absolute; width: 40px; height: 40px; background-color: #fff; left: calc(50% - 20px); top: calc(50% - 20px); border-radius: 50%; box-shadow: var(--shadow-elevation-3dp_-_box-shadow)}
+.my_cart-main-list-l .l-del_btn i{font-size: 32px; }
+.my_cart-main-list-l .l-del_btn:active{background-color: #eee; color: #e94132; box-shadow: unset} */
+
+.my_cart-main-list-r{width: calc(100% - 130px); height: 100%; float: left; background-color: none}
+.my_cart-main-list-r .r-top{width: 100%; height: calc(100% - 50px);}
+.my_cart-main-list-r .r-top .r-top-left{width: 100%; height: 100%; float: left;}
+.my_cart-main-list-r .r-top .r-top-left p{padding-left: 10px; padding-right: 25px; font-weight: 500; font-size: 15px;}
+.my_cart-main-list-r .r-top .r-top-left .m-inf{font-size: 12px; color: #353535; line-height: 16px; padding-top: 5px}
+.my_cart-main-list-r .r-top .r-top-right{width: 40%; height: 100%; float: left;}
+.my_cart-main-list-r .r-bottom{width: calc(100% - 10px); height: 50px; padding-right: 15px; background-color: none; position: absolute; left: 0; bottom: 0}
+.cost-price{font-size: 18px; font-weight: 600; line-height: 52px; text-align: right; padding-right: 16px}
+.pieces{ text-align: right; padding-right: 16px; font-size: 16px; color: tomato; font-weight: 600; letter-spacing: .125rem}
+.pieces::before{content: "×"}
+.pieces::after{content: "件"}
+
+.btn-other{float: left;}
+.btn-pur{float: right;}
+.outline-btn, .solid-btn{width: 80px; height: 36px; border-radius: 4px; cursor: pointer; outline: none; border: 1px solid #4082fc; margin-left: 10px; display: inline-flex;}
+.outline-btn span, .solid-btn span{font-weight: 500; font-size: 15px; color: #4082fc; letter-spacing: .25px}
+.solid-btn{background-color: #4082fc; box-shadow: unset}
+.solid-btn span{color: #fff}
+.total-cost::before{content: "总计"; font-size: 15px; padding-right: 5px; color: #757575; font-weight: 400}
+.total-cost::after{content: "元"; font-size: 15px; padding-left: 5px; color: #757575; font-weight: 400}
+.total-cost{float: right; height: 38px; font-size: 18px; font-weight: 600; line-height: 25px; color: #e94132; position: absolute; right: 15px; bottom: 45px; font-size: 98%}
+
+.mobi-price{color: #e94132!important; font-size: 18px; line-height: 35px; font-weight: 600!important}
+.m-sinf{color: #98999a!important}
+
+.check-box{position: absolute; right: 10px; top: 10px; width: 17px; height: 17px; text-align: center; background-color: none;}
+.cbx{ position: relative; top: 1px; width: 17px; height: 17px; border: 1px solid #C8CCD4; border-radius: 3px; vertical-align: middle; transition: background-color .1s ease; cursor: pointer; display: inline-block; text-align: center; box-sizing: border-box; background-color: #fff}
+.cbx::after{ content: ''; position: absolute; top: 1px; left: 5px; width: 5px; height: 11px; opacity: 0; transform: rotate(45deg) scale(0); border-right: 2px solid white; border-bottom: 2px solid white; transition: all .3s ease; transition-delay: .15s;  box-sizing: border-box}
+.cbx .lbl{margin-left: 5px; vertical-align: middle; cursor: pointer; vertical-align: center}
+#cbx:checked ~ .cbx{ border-color: transparent; background: #4082fc; animation: jelly .6s ease;}
+#cbx:checked ~ .cbx:after{ opacity: 1; transform: rotate(45deg) scale(1);}
+input[type="checkbox"]{ display: none}
+
+.bottom-bar{position: fixed; bottom: 0; height: 50px; width: 100%; background-color: green; z-index: 1;}
+.bottom-bar .bt-bar-left{width: 100px; height: 100%; float: left; background-color: #555}
+.bottom-bar .bt-bar-right{width: 200px; height: 100%; float: right;}
+
+@keyframes jelly{
+    from{transform: scale(1, 1)}
+    30%{transform: scale(1.25, 0.75)}40%{transform: scale(0.75, 1.25)}50%{transform: scale(1.15, 0.85)}65%{transform: scale(.95, 1.05)}75%{transform: scale(1.05, .95)}to{transform: scale(1, 1)}
+}
+@media only screen and (min-width:62em){
+    .my_cart-main-list-r .r-top .r-top-left{width: 60%}
+    .my_cart-main-list-r .r-top .r-top-left p{font-size: 20px; line-height: 26px}
+    .my_cart-main-list-r .r-top .r-top-left .m-inf{font-size: 16px; line-height: 18px; padding-top: 10px}
+    .cost-price{font-size: 35px}
+    .my_cart-main-list-l{width: 175px; height: 100%}
+    .my_cart-main-list-r{width: calc(100% - 175px)}
+    .my_cart-main-list-r .r-bottom{width: calc(100% - 45px); position: static;}
+    .total-cost{font-size: 18px; position: static;}
+    .solid-btn{box-shadow: var(--shadow-elevation-3dp_-_box-shadow)}
+    .check-box{height: 100%; right: 0; top: 0; width: 35px}
+    .my_cart-main-list-r .r-top .r-top-right{width: calc(40% - 25px);}
+    .check-box{ border-left: 1px dashed rgba(0, 0, 0, .08); box-sizing: border-box;}
+    .check-box::before, .check-box::after{content: ""; display: block; width: 8px; height: 8px; position: absolute; right: 31px; top: -4px; background-color: #f5f5f5; border-radius: 50%}
+    .check-box::after{bottom: -4px; top: unset}
+    .bottom-bar{height: 80px;}
+}

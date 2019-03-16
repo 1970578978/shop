@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mk_profile</title>
+    <style>
+    .profileDis{width: 50px; height: 50px; border-radius: 50%; overflow: hidden;}
+    label{display: block; margin: 5px 0}
+    label input{box-sizing: border-box}
+    .example{height: 50px; padding: 5px 0}
+    .example img{box-sizing: border-box; cursor: pointer; width: 50px; height: 50px; display: inline-block}
+    .example img:hover{border: 2px solid #4082fc}
+    </style>
+</head>
+<body>
+    <div class="profileDis">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50">
+            <path d="M0 0h50v50H0z" fill="#ffc8c2"/>
+            <text x="50%" y="50%" dy="11" style="text-anchor:middle;font-size: 30px; font-family: Roboto, RobotoDraft, Microsoft YaHei, Helvetica, Arial, sans-serif; fill: #ff6789; font-weight: 400">文</text>
+        </svg>
+    </div>
+    <form id="profile_settings" action="">
+        <label for="f_content">前景内容：<input type="text" placeholder="文" name="f_content"></label>
+        <label for="f_color">前景颜色：<input type="text" placeholder="#ff6789" name="f_color"></label>
+        <label for="b_content">背景样式：
+            <div class="example">
+                <img src="../img/profiles/00.svg" alt="e0.svg" data-sim="0">
+                <img src="../img/profiles/01.svg" alt="e1.svg" data-sim="1">
+                <img src="../img/profiles/02.svg" alt="e2.svg" data-sim="2">
+                <img src="../img/profiles/03.svg" alt="e3.svg" data-sim="3">
+                <img src="../img/profiles/04.svg" alt="e4.svg" data-sim="4">
+                <img src="../img/profiles/05.svg" alt="e5.svg" data-sim="5">
+                <img src="../img/profiles/06.svg" alt="e6.svg" data-sim="6">
+                <img src="../img/profiles/07.svg" alt="e7.svg" data-sim="7">
+                <img src="../img/profiles/08.svg" alt="e8.svg" data-sim="8">
+            </div>
+        </label>
+        <label for="b_color">背景颜色：<input type="text" placeholder="#ffc8c2" name="b_color"></label>
+    </form>
+    <input type="button" value="开始" id="submit">
+</body>
+<script src="../js/profile_data_base.js"></script>
+<script>
+var oSubmit = document.getElementById("submit");
+var b_styles = document.getElementsByClassName("example")[0].getElementsByTagName("img");
+var profile = document.getElementsByClassName("profileDis")[0].getElementsByTagName("svg")[0];
+var pathPattern = profile.getElementsByTagName("path")[0];
+var pathPureColor = profile.getElementsByTagName("path")[1];
+var d_text = profile.getElementsByTagName("text")[0];
+for(var a=0; a<b_styles.length; a++){
+    b_styles[a].onclick = function(){
+        console.log(this.dataset.sim)
+        pathPattern.setAttribute("d", profile_data_base[this.dataset.sim]);
+    }
+}
+oSubmit.onclick = function(){
+    var form = document.forms[0];
+    var f_content_value = form["f_content"].value.charAt(0) || form["f_content"].placeholder;
+    var f_color_value = form["f_color"].value || form["f_color"].placeholder;
+    var b_color = form["b_color"].value || form["b_color"].placeholder;
+    
+    console.log(d_text)
+    d_text.textContent = f_content_value;
+    d_text.style.fill = f_color_value;
+    pathPattern.setAttribute("fill", b_color);
+    console.log(form["f_content"].value)
+}
+console.log(document.forms[0])
+</script>
+</html>

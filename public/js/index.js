@@ -35,19 +35,22 @@ const slogan__ =
         icons_color: "#fff"
     }
 ];
-window.onload = function(){
+window.addEventListener("load", function(){
     my_utils.Ajax({
         method: "POST",
         url: "http://shop.com/api/carousel_map",
+        dataType: "text",
         success: function(data){
             new contributeCarousel(document.getElementById("carousel_scroll"), data);
         },
         error: function(){
+            console.log("aaaa")
             new contributeCarousel(document.getElementById("carousel_scroll"), slogan__);
         }
-    })
-    prev_menuBtnColor = "#fff";
-}
+    });
+    lazyDog();
+});
+window.addEventListener("scroll", lazyDog);
 function contributeCarousel(obj, slogan){
     this.setMenuColor = function(str){
         if(classListExist(menu_button, "active")) return 0;
@@ -231,4 +234,79 @@ function contributeCarousel(obj, slogan){
         }, 5500);
         return false;
     }, {"passive": true});
+};
+var arrImg = [];
+function putLoader(ele){
+    var arrImgLoaderCover = document.getElementsByClassName("img-loader-cover");
+    var arrImg = [];
+    var j = 0;
+    for(var i=0; i<arrImgLoaderCover.length; i++){
+        var ta = arrImgLoaderCover[i];
+        var source = JSON.parse(ta.dataset.source);
+        ta.style.width = source.width;
+        ta.style.height = source.height;
+        ta.style.backgroundColor = source.bgcolor;
+        appendLoader(ta);
+        var nImg = new Image();
+        nImg.src = source.src;
+        arrImg.push(nImg);
+        ta.appendChild(nImg);
+        console.log(nImg)
+        nImg.addEventListener("load", function(){
+            var target = arrImgLoaderCover[j];
+            target.appendChild(arrImg[j]);
+            var timer = setTimeout(function(){
+                target.removeChild(target.getElementsByClassName("preloader")[0]);
+                target.removeAttribute("data-source");
+                clearTimeout(timer);
+            }, 1000);
+            nImg.removeEventListener("load", null);
+            j++;
+        });
+    }
+}
+var aPicBox = document.getElementsByClassName("img-loader-cover");
+var bPicBox = [];
+var arrLoadedImg = [];
+for(var i=0; i<aPicBox.length; i++){
+    bPicBox.push(false);
+    arrLoadedImg.push(false);
+}
+function appendLoader(ele){
+    var n_Div = document.createElement("div");
+    for(var i=0; i<10; i++){
+        let div = document.createElement("div");
+        n_Div.appendChild(div);
+    }
+    n_Div.className = "preloader";
+    ele.appendChild(n_Div);
+    return n_Div;
+}
+function lazyDog(){
+    for(var j=0; j<aPicBox.length; j++){
+        var bound = aPicBox[j].getBoundingClientRect().top;
+        bPicBox[j] = (bound <= windowHeight-40);
+    }
+    var j = 0;
+    for(var k=0; k<aPicBox.length; k++){
+        if(!arrLoadedImg[k] && bPicBox[k]){
+            let ta = aPicBox[k];
+            let source = JSON.parse(ta.dataset.source);
+            ta.style.width = source.width;
+            ta.style.height = source.height;
+            ta.style.backgroundColor = source.bgcolor;
+            // appendLoader(ta);
+            var nImg = new Image();
+            nImg.src = source.src;
+            arrImg.push(nImg);
+            nImg.addEventListener("load", function(){
+                my_utils.addClass(ta, "shown");
+                ta.style.backgroundImage = "url(" + source.src + ")";
+                ta.removeAttribute("data-source");
+                nImg.removeEventListener("load", null);
+                j++;
+            });
+        };
+        if(bPicBox[k]) arrLoadedImg[k] = true;
+    }
 }

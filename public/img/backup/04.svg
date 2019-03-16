@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="50"
+   height="50"
+   viewBox="0 0 13.229166 13.229167"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="04.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="9.428125"
+     inkscape:cx="47.602692"
+     inkscape:cy="18.692579"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1416"
+     inkscape:window-height="1048"
+     inkscape:window-x="495"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-283.77082)">
+    <path
+       style="opacity:1;fill:#afddce;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.23770571;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:30;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 0 0 L 0 50 L 2 50 L 2 0 L 0 0 z M 2.8203125 0 L 2.8203125 50 L 6 50 L 6 0 L 2.8203125 0 z M 6.8203125 0 L 6.8203125 50 L 10 50 L 10 0 L 6.8203125 0 z M 10.820312 0 L 10.820312 50 L 14 50 L 14 0 L 10.820312 0 z M 14.820312 0 L 14.820312 50 L 18 50 L 18 0 L 14.820312 0 z M 18.820312 0 L 18.820312 50 L 22 50 L 22 0 L 18.820312 0 z M 22.820312 0 L 22.820312 50 L 26 50 L 26 0 L 22.820312 0 z M 26.820312 0 L 26.820312 50 L 30 50 L 30 0 L 26.820312 0 z M 30.820312 0 L 30.820312 50 L 34 50 L 34 0 L 30.820312 0 z M 34.820312 0 L 34.820312 50 L 38 50 L 38 0 L 34.820312 0 z M 38.820312 0 L 38.820312 50 L 42 50 L 42 0 L 38.820312 0 z M 42.820312 0 L 42.820312 50 L 46 50 L 46 0 L 42.820312 0 z M 46.820312 0 L 46.820312 50 L 50 50 L 50 0 L 46.820312 0 z "
+       transform="matrix(0.26458333,0,0,0.26458333,0,283.77082)"
+       id="rect815" />
+  </g>
+</svg>

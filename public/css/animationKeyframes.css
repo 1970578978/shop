@@ -52,3 +52,12 @@
 @keyframes ellipsis3{
     from{transform: scale(1)}to{transform: scale(0)}
 }
+/* loading-circle-cover */
+@keyframes loading-box{
+    to{transform: rotate(360deg)}
+}
+@keyframes loading-orbit{
+    0% {stroke-dasharray: 1px, 200px; stroke-dashoffset: 0px;}
+    50% {stroke-dasharray: 100px, 200px;stroke-dashoffset: -15px;}
+    100% {stroke-dasharray: 100px, 200px;stroke-dashoffset: -125px;}
+}
