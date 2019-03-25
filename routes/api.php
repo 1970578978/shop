@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('carousel_map', 'Api\CarouselMapController@show');
 
-//添加passport路由
+//添加passport路由登录和注册
 Route::post('login', 'Api\PassportController@login');
 Route::post('register', 'Api\PassportController@register');
 //重置密码
