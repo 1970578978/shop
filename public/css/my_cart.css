@@ -1,13 +1,18 @@
 .banner-container{background-color: #fff}
-.control-view{width: 100%; height: 60px; background-color: none}
-.sort-by, .display-as{float: left; height: auto; display: flex; padding: 8px; margin: 10px 0; cursor: pointer; border-radius: 4px; align-items: center; position: relative; -webkit-tap-highlight-color: transparent}
+.control-view{width: 100%; min-height: 60px; background-color: none}
+.control-view::after{content: ""; display: block; clear: both;}
+.sort-by, .display-as{float: right; height: auto; display: flex; padding: 8px; margin: 10px 0; cursor: pointer; border-radius: 4px; align-items: center; position: relative; -webkit-tap-highlight-color: transparent}
 .sort-by:hover, .display-as:hover{background-color: #eee}
 .display-as{float: right;}
 .selection{line-height: 24px; font-size: 13px; display: block; float: left; padding: 0 8px}
 
-.under-selection{width: 165px; height: auto; position: absolute; left: 0; top: 0; background-color: #fff; border-radius: 4px; box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2); overflow: hidden; transform: translateY(-20px); z-index: -1; opacity: .1;}
+.page-icon{height: 60px; float: left; display: flex;}
+.page-icon i.md-ico{font-size: 28px; color: #323334; padding-right: 15px}
+.page-icon span{font-size: 16px; color: #353535; line-height: 16px;}
+
+.under-selection{width: 200px; height: auto; position: absolute; right: 0; top: 0; background-color: #fff; border-radius: 4px; box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2); overflow: hidden; transform: translateY(-20px); z-index: -1; opacity: .1;}
 .under-selection.shown{transform: translateY(0); opacity: 1; z-index: 3;}
-.display-as .under-selection{right: 0; left: unset}
+.display-as .under-selection{right: 0; left: auto}
 .under-selection-list{width: 100%; height: 40px;}
 .under-selection-list:not(:first-child):hover{background-color: #eee}
 .icon-stamp{width: 40px; height: 40px; float: left;}
@@ -17,7 +22,11 @@
 
 .page_title{font-weight: 500; font-size: 20px; padding-top: 22px; color: #787980}
 
-.my_cart-main-list{width: calc(100% - 10px); height: 200px; box-shadow: var(--shadow-elevation-1dp_-_box-shadow); border-radius: 4px; background-color: #fff; margin-bottom: 20px; padding: 5px; padding-top: 10px}
+.my_cart_container{padding-bottom: 20px; min-height: calc(100vh - 570px);}
+.my_cart_container:empty{display: flex; justify-content: center;}
+.my_cart_container:empty::after{content: "当前列表为空"; display: inline-flex; align-items: center; text-align: center; padding: 10px; padding-top: 11px; font-family: var(--md-text-setting); font-size: 14px; line-height: 14px; height: 14px; border: .5px solid rgba(0, 0, 0, .1); border-radius: 4px; color: #4f4f4f}
+
+.my_cart-main-list{width: calc(100% - 10px); height: 200px; box-shadow: var(--shadow-elevation-1dp_-_box-shadow); border-radius: 4px; background-color: #fff; margin-bottom: 20px; padding: 5px; padding-top: 10px; position: relative;}
 .my_cart-main-list-l{height: 130px; width:130px; float: left; position: relative; background-color: none}
 .my_cart-main-list-l .l-pic{width: 100%; height: 100%; background-repeat: no-repeat; background-position: center}
 /* .my_cart-main-list-l .l-del_btn{position: absolute; width: 40px; height: 40px; background-color: #fff; left: calc(50% - 20px); top: calc(50% - 20px); border-radius: 50%; box-shadow: var(--shadow-elevation-3dp_-_box-shadow)}
@@ -53,19 +62,40 @@
 .cbx{ position: relative; top: 1px; width: 17px; height: 17px; border: 1px solid #C8CCD4; border-radius: 3px; vertical-align: middle; transition: background-color .1s ease; cursor: pointer; display: inline-block; text-align: center; box-sizing: border-box; background-color: #fff}
 .cbx::after{ content: ''; position: absolute; top: 1px; left: 5px; width: 5px; height: 11px; opacity: 0; transform: rotate(45deg) scale(0); border-right: 2px solid white; border-bottom: 2px solid white; transition: all .3s ease; transition-delay: .15s;  box-sizing: border-box}
 .cbx .lbl{margin-left: 5px; vertical-align: middle; cursor: pointer; vertical-align: center}
-#cbx:checked ~ .cbx{ border-color: transparent; background: #4082fc; animation: jelly .6s ease;}
-#cbx:checked ~ .cbx:after{ opacity: 1; transform: rotate(45deg) scale(1);}
+input[name="cart-list"]:checked ~ .cbx{border-color: transparent; background: #4082fc; animation: jelly .6s ease;}
+input[name="cart-list"]:checked ~ .cbx:after{opacity: 1; transform: rotate(45deg) scale(1);}
+
+
 input[type="checkbox"]{ display: none}
 
-.bottom-bar{position: fixed; bottom: 0; height: 50px; width: 100%; background-color: green; z-index: 1;}
-.bottom-bar .bt-bar-left{width: 100px; height: 100%; float: left; background-color: #555}
-.bottom-bar .bt-bar-right{width: 200px; height: 100%; float: right;}
+.bottom-bar{position: fixed; bottom: 0; width: 100%; height: 50px; background-color: #fff; z-index: 1; border-top: 1px solid #eee}
+.bottom-bar .bt-bar-left{width: 100px; height: 100%; position: absolute; left: 0; bottom: 0; background-color: transparent}
+.bottom-bar .bt-bar-right{width: 100px; height: 100%; position: absolute; right: 0; bottom: 0; background-color: #c4c4c4; cursor: pointer;}
+.bottom-bar .bt-bar-right.purchase-ava{background-color: #4082fc}
+.bottom-bar .bt-bar-right.purchase-ava span:after{content: "结算"}
 
+.bottom-bar .bt-bar-right span::after{content: "请选择"}
+.bottom-bar .cost-look{width: 120px; height: 100%; position: absolute; top: 0; left: calc(50% - 60px); color: #3f3f3f; transform: translateY(100%) scale(.1);}
+
+.selAll, .bt-bar-right, .cost-look{display: flex; width: 100%; height: 100%; font-weight: 500; font-size: 14px; letter-spacing: .125rem; text-indent: .125rem; box-sizing: border-box;}
+.selAll span{cursor: pointer;}
+.bt-bar-right{border: 0; color: #f5f5f5}
+.cost-look{border: 0; letter-spacing: .01rem; text-indent: .01rem}
+/* input#selAll:checked ~ .selAll{background-color: green} */
+input#selAll:checked ~ .selAll span{padding: 8px 10px; background-color: #fff; border-radius: 18px; box-sizing: border-box; border: 1px solid #c1c2c3;}
+input#selAll ~ .selAll span{padding: 8px 10px; background-color: #4082fc; border-radius: 18px; -webkit-tap-highlight-color: transparent}
+input#selAll:checked ~ .selAll span::after{content: "取消全选"; color: #323334; white-space: nowrap; display: block; transform: translateY(.08rem); padding: 0}
+input#selAll ~ .selAll span::after{content: "全选"; color: #fff; white-space: nowrap; display: block; transform: translateY(.08rem); padding: 0 5px}
+/* input#selAll ~ .selAll{background-color: #1a73e8} */
+/* input#selAll:checked ~ .selAll{background-color: rgba(0,0,0,0.12);} */
+
+.footer{padding-bottom: 51px}
 @keyframes jelly{
     from{transform: scale(1, 1)}
     30%{transform: scale(1.25, 0.75)}40%{transform: scale(0.75, 1.25)}50%{transform: scale(1.15, 0.85)}65%{transform: scale(.95, 1.05)}75%{transform: scale(1.05, .95)}to{transform: scale(1, 1)}
 }
 @media only screen and (min-width:62em){
+    .solid-btn:hover{box-shadow: var(--shadow-elevation-3dp_-_box-shadow-none)}
     .my_cart-main-list-r .r-top .r-top-left{width: 60%}
     .my_cart-main-list-r .r-top .r-top-left p{font-size: 20px; line-height: 26px}
     .my_cart-main-list-r .r-top .r-top-left .m-inf{font-size: 16px; line-height: 18px; padding-top: 10px}
@@ -79,6 +109,9 @@ input[type="checkbox"]{ display: none}
     .my_cart-main-list-r .r-top .r-top-right{width: calc(40% - 25px);}
     .check-box{ border-left: 1px dashed rgba(0, 0, 0, .08); box-sizing: border-box;}
     .check-box::before, .check-box::after{content: ""; display: block; width: 8px; height: 8px; position: absolute; right: 31px; top: -4px; background-color: #f5f5f5; border-radius: 50%}
-    .check-box::after{bottom: -4px; top: unset}
+    .check-box::after{bottom: -4px; top: auto;}
     .bottom-bar{height: 80px;}
+    .bottom-bar .cost-look{right: 100px; left: auto; padding: 0 15px 0 10px; width: 120px; white-space: nowrap; width: auto}
+    .selAll, .bt-bar-right{font-size: 16px}
+    .footer{padding-bottom: 81px}
 }

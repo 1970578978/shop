@@ -160,89 +160,38 @@
 		</div>
 	</div>
 	<div class="container-fluid main-body part-a" style="background-color: #f5f5f5">
-		
 		<div class="body-limit">
 			<div class="row" style="background-color: none; padding-top: 75px">
-				<p class="page_title md-text-setting flex-center"><i class="md-ico" style="color: #757575; font-size: 28px">&#xe8cc;</i> <span style="padding-left: 15px">购物车列表</span></p>
+				<!-- <p class="page_title md-text-setting flex-center"><i class="md-ico" style="color: #757575; font-size: 28px">&#xe8cc;</i> <span style="padding-left: 15px">购物车列表</span></p> -->
 				<div class="control-view" id="control-view">
+					<div class="page-icon flex-center">
+						<i class="md-ico">&#xe8cc;</i>
+						<span class="md-text-setting">购物车列表</span>
+					</div>
 					<div class="sort-by trans-bc-500" id="sort-by">
-						<span class="md-text-setting selection">按商品名称排序</span><i class="md-ico">&#xe5c5;</i>
+						<span class="md-text-setting selection">按商品名称排序（升序）</span><i class="md-ico">&#xe5c5;</i>
 						<div class="under-selection trans-all-200">
 							<div class="under-selection-list flex-center" style="width: auto; padding-left: 2em; justify-content: flex-start; cursor: default;"><span class="md-text-setting">排序方式</span></div>
-							<div class="under-selection-list">
+							<div class="under-selection-list" data-sortby='{"kind": "by_name", "order": true, "tit": "按商品名称排序"}' id="by_name">
 								<span class="icon-stamp flex-center"><i class="md-ico">&#xe053;</i></span>
 								<span class="text-stamp flex-center"><span class="md-text-setting">按商品名称排序</span></span>
 							</div>
-							<div class="under-selection-list">
+							<div class="under-selection-list" data-sortby='{"kind": "by_price", "order": false, "tit": "按每件商品价格排序"}' id="by_price">
 								<span class="icon-stamp flex-center"><i class="md-ico">&#xe227;</i></span>
-								<span class="text-stamp flex-center"><span class="md-text-setting">按商品价格排序</span></span>
+								<span class="text-stamp flex-center"><span class="md-text-setting">按每件商品价格排序</span></span>
 							</div>
-							<div class="under-selection-list">
+							<div class="under-selection-list" data-sortby='{"kind": "by_default", "order": false, "tit": "默认排序"}' id="by_default">
 								<span class="icon-stamp flex-center"><i class="md-ico">&#xe909;</i></span>
 								<span class="text-stamp flex-center"><span class="md-text-setting">默认排序</span></span>
 							</div>
 						</div>
-					</div>
-					<div class="display-as trans-bc-500" id="display-as">
-						<span class="md-text-setting selection">列表</span><i class="md-ico">&#xe5c5;</i>
-						<div class="under-selection trans-all-200">
-								<div class="under-selection-list flex-center" style="width: auto; padding-left: 2em; justify-content: flex-start; cursor: default;"><span class="md-text-setting">视图模式</span></div>
-								<div class="under-selection-list">
-									<span class="icon-stamp flex-center"><i class="md-ico">&#xe8ee;</i></span>
-									<span class="text-stamp flex-center"><span class="md-text-setting">简略</span></span>
-								</div>
-								<div class="under-selection-list">
-									<span class="icon-stamp flex-center"><i class="md-ico">&#xe8ef;</i></span>
-									<span class="text-stamp flex-center"><span class="md-text-setting">列表</span></span>
-								</div>
-								<div class="under-selection-list">
-									<span class="icon-stamp flex-center"><i class="md-ico">&#xe8e9;</i></span>
-									<span class="text-stamp flex-center"><span class="md-text-setting">卡片模式</span></span>
-								</div>
-							</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="container-fluid main-body part-b" style="padding: 0 8px">
-		<div class="body-limit" style="padding-bottom: 20px">
-			<div class="my_cart-main-list" style="position: relative;">
-				<div class="check-box flex-center">
-					<!-- <label class="lbl" for="cbx">Make Magic</label> -->
-					<input class="hidden-xs-up" id="cbx" type="checkbox">
-					<label class="cbx" for="cbx"></label>
-				</div>
-				 <div class="my_cart-main-list-l">
-					 <div class="l-pic" style="background-image: url(./_test/muti.jpg)"></div>
-					 <!-- <div class="l-del_btn flex-center"><i class="md-ico">&#xe872;</i></div> -->
-				 </div>
-				 <div class="my_cart-main-list-r">
-					 <div class="r-top">
-						 <div class="r-top-left">
-							 <p class="md-text-setting">商品名称名称商品名称商品</p>
-							 <p class="md-text-setting m-inf">商品规格。。商品规格，商品规格</p>
-							 <p class="md-text-setting mobi-price xs-d-block md-d-none">55.8</p>
-							 <p class="md-text-setting mobi-price xs-d-block md-d-none m-inf m-sinf">共计2件，每件27.9元</p>
-						 </div>
-						 <div class="r-top-right xs-d-none md-d-block">
-							 <p class="md-text-setting cost-price">27.90</p>
-							 <p class="md-text-setting pieces">2</p>
-						 </div>
-					 </div>
-					 <div class="r-bottom">
-						 <div class="btn-other">
-							 <div class="outline-btn flex-center"><span>加入收藏</span></div>
-							 <div class="outline-btn flex-center xs-d-none md-d-flex"><span>详情</span></div>
-						 </div>
-						 <div class="btn-pur">
-								<div class="solid-btn flex-center purchase"><span>购买</span></div>
-						 </div>
-						 <div class="md-text-setting flex-center total-cost xs-d-none md-d-flex"><span>55.8</span></div>
-					 </div>
-				 </div>
-			</div>
-		</div>
+		<div class="body-limit my_cart_container"></div>
 	</div>
 	<div class="container-fluid main-body part-a">
 		<div class="body-limit">
@@ -250,10 +199,14 @@
 		</div>
 	</div>
 	<div class="bottom-bar">
-		<div class="bt-bar-left">
-			
+		<div class="bt-bar-left trans-bg-500">
+			<input type="checkbox" id="selAll">
+			<label class="selAll flex-center md-text-setting" id="selAll_toggle" for="selAll"><span></span></label>
 		</div>
-		<div class="bt-bar-right"></div>
+		<div class="cost-look flex-center md-text-setting trans-all-200"><span>已选0项，0元</span></div>
+		<div class="bt-bar-right flex-center md-text-setting">
+			<span></span>
+		</div>
 	</div>
 	<div class="search_panel" id="search_panel">
 		<div class="panel_box">
