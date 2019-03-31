@@ -9,7 +9,7 @@ Array.prototype.myForEach = function myForEach(callBack, context) {
         typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
     }
 };
-var textJSON = [
+var textJSON = [ // idx必须 0 - ...
     {
         "idx": "0",
         "ID": "AAA",
@@ -87,12 +87,15 @@ window.onload = function(){
                 (ELE["cost-look"].style.transform = "translateY(0) scale(1)") : (ELE["cost-look"].style.transform = "translateY(100%) scale(.1)")
                 ELE["btn-purchase"].onclick = null;
             getSelects()["Boolean"].indexOf(true) !== -1 ? 
-                my_utils.addClass(ELE["btn-purchase"], "purchase-ava") || (ELE["btn-purchase"].onclick = function(){solveAll()}) :
-                my_utils.removeClass(ELE["btn-purchase"], "purchase-ava");
+                my_utils.addClass(ELE["btn-purchase"], "purchase-ava") || (ELE["del-sels"].style.transform = "scale(1)") || (ELE["btn-purchase"].onclick = function(){solveAll()}) :
+                my_utils.removeClass(ELE["btn-purchase"], "purchase-ava") || (ELE["del-sels"].style.transform = "scale(0)");
+            getSelects()["Boolean"].indexOf(true) !== -1 ? (ELE["del-sels"].dataset.visibility = true) :(ELE["del-sels"].dataset.visibility = false);
+            redoLogic();
         }
     });
     ELE["selAll_toggle"].onclick = function(){
         let bool = !ELE["selAll"].checked;
+        ELE["messOption"] !== null && (bool = ELE["messOption"]);
         ELE["checkBoxes"].myForEach(function(e){
             e.checked = bool;
         });
@@ -106,8 +109,11 @@ window.onload = function(){
             (ELE["cost-look"].style.transform = "translateY(0) scale(1)") : (ELE["cost-look"].style.transform = "translateY(100%) scale(.1)");
         ELE["btn-purchase"].onclick = null;
         getSelects()["Boolean"].indexOf(true) !== -1 ? 
-            my_utils.addClass(ELE["btn-purchase"], "purchase-ava") || (ELE["btn-purchase"].onclick = function(){solveAll()}) :
-            my_utils.removeClass(ELE["btn-purchase"], "purchase-ava");
+            my_utils.addClass(ELE["btn-purchase"], "purchase-ava") || (ELE["del-sels"].style.transform = "scale(1)") || (ELE["btn-purchase"].onclick = function(){solveAll()}) :
+            my_utils.removeClass(ELE["btn-purchase"], "purchase-ava") || (ELE["del-sels"].style.transform = "scale(0)");
+        getSelects()["Boolean"].indexOf(true) !== -1 ? (ELE["del-sels"].dataset.visibility = true) :(ELE["del-sels"].dataset.visibility = false);
+        redoLogic();
+        console.log(getSelects())
     };
     ELE["sort_by"]["name"].onclick();
 };
@@ -120,18 +126,23 @@ var ELE = {
     "my_cart_container": document.getElementsByClassName("my_cart_container")[0],
     "btn-purchase": document.getElementsByClassName("bt-bar-right")[0],
     "selectionTitle": document.getElementsByClassName("selection")[0],
+    "del-sels": document.getElementsByClassName("del-sels")[0],
+    "del-redo": document.getElementsByClassName("del-redo")[0],
+    "messOption": null,
     "checkBoxes": null,
     "checkedArr": [],
     "sort_by": {
         "name": document.getElementById("by_name"),
         "price": document.getElementById("by_price"),
         "default": document.getElementById("by_default")
-    }
+    },
+    "nowSortBy": null
 };
 ELE["sort_by"]["name"].onclick = function(){
     getSelects();
     var oItems = ELE["checkedArr"]["n_seledItems"].concat(ELE["checkedArr"]["seledItems"]);
     var sort_set = JSON.parse(this.dataset.sortby);
+    ELE["nowSortBy"] = sort_set;
     // false -> 降序
     oItems.sort(function(o1, o2){
         var val;
@@ -153,6 +164,7 @@ ELE["sort_by"]["price"].onclick = function(){
     getSelects();
     var oItems = ELE["checkedArr"]["n_seledItems"].concat(ELE["checkedArr"]["seledItems"]);
     var sort_set = JSON.parse(this.dataset.sortby);
+    ELE["nowSortBy"] = sort_set;
     // false -> 降序
     oItems.sort(function(o1, o2){
         var val;
@@ -174,6 +186,7 @@ ELE["sort_by"]["default"].onclick = function(){
     getSelects();
     var oItems = ELE["checkedArr"]["n_seledItems"].concat(ELE["checkedArr"]["seledItems"]);
     var sort_set = JSON.parse(this.dataset.sortby);
+    ELE["nowSortBy"] = sort_set;
     // false -> 降序
     oItems.sort(function(o1, o2){
         var val;
@@ -200,10 +213,68 @@ ELE["sort-by-btn"].onclick = function(e){
         my_utils.removeClass(tar, "shown");
     });
 };
+ELE["del-sels"].onclick = function(){
+    var exeDels = getSelects();
+    exeDels["seledItems"].myForEach(function(item){
+        item.parentNode.removeChild(item);
+    });
+    ELE["checkBoxes"] = trans2Arr(document.getElementsByName("cart-list"));
+    /*+++*/
+    ELE["messOption"] = false;
+    ELE["selAll_toggle"].onclick();
+    ELE["messOption"] = null;
+    /*+++*/
+    ELE["del-redo"].style.transform = "scale(1) translateX(0)";
+};
+ELE["del-redo"].onclick = function(){
+    ELE["my_cart_container"].innerHTML = "";
+    textJSON.myForEach(function(item){
+        ELE["my_cart_container"].appendChild(createCartList(item));
+    });
+    ELE["checkBoxes"] = trans2Arr(document.getElementsByName("cart-list"));
+    ELE["checkBoxes"].myForEach(function(item){
+        item.onclick = function(){
+            ELE["checkBoxes"].myForEach(function(ee){ // input.check
+                // console.log(ee)
+                // console.log(ee.checked)
+            });
+            let totalPR = 0; // 总价
+            getSelects()["seledItems"].myForEach(function(seledItems){
+                totalPR += parseFloat(seledItems.dataset.PR);
+            });
+            ELE["checkedArr"]["seledItems"].length === ELE["checkBoxes"].length && (ELE["selAll"].checked = true);
+            ELE["checkedArr"]["n_seledItems"].length === ELE["checkBoxes"].length && (ELE["selAll"].checked = false);
+            ELE["cost-look"].innerText = "已选" + ELE["checkedArr"]["seledItems"].length + "项，" + totalPR + "元";
+            ELE["checkedArr"]["seledItems"].length !== 0 ? 
+                (ELE["cost-look"].style.transform = "translateY(0) scale(1)") : (ELE["cost-look"].style.transform = "translateY(100%) scale(.1)")
+                ELE["btn-purchase"].onclick = null;
+            getSelects()["Boolean"].indexOf(true) !== -1 ? 
+                my_utils.addClass(ELE["btn-purchase"], "purchase-ava") || (ELE["del-sels"].style.transform = "scale(1)") || (ELE["btn-purchase"].onclick = function(){solveAll()}) :
+                my_utils.removeClass(ELE["btn-purchase"], "purchase-ava") || (ELE["del-sels"].style.transform = "scale(0)");
+            getSelects()["Boolean"].indexOf(true) !== -1 ? (ELE["del-sels"].dataset.visibility = true) :(ELE["del-sels"].dataset.visibility = false);
+            redoLogic();
+        }
+    });
+    /*+++*/
+    ELE["messOption"] = false;
+    ELE["selAll_toggle"].onclick();
+    ELE["messOption"] = null;
+    /*+++*/
+    ELE["checkBoxes"] = trans2Arr(document.getElementsByName("cart-list"));
+    this.style.transform = "scale(1) translateX(-150px)";
+    // --- //
+    ELE["sort_by"][ELE["nowSortBy"]["kind"].split("_")[1]].onclick();
+    ELE["sort_by"][ELE["nowSortBy"]["kind"].split("_")[1]].onclick();
+};
 my_cart.addEventListener("click", function(e){
     stopBubble(e);
     my_utils.removeClass(ELE["sort-by-btn"].getElementsByClassName("under-selection")[0], "shown");
 });
+function redoLogic(){
+    var visible = ELE["del-sels"].dataset.visibility;
+    eval(visible) ? (ELE["del-redo"].style.transform = "scale(1) translateX(-150px)") : (ELE["del-redo"].style.transform = "scale(1) translateX(0)");
+    console.log(visible);
+}
 function createCartList(json){
     var mainList = document.createElement("div");
     my_utils.addClass(mainList, "my_cart-main-list");

@@ -85,7 +85,16 @@ class PassportController extends Controller
         $emailData['subject'] = '验证邮箱';
         $emailData['view'] = 'email.verifyemail';
         $emailData['data'] = $success;
-        SendEmail::dispatch($emailData)->onConnection('database');//使用队列
+        //SendEmail::dispatch($emailData)->onConnection('database');//使用队列
+        $to = $emailData['email'];
+        $subject = $emailData['subject'];
+        Mail::send(
+            $emailData['view'],
+            ['data' => $emailData['data']],
+            function ($message) use($to, $subject) { 
+                $message->to($to)->subject($subject); 
+            }
+        );
 
         $message['name'] = $success['name'];
         $message['token'] = $access_token;
