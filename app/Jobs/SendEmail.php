@@ -25,7 +25,8 @@ class SendEmail implements ShouldQueue
     protected $emailData;
     /**
      * Determine the time at which the job should timeout.
-     *
+     * 基于时间的最大尝试次数
+     * 
      * @return \DateTime
      */
     public function retryUntil()
@@ -34,6 +35,7 @@ class SendEmail implements ShouldQueue
     }
     /**
      * Create a new job instance.
+     * 创建一个队列任务，可以用来传参数
      *
      * @return void
      */
@@ -48,6 +50,7 @@ class SendEmail implements ShouldQueue
 
     /**
      * Execute the job.
+     * 队列需要执行的方法
      *
      * @return void
      */
