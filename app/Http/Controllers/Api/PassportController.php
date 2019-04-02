@@ -84,7 +84,6 @@ class PassportController extends Controller
         $user->save();
 
         $access_token_array =  $this->authenticate();     //获取密码令牌
-        
         if(!array_key_exists('error', $access_token_array)){     //判断是不是正确获取令牌，获取令牌失败，但你已经正确注册（不发送令牌，不发送验证邮件）
             $access_token = $access_token_array['access_token'];
 

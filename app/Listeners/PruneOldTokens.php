@@ -48,10 +48,12 @@ class PruneOldTokens implements ShouldQueue
      */
     public function handle(RefreshTokenCreated $event)
     {
+
         //删除以前的更新令牌
         DB::table('oauth_refresh_tokens')
-            ->where('access_token_id', '<>', $event->accessTokenId)
-            ->where('revoked', '=', 0)
+            ->where('access_token_id', '!=', $event->accessTokenId)
+            ->where('revoked', 1)
             ->delete();
+
     }
 }
