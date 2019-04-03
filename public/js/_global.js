@@ -1,3 +1,13 @@
+Array.prototype.myForEach = function myForEach(callBack, context) {
+    typeof context === "undefined" ? context = window : null;
+    if ("forEach" in Array.prototype) {
+        this.forEach(callBack, context);
+        return;
+    }
+    for (var i = 0; i < this.length; i++) {
+        typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
+    }
+};
 // Events Functions
 const baseURL = "http://shop.com/";
 // Objects
@@ -683,4 +693,11 @@ function getFocus(){
         my_utils.addClass(inputGroup[a].parentNode, "focus") ||
         (inputGroup[a].parentNode.getElementsByClassName("place-holder-reg")[0].style.color = "#5f6368");
     }
+}
+function trans2Arr(coll){
+    let emptyArr = [];
+    for(var x=0; x<coll.length; x++){
+        emptyArr.push(coll[x]);
+    }
+    return emptyArr;
 }

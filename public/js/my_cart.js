@@ -1,14 +1,3 @@
-
-Array.prototype.myForEach = function myForEach(callBack, context) {
-    typeof context === "undefined" ? context = window : null;
-    if ("forEach" in Array.prototype) {
-        this.forEach(callBack, context);
-        return;
-    }
-    for (var i = 0; i < this.length; i++) {
-        typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
-    }
-};
 var textJSON = [ // idx必须 0 - ...
     {
         "idx": "0",
@@ -113,7 +102,6 @@ window.onload = function(){
             my_utils.removeClass(ELE["btn-purchase"], "purchase-ava") || (ELE["del-sels"].style.transform = "scale(0)");
         getSelects()["Boolean"].indexOf(true) !== -1 ? (ELE["del-sels"].dataset.visibility = true) :(ELE["del-sels"].dataset.visibility = false);
         redoLogic();
-        console.log(getSelects())
     };
     ELE["sort_by"]["name"].onclick();
 };
@@ -273,7 +261,6 @@ my_cart.addEventListener("click", function(e){
 function redoLogic(){
     var visible = ELE["del-sels"].dataset.visibility;
     eval(visible) ? (ELE["del-redo"].style.transform = "scale(1) translateX(-150px)") : (ELE["del-redo"].style.transform = "scale(1) translateX(0)");
-    console.log(visible);
 }
 function createCartList(json){
     var mainList = document.createElement("div");
@@ -314,13 +301,6 @@ function getSelects(){
     rep.Boolean = emp;
     ELE["checkedArr"] = rep;
     return rep;
-}
-function trans2Arr(coll){
-    let emptyArr = [];
-    for(var x=0; x<coll.length; x++){
-        emptyArr.push(coll[x]);
-    }
-    return emptyArr;
 }
 function solveAll(){ // 结算
     console.log("进行结算");
