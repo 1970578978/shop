@@ -7,7 +7,7 @@
 .flex-center{display: flex; align-items: center; justify-content: center}
 .trans-bc-100{transition: background-color 100ms; -webkit-transition: background-color 100ms; -o-transition: background-color 100ms; -moz-transition: background-color 100ms;}
 .trans-bc-500{transition: background-color 500ms; -webkit-transition: background-color 500ms; -o-transition: background-color 500ms; -moz-transition: background-color 500ms;}
-.trans-all-200{transition: all 200ms; -webkit-transition: all 200ms; -o-transition: all 200ms; -moz-transition: all 200ms;}
+.trans-all-200, .setting-list .footer-sym i.md-ico::before{transition: all 200ms; -webkit-transition: all 200ms; -o-transition: all 200ms; -moz-transition: all 200ms;}
 .md-shadow{box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2)}
 .md-text-setting{font-size: .875rem; letter-spacing: .2px; font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; line-height: 20px;}
 .pre-text-setting{font-size: 14px; font-family: "Helvetica", "Tahoma", "Arial", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", "Heiti", sans-serif;}

@@ -1,4 +1,4 @@
-window.onload = function(){
+window.onload = function(e){
     setMenuBtnColor("#000");
     prev_menuBtnColor = "#000";
     fitMenu();
