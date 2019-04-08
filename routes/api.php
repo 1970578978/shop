@@ -21,7 +21,7 @@ Route::get('carousel_map', 'Api\CarouselMapController@show');
 
 //添加passport路由
 Route::post('login', 'Api\PassportController@login');
-Route::post('register', 'Api\PassportController@register');
+Route::post('register', 'Api\PassportController@register')->middleware('cors');//允许跨域
 //重置密码
 Route::post('forgot-password', 'Api\auth\ForgotPasswordController@passwordEmail');
 Route::post('resent-password', 'Api\auth\ForgotPasswordController@resetPassword');
