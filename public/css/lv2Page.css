@@ -11,7 +11,7 @@ body{overflow: hidden;}
 .nav-avatars .user_profile::before{content: ""; display: block; position: absolute; width: 40px; height: 40px; left: -4px; top: -4px; border-radius: 50%; cursor: pointer; -webkit-tap-highlight-color: transparent;}
 .nav-avatars .user_profile:hover::before{background-color: rgba(60, 64, 67, .08)}
 .nav-avatars label{display: block; width: 56px; height: 56px; position: absolute; left: 0; top: 0;}
-.user-base-box{position: absolute; display: flex;flex-wrap: nowrap; width: 268px; height: 108px; padding: 16px; background-color: rgba(0, 0, 0, .87); border-radius: 8px; top: 50px; right: 12px; box-shadow: var(--shadow-elevation-4dp_-_box-shadow); transform-origin: top right; transform: translateY(-44px); opacity: 0; visibility: hidden; transition-timing-function: ease-out; z-index: 3;}
+.user-base-box{position: absolute; display: flex;flex-wrap: nowrap; width: 268px; height: 108px; padding: 16px; background-color: rgba(0, 0, 0, .87); border-radius: 8px; top: 50px; right: 12px; box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .1), 0 1px 10px 0 rgba(0, 0, 0, .08), 0 2px 4px -1px rgba(0, 0, 0, .16); transform-origin: top right; transform: translateY(-44px); opacity: 0; visibility: hidden; transition-timing-function: ease-out; z-index: 3;}
 input#user-base-toggle:checked ~ .user-base-box{transform: translateY(0) scale(1); opacity: 1; visibility: visible;}
 .user-base-avatars{width: 108px; height: 108px; background-size: 108px; background-repeat: no-repeat; background-position: center; background-color: #fff; border-radius: 50%;}
 .user-base-info{width: 144px; height: 100%; margin-left: 16px;}
@@ -19,7 +19,7 @@ input#user-base-toggle:checked ~ .user-base-box{transform: translateY(0) scale(1
 .user-base-info .e-mail{font-size: 13px; line-height: 18px; color: #666; word-break: break-all;}
 
 .lv2-container{height: calc(100vh - 56px); background-color: #f5f5f5; overflow: auto;}
-.lv2-container-inner{max-width: 680px; background-color: #f5f5f5; height: 1500px;}
+.lv2-container-inner{max-width: 680px; margin-bottom: 80px; background-color: #f5f5f5;}
 .setting-group-box{background-color: #fff; overflow: hidden;}
 h2.title{color: #959697; font-size: 14px; letter-spacing: .25px; padding: 4px 0 2px; padding-left: 15px; font-weight: 600; margin: 10px 0 8px;}
 .setting-list{margin: 0 15px; height: 72px; background-color: #fff; border-bottom: 1px solid #e9e9e9; box-sizing: border-box; position: relative;}
@@ -36,7 +36,7 @@ h2.title{color: #959697; font-size: 14px; letter-spacing: .25px; padding: 4px 0 
 .addBtn{color: #4082fc; font-weight: 600; padding: 10px 0; justify-content: flex-start; margin-top: 15px; margin-left: 15px; align-items: center; position: relative;}
 .addBtn span{font-size: 16px; transform: translateY(.08rem); pointer-events: none;}
 .addBtn i{font-size: 28px; font-weight: normal; padding: 0 10px; pointer-events: none;}
-.addBtn-bg{position: absolute; height: 100%; width: 160px; background-color: rgba(0, 0, 0, .08); cursor: pointer; border-radius: 24px; -webkit-tap-highlight-color: transparent;}
+.addBtn-bg{position: absolute; top: 0; left: 0; height: 100%; width: 160px; background-color: rgba(0, 0, 0, .08); cursor: pointer; border-radius: 24px; -webkit-tap-highlight-color: transparent;}
 .addBtn-bg:hover{background-color: rgba(0, 0, 224, .08)}
 
 .setting-group-box .setting-list:last-child, ul.placeList .setting-list:last-child{border: 0;}
@@ -50,6 +50,8 @@ h2.title{color: #959697; font-size: 14px; letter-spacing: .25px; padding: 4px 0 
 .setting-list.md-radioBtn .header-icon{width: 22px;}
 .setting-list.md-radioBtn:active .md-radio:before{opacity: 1; transform: scale(1); transition: transform .12s cubic-bezier(0, 0, .2, 1) 50ms;}
 .setting-list.md-radioBtn .md-radio:hover:before{opacity: .5; transform: scale(1); transition: transform .12s cubic-bezier(0, 0, .2, 1) 50ms;}
+
+.setting-group-box.address-settings .header-icon i.md-ico{color: #4177f6;}
 /* Plugins */
 .md-label{background-color: #4082fc;}
 .material-toggle {display: block; position: absolute; top: 50%; }
@@ -91,9 +93,18 @@ ul.placeList{padding: 0; list-style-type: none; margin: 0;}
 .dia-footer{flex: 0 0 auto; margin: 8px 4px; display: flex; align-items: center; justify-content: flex-end; }
 .dia-footer button{margin: 0 4px; color: #4082fc; padding: 6px 8px; font-size: .875rem; min-width: 64px; box-sizing: border-box; transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; line-height: 1.75; font-weight: 500; border-radius: 4px; letter-spacing: .02857em; cursor: pointer; display: inline-flex; -webkit-appearance: none; -moz-appearance: none; position: relative; outline: none; align-items: center; user-select: none; vertical-align: middle; justify-content: center; font-size: .875rem; border: 0; background-color: rgba(0, 0, 0, 0); -webkit-tap-highlight-color: transparent;}
 .dia-footer button:hover{text-decoration: none; background-color: rgba(33, 150, 243, 0.08);}
+/* --- */
+.outline-btn, .solid-btn{min-width: 80px; height: 36px; border-radius: 4px; cursor: pointer; outline: none; border: 1px solid #4082fc; margin-left: 10px; display: inline-flex;}
+.outline-btn span, .solid-btn span{font-weight: 500; font-size: 15px; color: #4082fc; letter-spacing: .25px}
+.solid-btn{background-color: #4082fc; box-shadow: unset}
+.solid-btn span{color: #fff}
+
+.delete-danger{padding-top: 25px;}
+.delete-danger .outline-btn{border-color: #d13239;}
+.delete-danger .outline-btn span{white-space: nowrap; padding: 0 10px; color: #d13239;}
 @media only screen and (min-width: 700px){
     h2.title{padding-left: 0}
-    .setting-group-box{border-radius: 4px; box-shadow: var(--shadow-elevation-3dp_-_box-shadow); }
+    .setting-group-box{border-radius: 4px; box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .1), 0 1px 8px 0 rgba(0, 0, 0, .08), 0 3px 3px -2px rgba(0, 0, 0, .16); }
     .setting-list{padding: 0 20px; margin: 0; height: 64px; background-color: #fff; cursor: pointer;}
     .setting-list:active .hl{background-color: transparent;}
     .material-toggle {display: block; position: absolute; top: 50%; }

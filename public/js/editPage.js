@@ -64,8 +64,11 @@ function createLi(arr, lel){
             for(var key in levels){
                 addressList[currentTarget["use-for-address"]]["DOM_Object"][y++].querySelector(".label").innerHTML = levels[key];
             }
-            console.log("correct ", levels)
-            console.log("curr", currentTarget)
+            var tmpTimer = null;
+            tmpTimer = setTimeout(function(){
+                my_utils.removeClass(ELE["dia_bg"], "show_dia");
+                clearTimeout(tmpTimer);
+            }, 150);
         }
         placeList.appendChild(n_Li);
     }
@@ -86,7 +89,6 @@ function refreshData(){
             addressList[addIdx]["dataset_from_DOM"][idx] = listInf;
             addressList[addIdx]["DOM_Object"][idx] = list;
 
-            console.log(listInf);
             list.dataset.sel && list.removeAttribute("data-sel");
 
             list.onclick = function(){
@@ -98,10 +100,7 @@ function refreshData(){
             levels["lv"+idx] = listInf["val"];
         });
     });
-    console.log(addressList)
-    console.log(levels)
     updateMapList();
-    console.log(mapList);
 }
 refreshData();
 function updateMapList(by){

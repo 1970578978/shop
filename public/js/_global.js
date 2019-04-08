@@ -9,7 +9,7 @@ Array.prototype.myForEach = function myForEach(callBack, context) {
     }
 };
 // Events Functions
-const baseURL = "http://shop.com/";
+const baseURL = "https://shop.yixinping.cn/";
 // Objects
 var t = document.createElement("a");
 // 
@@ -421,9 +421,9 @@ function my_utils(){
         document.cookie=key+"="+encodeURIComponent(value)+";expires="+oDate.toUTCString();
         console.log(document.cookie)
         if(that.getCookie(key)){
-            alert('设置成功');
+            console('设置成功');
         }else{
-            alert('设置失败');
+            console('设置失败');
         }
     };
     this.getCookie = function(key){
@@ -446,9 +446,9 @@ function my_utils(){
     this.removeCookie = function(key){
         document.cookie=key+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
         if(!that.getCookie(key)){
-            alert('删除成功');
+            console('删除成功');
         }else{
-            alert('删除失败');
+            console('删除失败');
         }
     }
 }
