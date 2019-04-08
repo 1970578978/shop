@@ -96,7 +96,7 @@ input[name="enter-pass-reg"]{padding-right: 40px}
 .err-words.pass-isEmpty span:last-child::after{content: "请输入密码"}
 
 .err-words.nickname-isEmpty span:last-child::after{content: "请输入用户名"}
-.err-words.name-isRegistered span:last-child::after{content: "用户已注册，点击“登录已有账号”跳转至登录界面"; font-size: 10px; color: #37a658}
+.err-words.name-isRegistered span:last-child::after{content: "用户已注册，点击“登录已现有账户”跳转至登录界面"; font-size: 10px; color: #37a658}
 .err-words.name-isRegistered span:first-child .md-ico{color: #37a658}
 .err-words.nickname-isOverflow span:last-child::after{content: "用户名长度控制在10以内"}
 

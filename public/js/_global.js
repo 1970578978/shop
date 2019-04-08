@@ -421,9 +421,9 @@ function my_utils(){
         document.cookie=key+"="+encodeURIComponent(value)+";expires="+oDate.toUTCString();
         console.log(document.cookie)
         if(that.getCookie(key)){
-            console('设置成功');
+            console.log('设置成功');
         }else{
-            console('设置失败');
+            console.log('设置失败');
         }
     };
     this.getCookie = function(key){
@@ -446,9 +446,9 @@ function my_utils(){
     this.removeCookie = function(key){
         document.cookie=key+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
         if(!that.getCookie(key)){
-            console('删除成功');
+            console.log('删除成功');
         }else{
-            console('删除失败');
+            console.log('删除失败');
         }
     }
 }
@@ -540,7 +540,7 @@ function contributeFocus(name_attr){
     }
 };
 function putTip(judge, obj){
-    var classes = ["pre", "isEmpty", "invalid", "error-format", "pass-isEmpty", "pass-wrong", "account-lost", "nickname-isEmpty", "nickname-isOverflow", "pass-weak", "pass-notSame", "pass-invalid"];
+    var classes = ["pre", "isEmpty", "invalid", "error-format", "pass-isEmpty", "pass-wrong", "account-lost", "name-isRegistered", "nickname-isEmpty", "nickname-isOverflow", "pass-weak", "pass-notSame", "pass-invalid"];
     var errWords = obj.getElementsByClassName("err-words")[0];
     var ele_ph = obj.getElementsByClassName("place-holder")[0] || obj.getElementsByClassName("place-holder-reg")[0];
     for(var c=0; c<classes.length; c++){

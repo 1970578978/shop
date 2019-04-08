@@ -70,7 +70,14 @@ ELE.identifyBtn.onclick = function(){
                         window.location = baseURL + "needEmail";
                     },
                     error: function(err, code){
-                        console.log(err, code)
+                        var errMsg = JSON.parse(err);
+                        console.log(errMsg, code);
+                        var err_email = errMsg["error"]["email"][0]; 
+                        if(err_email === "该邮箱已被注册"){
+                            // my_utils.addClass(ELE["idInput"].parentNode.querySelector(".err-words"), "name-isRegistered");
+                            putTip("name-isRegistered", document.getElementsByClassName("enter-name")[0])
+                        }
+                        console.log(err_email);
                     }
                 })
             ) : (
@@ -149,5 +156,6 @@ function Toggle_onoff_pass(){
         }
     }
 }
+console.log(document.cookie)
 // onoff_pass(ELE.onOffBox, ELE.passInput);
 // onoff_pass(ELE.onOffBox, ELE.passConfirmInput);
