@@ -58,10 +58,10 @@ resendBtn.onclick = function(){
             oXML.setRequestHeader("Authorization", "Bearer\ " + token);
         },
         success: function(res, code){
-            console.log(res, code)
+            console.log(JSON.parse(res), code)
         },
         error: function(err, code){
-            console.log(err, code)
+            console.log(JSON.parse(err), code)
         }
     });
 }
