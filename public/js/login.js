@@ -4,6 +4,7 @@ window.onload = function(){
     volSetRipple(".btn-next");
     volSetRipple(".newLink span");
     contributeLinks();
+    ELE["idInput"].focus();
     false || (console.log("b") || console.log("c") || console.log("d") || console.log("e"));
 }
 var ELE = {
@@ -42,6 +43,7 @@ ELE.identifyBtn.onclick = function(){
     my_utils.Ajax({
         "url": baseURL + "api/login",
         "method": "POST",
+        "dataType": "text",
         "data": {
             email: ELE.idInput.value.replace(/ /g, ""),
             password: ELE.passInput.value
@@ -50,19 +52,14 @@ ELE.identifyBtn.onclick = function(){
             oXML.setRequestHeader("Accept", "application\/json");
         },
         success: function(res){
-            var v_user = JSON.parse(res);
-            console.log(v_user);
-            var res_name = identifyID(ELE.idInput.value, v_user["id"])[0];
-            var res_pass = identifyPass(ELE.passInput.value, v_user["pass"]);
-            putTip(res_name, oEntername);
-            putTip(res_pass, oEnterpass);
-            res_name ? (ELE.idInput.focus() || my_utils.removeClass(ELE.tit, "welcome")) : (
-                res_pass ? (ELE.passInput.focus() || my_utils.removeClass(ELE.tit, "welcome")) : (
-                    ELE.idInput.blur() || ELE.passInput.blur() || my_utils.addClass(ELE.tit, "identifying") || my_utils.addClass(ELE.bottom_outer, "translateX-50p")
-                )
-            );
+            console.log(JSON.parse(res)["token"]["access_token"]);
+            // ELE.idInput.blur(); ELE.passInput.blur(); my_utils.addClass(ELE.tit, "identifying"); my_utils.addClass(ELE.bottom_outer, "translateX-50p");
+            my_utils.setCookie("token", JSON.parse(res)["token"]["access_token"], 1);
+            // window.location = baseURL;
         },
         error: function(error){
+            console.log(JSON.parse(error))
+            putTip("pass-wrong", document.getElementsByClassName("enter-pass")[0]);
             ELE.globalTimer.baseLogoTimer = setTimeout(function(){
                 new loading("reverse");
                 clearTimeout(ELE.globalTimer.baseLogoTimer)
@@ -89,3 +86,4 @@ ELE.idInput.addEventListener("blur", function(){
     }
     this.value = data_split.join("");
 });
+console.log(my_utils.getCookie("token"));
