@@ -29,10 +29,10 @@ class SendEmail implements ShouldQueue
      * 
      * @return \DateTime
      */
-    public function retryUntil()
+    /* public function retryUntil()
     {
         return now()->addSeconds(5);
-    }
+    } */
     /**
      * Create a new job instance.
      * 创建一个队列任务，可以用来传参数

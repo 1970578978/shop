@@ -31,7 +31,7 @@ class ForgotPasswordController extends Controller
 
         $token = time().str_random(10).$email;//token的组成
         $token_crypt = Crypt::encryptString($token);//加密token
-        $hash_token = bcrypt($token_crypt);//对加密后的值惊喜hash处理
+        $hash_token = bcrypt($token_crypt);//对加密后的值进行hash处理
 
         $password_resets = PasswordResets::firstOrCreate([//更新或创造原有的token值
             'email' => $email,
@@ -50,7 +50,15 @@ class ForgotPasswordController extends Controller
         $emailData['view'] = 'email.verifyemail';
         $emailData['data'] = $emailMessage;
         SendEmail::dispatch($emailData)->onConnection('database');    //分发队列任务
-
+        /* $to = $emailData['email'];
+        $subject = $emailData['subject'];
+        Mail::send(
+            'email.verifyemail',
+            ['data' => $emailMessage],
+            function ($message) use($to, $subject) { 
+                $message->to($to)->subject($subject); 
+            }
+        ); */
         return response()->json(['message' => '重置邮件已发送'], config('app.http_code.succes'));
 
     }
