@@ -28,7 +28,7 @@ class VerificationController extends Controller
             return response()->json(['error' => '连接已失效'], config('app.http_code.failed'));
         }
         $user = Auth::user();
-        if($email_token != $user->email_token){//检测token值是不是一样
+        if(substr($email_token,10) != $user->email_token){//检测token值是不是一样
 
             return response()->json(['error' => '邮箱验证失败'], config('app.http_code.failed'));
         }
@@ -57,7 +57,7 @@ class VerificationController extends Controller
         
         $emailMessage['email'] = $user->email;
         $emailMessage['name'] = $user->name;
-        $emailMessage['url'] = Route('verifiEmail').'?access_token='.$success['token'].'&email_token='.$success['email_token'];
+        $emailMessage['url'] = Route('verifiEmail').'?access_token='.$success['token'].'&email_token='.time().$success['email_token'];
         $emailMessage['operating'] = '验证邮箱';
         //使用队列发送邮件
         $emailData['email'] = $user->email;

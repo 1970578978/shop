@@ -78,7 +78,7 @@ class PassportController extends Controller
         $success['name'] =  $user->name;
 
         //创建email_token存入用户表中
-        $email_token = time().$user->id.str_random(40);     //组成验证邮箱token
+        $email_token = $user->id.str_random(40);     //组成验证邮箱token
         //添加验证邮箱token
         $user->email_token = $email_token;          //邮箱验证token存入
         $user->save();
@@ -87,7 +87,7 @@ class PassportController extends Controller
         if(!array_key_exists('error', $access_token_array)){     //判断是不是正确获取令牌，获取令牌失败，但你已经正确注册（不发送令牌，不发送验证邮件）
             $access_token = $access_token_array['access_token'];
 
-            $success['url'] = Route('verifiEmail').'?access_token='.$access_token.'&email_token='.$email_token;//验证连接
+            $success['url'] = Route('verifiEmail').'?access_token='.$access_token.'&email_token='.time().$email_token;//验证连接
             $success['operating'] = '验证邮箱';
             //使用队列发送验证邮件
             
