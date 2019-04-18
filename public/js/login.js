@@ -55,7 +55,7 @@ ELE.identifyBtn.onclick = function(){
             console.log(JSON.parse(res)["token"]["access_token"]);
             // ELE.idInput.blur(); ELE.passInput.blur(); my_utils.addClass(ELE.tit, "identifying"); my_utils.addClass(ELE.bottom_outer, "translateX-50p");
             my_utils.setCookie("token", JSON.parse(res)["token"]["access_token"], 1);
-            // window.location = baseURL;
+            window.location = baseURL;
         },
         error: function(error){
             console.log(JSON.parse(error))

@@ -31,41 +31,40 @@
     </div>
     <div class="lv2-container">
         <div class="lv2-container-inner body-limit">
-            <div class="addBtn flex-center"><div class="addBtn-bg"></div><i class="md-ico">&#xe145;</i><span class="md-text-setting">添加收货地址</span></div>
-            <h2 class="title md-text-setting">地址一</h2>
+            <h2 class="title md-text-setting address-TAG" id="sel0"></h2>
             <div class="setting-group-box address-box">
-                <div class="setting-list no-icon open_dia" data-sel='{"lv":0,"val":"北京市","use-for-address":"0"}'>
+                <div class="setting-list no-icon open_dia" id="dat0">
                     <div class="hl trans-all-200"></div>
                     <div class="header-icon flex-center"><i class="md-ico">&#xe051;</i></div>
                     <div class="content-main md-text-setting">
-                        <div class="label">北京市</div>
+                        <div class="label" id="sel1"></div>
                         <div class="sub-label">省份/直辖市</div>
                     </div>
                     <div class="footer-sym flex-center"><i class="md-ico trans-bc-100">&#xe5cc;</i></div>
                 </div>
-                <div class="setting-list no-icon open_dia" data-sel='{"lv":1,"val":"北京市","use-for-address":"0"}'>
+                <div class="setting-list no-icon open_dia" id="dat1">
                     <div class="hl trans-all-200"></div>
                     <div class="header-icon flex-center"><i class="md-ico">&#xe051;</i></div>
                     <div class="content-main md-text-setting">
-                        <div class="label">北京市</div>
+                        <div class="label" id="sel2"></div>
                         <div class="sub-label">市</div>
                     </div>
                     <div class="footer-sym flex-center"><i class="md-ico trans-bc-100">&#xe5cc;</i></div>
                 </div>
-                <div class="setting-list no-icon open_dia" data-sel='{"lv":2,"val":"东城区","use-for-address":"0"}'>
+                <div class="setting-list no-icon open_dia" id="dat2">
                     <div class="hl trans-all-200"></div>
                     <div class="header-icon flex-center"><i class="md-ico">&#xe051;</i></div>
                     <div class="content-main md-text-setting">
-                        <div class="label">东城区</div>
+                        <div class="label" id="sel3"></div>
                         <div class="sub-label">区/县</div>
                     </div>
                     <div class="footer-sym flex-center"><i class="md-ico trans-bc-100">&#xe5cc;</i></div>
                 </div>
-                <div class="setting-list no-icon open_dia" data-sel='{"lv":3,"val":"建设路0123号小区123栋202","use-for-address":"0"}'>
+                <div class="setting-list no-icon open_dia" id="dat3">
                     <div class="hl trans-all-200"></div>
                     <div class="header-icon flex-center"><i class="md-ico">&#xe051;</i></div>
                     <div class="content-main md-text-setting">
-                        <div class="label">建设路0123号小区123栋202</div>
+                        <div class="label" id="sel4"></div>
                         <div class="sub-label">详细地址</div>
                     </div>
                     <div class="footer-sym flex-center"><i class="md-ico trans-bc-100">&#xe5cc;</i></div>
@@ -73,9 +72,9 @@
             </div>
             <h2 class="title md-text-setting">其他设置</h2>
             <div class="setting-group-box address-settings">
-                <div class="setting-list md-switcher no-sub">
+                <div class="setting-list md-switcher no-sub" id="dat4">
                     <div class="hl trans-all-200"></div>
-                    <div class="header-icon flex-center"><i class="md-ico"">&#xe0c8;</i></div>
+                    <div class="header-icon flex-center"><i class="md-ico">&#xe0c8;</i></div>
                     <div class="content-main md-text-setting">
                         <div class="label">设为购买的默认地址</div>
                     </div>
@@ -86,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="setting-list">
+                <div class="setting-list" id="dat5">
                     <div class="hl trans-all-200"></div>
                     <div class="header-icon flex-center"><i class="md-ico">&#xe892;</i></div>
                     <div class="content-main md-text-setting">
@@ -95,52 +94,36 @@
                     </div>
                     <div class="footer-sym flex-center"><i class="md-ico trans-bc-100">&#xe5cc;</i></div>
                 </div>
-                <div class="setting-list">
+                <div class="setting-list" id="dat6">
                     <div class="hl trans-all-200"></div>
                     <div class="header-icon flex-center"><i class="md-ico">&#xe851;</i></div>
                     <div class="content-main md-text-setting">
-                        <div class="label">XXX</div>
+                        <div class="label address-RECEIVER" id="sel5"></div>
                         <div class="sub-label">修改收件人名称</div>
                     </div>
                     <div class="footer-sym flex-center"><i class="md-ico trans-bc-100">&#xe5cc;</i></div>
                 </div>
-                <div class="setting-list">
+                <div class="setting-list" id="dat7">
                     <div class="hl trans-all-200"></div>
                     <div class="header-icon flex-center"><i class="md-ico">&#xe0cd;</i></div>
                     <div class="content-main md-text-setting">
-                        <div class="label">185****6544</div>
+                        <div class="label address-TEL" id="sel6"></div>
                         <div class="sub-label">修改收件人联系方式</div>
                     </div>
                     <div class="footer-sym flex-center"><i class="md-ico trans-bc-100">&#xe5cc;</i></div>
                 </div>
             </div>
-            <div class="delete-danger flex-center">
-                <div class="outline-btn deleteBtn flex-center"><span>删除收货地址</span></div>
+            <div class="button-opt flex-center">
+                <div class="outline-btn flex-center" id="for-save-address"><span>保存收货地址</span></div>
+                <div class="outline-btn deleteBtn flex-center" id="for-delete-address"><span>删除收货地址</span></div>
             </div>
         </div>
         <div class="dia_bg trans-all-200">
             <div class="dia-box placeList trans-all-200">
                 <div class="dia-title"><h6 class="md-text-setting">对话框标题</h6></div>
                 <div class="dia-content">
-                    <ul class="placeList">
-                        <li class="setting-list no-sub md-radioBtn close_dia">
-                            <div class="hl trans-all-200"></div>
-                            <div class="header-icon flex-center">
-                                <div class="md-radio">
-                                    <input class="md-radio-nc" type="radio" id="hero-radio-1" name="hero-radio-set" checked>
-                                    <div class="md-radio-bg">
-                                        <div class="md-radio-oc"></div>
-                                        <div class="md-radio-ic"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content-main md-text-setting">
-                                <div class="label">商品名称</div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                <!-- <div class="dia-footer"><button class="close_dia"><span>取消</span></button></div> -->
+                <div class="dia-footer"></div>
             </div>
         </div>
     </div>

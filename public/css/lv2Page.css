@@ -33,11 +33,11 @@ h2.title{color: #959697; font-size: 14px; letter-spacing: .25px; padding: 4px 0 
 .setting-list .content-main .label, .setting-list.no-icon .label{font-size: 16px; line-height: 16px; padding-bottom: 6px;}
 .setting-list .content-main .sub-label{font-size: 12px; line-height: 14px; color: #999;}
 
-.addBtn{color: #4082fc; font-weight: 600; padding: 10px 0; justify-content: flex-start; margin-top: 15px; margin-left: 15px; align-items: center; position: relative;}
+/* .addBtn{color: #4082fc; font-weight: 600; padding: 10px 0; justify-content: flex-start; margin-top: 15px; margin-left: 15px; align-items: center; position: relative;}
 .addBtn span{font-size: 16px; transform: translateY(.08rem); pointer-events: none;}
 .addBtn i{font-size: 28px; font-weight: normal; padding: 0 10px; pointer-events: none;}
 .addBtn-bg{position: absolute; top: 0; left: 0; height: 100%; width: 160px; background-color: rgba(0, 0, 0, .08); cursor: pointer; border-radius: 24px; -webkit-tap-highlight-color: transparent;}
-.addBtn-bg:hover{background-color: rgba(0, 0, 224, .08)}
+.addBtn-bg:hover{background-color: rgba(0, 0, 224, .08)} */
 
 .setting-group-box .setting-list:last-child, ul.placeList .setting-list:last-child{border: 0;}
 .setting-list.no-icon .content-main{padding: 0;}
@@ -88,20 +88,36 @@ ul.placeList{padding: 0; list-style-type: none; margin: 0;}
 .dia-box{max-width: 600px; max-height: calc(100% - 96px); display: flex; flex: 0 1 auto; margin: 48px; position: relative; overflow-y: auto; flex-direction: column; box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12); border-radius: 4px; background-color: #fff;}
 .dia-title{flex: 0 0 auto; margin: 0; padding: 24px 24px 20px;}
 .dia-title h6{font-size: 1.25rem; color: rgba(0, 0, 0, .87); font-weight: 500; line-height: 1.6; letter-spacing: 0.0075em; margin: 0; display: block}
-.dia-content{display: block; flex: 1 1 auto; padding: 0 24px 24px; overflow-y: auto; }
+.dia-content{display: block; flex: 1 1 auto; padding: 0 24px 24px; overflow-y: auto;}
 .dia-content p{line-height: 1.5; color: rgba(0, 0, 0, .54); font-size: 1rem; font-weight: 400; letter-spacing: .00938em; margin: 0;}
 .dia-footer{flex: 0 0 auto; margin: 8px 4px; display: flex; align-items: center; justify-content: flex-end; }
 .dia-footer button{margin: 0 4px; color: #4082fc; padding: 6px 8px; font-size: .875rem; min-width: 64px; box-sizing: border-box; transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; line-height: 1.75; font-weight: 500; border-radius: 4px; letter-spacing: .02857em; cursor: pointer; display: inline-flex; -webkit-appearance: none; -moz-appearance: none; position: relative; outline: none; align-items: center; user-select: none; vertical-align: middle; justify-content: center; font-size: .875rem; border: 0; background-color: rgba(0, 0, 0, 0); -webkit-tap-highlight-color: transparent;}
-.dia-footer button:hover{text-decoration: none; background-color: rgba(33, 150, 243, 0.08);}
-/* --- */
-.outline-btn, .solid-btn{min-width: 80px; height: 36px; border-radius: 4px; cursor: pointer; outline: none; border: 1px solid #4082fc; margin-left: 10px; display: inline-flex;}
-.outline-btn span, .solid-btn span{font-weight: 500; font-size: 15px; color: #4082fc; letter-spacing: .25px}
-.solid-btn{background-color: #4082fc; box-shadow: unset}
-.solid-btn span{color: #fff}
+.dia-footer button:hover, .dia-footer button:focus{text-decoration: none; background-color: rgba(33, 150, 243, 0.08);}
 
-.delete-danger{padding-top: 25px;}
-.delete-danger .outline-btn{border-color: #d13239;}
-.delete-danger .outline-btn span{white-space: nowrap; padding: 0 10px; color: #d13239;}
+/* --- */
+.outline-btn, .solid-btn{min-width: 80px; height: 36px; border-radius: 4px; cursor: pointer; outline: none; border: 1px solid #4082fc; display: inline-flex;}
+.outline-btn span, .solid-btn span{font-weight: 500; font-size: 15px; color: #4082fc; letter-spacing: .25px; padding: 0 10px; white-space: nowrap; }
+.solid-btn{background-color: #4082fc; box-shadow: unset}
+.solid-btn span{color: #fff;}
+
+.button-opt{padding-top: 25px; justify-content: space-around;}
+.button-opt .deleteBtn{border-color: #d13239;}
+.button-opt .deleteBtn span{color: #d13239;}
+/* --- */
+.md-for-input{box-sizing: border-box; display: flex; flex-direction: column; position: relative; vertical-align: top;}
+.md-for-input.isEmpty::after, .md-for-input.not_a_phone_number::after{content: "不能为空"; display: block; position: absolute; left: 0; bottom: -15px; font-size: 14px; color: #d13239;}
+.md-for-input.not_a_phone_number::after{content: "手机号码格式不正确"}
+.md-for-input.isEmpty label, .md-for-input.not_a_phone_number label{color: #d13239!important;}
+.md-for-input.isEmpty .multi-out::before, .md-for-input.not_a_phone_number .multi-out::before, .md-for-input.isEmpty .multi-out::after, .md-for-input.not_a_phone_number .multi-out::after{border-color: #d13239!important;}
+.md-for-input label{box-sizing: border-box; color: rgba(0, 0, 0, .54); cursor: default; font-size: 16px; left: 0; line-height: 16px; position: absolute; left: 0; top: 0; transform: translate(0, 24px) scale(1); transform-origin: top left; transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;}
+.md-for-input.focused label{color: #4082fc; transform: translate(0, 1.5px) scale(.75)}
+.multi-out{align-items: center; box-sizing: border-box; color: rgba(0, 0, 0, .83); cursor: text; display: flex; font-size: 16px; line-height: 19px; margin: 16px 0 7px; padding-top: 6px; position: relative; }
+.multi-out::before{display: block; position: absolute; left: 0; right: 0; bottom: 0; content: "\00a0"; transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; border-bottom: 1px solid rgba(0, 0, 0, .42); pointer-events: none; }
+.multi-out::after{display: block; position: absolute; left: 0; right: 0; bottom: 0; content: "\00a0"; transform: scaleX(0); transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; border-bottom: 2px solid #1976d2; box-sizing: border-box; pointer-events: none;}
+.multi-out:hover:not(.focused)::after{border-bottom: 2px solid rgba(64, 130, 252, .87)}
+.md-for-input.focused .multi-out::after{transform: scaleX(1);}
+.md-textarea{border-color: transparent; outline: none; background-attachment: scroll; background-color: rgba(0, 0, 0, 0); color: rgba(0, 0,0, .87); cursor: text; display: flex; font-size: 16px; letter-spacing: normal; line-height: 19px; overflow-wrap: break-word; resize: none; text-align: start; text-rendering: auto; white-space: pre-wrap; width: 100%; -webkit-tap-highlight-color: transparent; }
+input.md-textarea{padding-bottom: 3px;}
 @media only screen and (min-width: 700px){
     h2.title{padding-left: 0}
     .setting-group-box{border-radius: 4px; box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .1), 0 1px 8px 0 rgba(0, 0, 0, .08), 0 3px 3px -2px rgba(0, 0, 0, .16); }
