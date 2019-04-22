@@ -38,6 +38,7 @@ var windowHeight = window.innerHeight;
 var regExps = {
     "email": /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
     "phone": /^1(3|4|5|7|8)\d{9}$/,
+    "HEX_color": /^#[\da-f]{3}([\da-f]{3})?$/i,
     "onlyEN_NUM": /[a-zA-Z0-9]/g,
     "symbols": /(\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\=|\+|\-|\ |\{|\}|\:|\||\<|\>|\?|\[|\]|\;|\'|\\|\,|\.|\"|\/|\-)/g
 }
@@ -700,4 +701,11 @@ function trans2Arr(coll){
         emptyArr.push(coll[x]);
     }
     return emptyArr;
+}
+function removeInnerEle(tar){
+    var nodeList = tar.childNodes;
+    for(var i=nodeList.length-1; i>=0; i--){
+        var x = tar.removeChild(nodeList[i]);
+        if(x.nodeType === 1) x=null;
+    }
 }

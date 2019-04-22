@@ -14,6 +14,7 @@ window.onload = function(){
         },
         "success": function(res){
             var data = JSON.parse(res);
+            console.log(data)
             var lel = data["LEVELS"];
             var editTar = {
                 "innerHTML": {
@@ -342,12 +343,4 @@ function addDiaOptions(json){
         }
         ELE["dia-footer"].appendChild(n_Button)
     });
-
-}
-function removeInnerEle(tar){
-    var nodeList = tar.childNodes;
-    for(var i=nodeList.length-1; i>=0; i--){
-        var x = tar.removeChild(nodeList[i]);
-        if(x.nodeType === 1) x=null;
-    }
 }
