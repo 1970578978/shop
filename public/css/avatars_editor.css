@@ -1,6 +1,6 @@
 .preview-container{}
 .ava-preview{width: 92px; height: 92px; margin: 0 auto; background-color: #fff; border-radius: 50%; overflow: hidden; margin-top: 36px;}
-.ava-preview svg{transform: scale(calc(92 / 50)); transform-origin: left top;}
+.ava-preview svg{transform: scale(1.84); transform-origin: left top;}
 
 .md-outline-input{height: 40px; box-sizing: border-box; border: 1px solid #dadce0; border-radius: 4px; position: relative; transition-property: border-color; margin: 0 7.5px 40px; display: block;}
 .md-outline-input input{padding: 7px 11px; font-size: 14px; color: #202124; width: 100%; border: 0; border-radius: 4px; height: 100%; box-sizing: border-box; display: block; outline: none; }
@@ -28,12 +28,14 @@
 .color_picker{display: block;  width: 55px; height: 55px; border-radius: 50%; cursor: pointer; box-sizing: border-box;}
 .color_picker:hover{border: 2px solid #1a73eb;}
 .color_picker:active{animation: scale 100ms 10ms linear forwards;}
+.button-opt.pull-right{justify-content: center; margin: 0 23.5px;}
 @keyframes scale{
     60%{transform: scale(1.4); opacity: .6;}
     to{transform: scale(1); opacity: 1;}
 }
-@media only screen and (min-width: 716px){
+@media only screen and (min-width: 48em){
     .pattern img:hover, .pattern.active img{border: 2px solid #1a73eb;}
     .color-group{padding-top: 0;}
     .color_picker{width: 38px; height: 38px;}
+    .button-opt.pull-right{justify-content: flex-end;}
 }

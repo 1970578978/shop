@@ -321,6 +321,7 @@ function my_utils(){
         }
         var postData = params.join("&");
         if(opt.method.toUpperCase() === "POST"){
+            console.log(postData);
             xmlHttp.open(opt.method, opt.url, opt.async);
             opt.beforeSend(xmlHttp);
             // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
@@ -708,4 +709,11 @@ function removeInnerEle(tar){
         var x = tar.removeChild(nodeList[i]);
         if(x.nodeType === 1) x=null;
     }
+}
+function joint(json){
+    var empty = [];
+    for(var key in json){
+        empty.push(key + "=" + json[key]);
+    }
+    return empty.join("&");
 }

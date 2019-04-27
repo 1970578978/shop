@@ -255,12 +255,92 @@
 						</div>
 					</div>
 				</div>
-				<div class="content-container trans-all-200" style="background-color: #fff" id="_orderForm">000000</div>
-				<div class="content-container trans-all-200" style="background-color: #fff" id="_personal">000000</div>
-				<div class="content-container trans-all-200" style="background-color: #fff" id="_safety">000000</div>
-				<div class="content-container trans-all-200" style="background-color: #fff" id="_service">000000</div>
-				<div class="content-container trans-all-200" style="background-color: #fff" id="address">000000</div>
-				<div class="content-container trans-all-200" style="background-color: #fff" id="feedback">000000</div>
+				<div class="content-container trans-all-200" style="background-color: #fff" id="_orderForm">
+					<div class="header md-text-setting xs-d-none md-d-block">
+						<h1>我的订单</h1>
+						<div class="sub-header">所有历史订单一览，以及进行订单的管理操作</div>
+						<div class="bg flex-center"><i class="md-ico">&#xe85d;</i></div>
+					</div>
+					<section class="tab_case xs-d-none md-d-block" id="tab_case">
+						<ul>
+							<li index="0" class="active"><a>全部<span class="u_line" style="width: calc(100% + 200px);"><span class="u_before" style="transform: translateX(100px); transition-delay: 10ms;"></span><span class="u_after" style="transform: translateX(100%) translateX(-100px); transition-delay: 150ms;"></span></span></a></li>
+							<li index="1"><a>待付款</a></li>
+							<li index="2"><a>待发货</a></li>
+							<li index="3"><a>待收货</a></li>
+							<li index="4"><a>待评价</a></li>
+						</ul>
+					</section>
+					<div class="sort-by trans-bc-500 md-d-none xs-d-flex" id="sort-by">
+						<span class="md-text-setting selection">全部</span><i class="md-ico">&#xe5c5;</i>
+						<div class="under-selection trans-all-200">
+							<div class="under-selection-list flex-center" style="width: auto; padding-left: 2em; justify-content: flex-start; cursor: default;"><span class="md-text-setting">查看订单</span></div>
+							<div class="under-selection-list active" style="position: relative; overflow: hidden;">
+								<span class="icon-stamp flex-center"><i class="md-ico">&#xe5c3;</i></span>
+								<span class="text-stamp flex-center"><span class="md-text-setting">全部</span></span>
+							</div>
+							<div class="under-selection-list" style="position: relative; overflow: hidden;">
+								<span class="icon-stamp flex-center"><i class="md-ico">&#xe870;</i></span>
+								<span class="text-stamp flex-center"><span class="md-text-setting">待付款</span></span>
+							</div>
+							<div class="under-selection-list" style="position: relative; overflow: hidden;">
+								<span class="icon-stamp flex-center"><i class="md-ico">&#xe169;</i></span>
+								<span class="text-stamp flex-center"><span class="md-text-setting">待发货</span></span>
+							</div>
+							<div class="under-selection-list" style="position: relative; overflow: hidden;">
+								<span class="icon-stamp flex-center"><i class="md-ico">&#xe884;</i></span>
+								<span class="text-stamp flex-center"><span class="md-text-setting">待收货</span></span>
+							</div>
+							<div class="under-selection-list" style="position: relative; overflow: hidden;">
+								<span class="icon-stamp flex-center"><i class="md-ico">&#xe253;</i></span>
+								<span class="text-stamp flex-center"><span class="md-text-setting">待评价</span></span>
+							</div>
+						</div>
+					</div>
+					<div class="tabs_container">
+						<section class="tab_container enlarging" id="tab_container">
+							<div class="tab_content" style="background: firebrick">some text 0</div>
+							<div class="tab_content" style="background: indigo">some text 1</div>
+							<div class="tab_content" style="background: cornflowerblue">some text 2</div>
+							<div class="tab_content" style="background: black">some text 1</div>
+							<div class="tab_content" style="background: white">some text 0</div>
+						</section>
+					</div>
+				</div>
+				<div class="content-container trans-all-200" style="background-color: #fff" id="_personal">
+					<div class="header md-text-setting xs-d-none md-d-block" style="background-color: #16054c">
+						<h1>个人信息</h1>
+						<div class="sub-header">包括您的头像、注册时所用邮件及其他信息查看，或编辑相关信息</div>
+						<div class="bg flex-center"><i class="md-ico">&#xe8a6;</i></div>
+					</div>
+				</div>
+				<div class="content-container trans-all-200" style="background-color: #fff" id="_safety">
+					<div class="header md-text-setting xs-d-none md-d-block" style="background-color: #febe39">
+						<h1>账户安全</h1>
+						<div class="sub-header">进行密码修改以及其他账户安全设置</div>
+						<div class="bg flex-center"><i class="md-ico">&#xe32a;</i></div>
+					</div>
+				</div>
+				<div class="content-container trans-all-200" style="background-color: #fff" id="_service">
+					<div class="header md-text-setting xs-d-none md-d-block" style="background-color: #2a2a2a">
+						<h1>退款和售后</h1>
+						<div class="sub-header">查看订单或者售后的详细信息或者进行申请售后服务</div>
+						<div class="bg flex-center"><i class="md-ico">&#xe850;</i></div>
+					</div>
+				</div>
+				<div class="content-container trans-all-200" style="background-color: #fff" id="address">
+					<div class="header md-text-setting xs-d-none md-d-block" style="background-color: #e51042">
+						<h1>收货地址</h1>
+						<div class="sub-header">查看收货地址列表，以及进行修改收货地址操作</div>
+						<div class="bg flex-center"><i class="md-ico">&#xe55f;</i></div>
+					</div>
+				</div>
+				<div class="content-container trans-all-200" style="background-color: #fff" id="feedback">
+					<div class="header md-text-setting xs-d-none md-d-block" style="background-color: #1a73e8">
+						<h1>反馈和建议</h1>
+						<div class="sub-header">欢迎您向我们提供宝贵的建议</div>
+						<div class="bg flex-center"><i class="md-ico">&#xe87f;</i></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -405,8 +485,20 @@
 			</div>
 		</div>
 	</div>
-	<div id="qwe"></div>
+	<div class="loading-cover flex-center">
+		<div class="for-loading-ani">
+			<div class="loading-ani flex-center">
+				<div class="loading-box trans-all-200">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="./js/_global.js" type="text/javascript"></script>
+<script src="./js/AjaxToolbox.js" type="text/javascript"></script>
 <script src="./js/user_center.js" type="text/javascript"></script>
 </html>

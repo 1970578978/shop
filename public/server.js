@@ -1,7 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-// var Data = {"LEVELS":{"lv0":"吉林","lv1":"松原","lv2":"扶余县","lv3":"建设路0123号小区123栋88888888888888"},"isDefault":false,"TAG":"家","RECEIVER":"王五","TEL":"18577569963"};
+// var content = {"LEVELS":{"lv0":"吉林","lv1":"松原","lv2":"扶余县","lv3":"建设路0123号小区123栋88888888888888"},"isDefault":false,"TAG":"家","RECEIVER":"王五","TEL":"18577569963"};
 // var content = fs.readFileSync(path.join(__dirname, "content.json"), "utf-8");
 var content = {
     "fg_text": "文",

@@ -1,19 +1,11 @@
 window.onload = function(){
     volSetRipple(".backwards");
     volSetRipple(".outline-btn");
-    console.log(CITIES)
-    my_utils.Ajax({
-        // "url": baseURL + "api/register",
+    console.log(CITIES);
+    AjaxRequest.post({
         "url": "http://127.0.0.1:2121",
-        "method": "POST",
-        "dataType": "text",
-        "data": {
-        },
-        "beforeSend": function(oXML){
-            oXML.setRequestHeader("Accept", "application\/json");
-        },
-        "success": function(res){
-            var data = JSON.parse(res);
+        "onSuccess": function(req){
+            var data = JSON.parse(req.responseText);
             console.log(data)
             var lel = data["LEVELS"];
             var editTar = {
@@ -52,8 +44,8 @@ window.onload = function(){
             document.getElementById("MaterialToggle").checked = data["isDefault"];
             renderPage();
         },
-        "error": function(){
-    
+        "onError": function(){
+
         }
     });
 }

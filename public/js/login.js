@@ -40,33 +40,30 @@ ELE.identifyBtn.onclick = function(){
     );
     // 如果 id 符合规范 且 密码不为空 则 发送登录请求 以及 播放 loading 动画
     !((resName !== "invalid" || resName !== "isEmpty") && ELE.passInput.value) || (
-    my_utils.Ajax({
+    AjaxRequest.post({
         "url": baseURL + "api/login",
-        "method": "POST",
-        "dataType": "text",
-        "data": {
-            email: ELE.idInput.value.replace(/ /g, ""),
-            password: ELE.passInput.value
-        },
-        "beforeSend": function(oXML){
-            oXML.setRequestHeader("Accept", "application\/json");
-        },
-        success: function(res){
+        "queryString": joint({
+            "email": ELE.idInput.value.replace(/ /g, ""),
+            "password": ELE.passInput.value
+        }),
+        "onSuccess": function(req){
+            var res = req.responseText;
             console.log(JSON.parse(res)["token"]["access_token"]);
-            // ELE.idInput.blur(); ELE.passInput.blur(); my_utils.addClass(ELE.tit, "identifying"); my_utils.addClass(ELE.bottom_outer, "translateX-50p");
             my_utils.setCookie("token", JSON.parse(res)["token"]["access_token"], 1);
             window.location = baseURL;
         },
-        error: function(error){
-            console.log(JSON.parse(error))
+        "onError": function(req){
+            var error = req.responseText;
             putTip("pass-wrong", document.getElementsByClassName("enter-pass")[0]);
             ELE.globalTimer.baseLogoTimer = setTimeout(function(){
                 new loading("reverse");
                 clearTimeout(ELE.globalTimer.baseLogoTimer)
             }, 200);
         }
-    }) || (new loading()));
+    })
+    || (new loading()));
 };
+
 ELE.backBtn.onclick = function(){
     my_utils.removeClass(ELE.bottom_outer, "translateX-50p");
     my_utils.removeClass(ELE.tit, "identifying");

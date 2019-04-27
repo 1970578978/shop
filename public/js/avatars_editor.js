@@ -1,17 +1,11 @@
 window.onload = function(){
     setMDInput();
-    my_utils.Ajax({
+    volSetRipple(".button-opt .outline-btn");
+    AjaxRequest.post({
         "url": "http://127.0.0.1:2121",
-        "method": "POST",
-        "dataType": "text",
-        "data": {
-        },
-        "beforeSend": function(oXML){
-            oXML.setRequestHeader("Accept", "application\/json");
-        },
-        "success": function(res){
+        "onSuccess": function(req){
             setPattern();
-            var data = JSON.parse(res);
+            var data = JSON.parse(req.responseText);
             ELE["avatars_form"] = data;
             setAvatars(data);
             document.getElementById("recover_avatars").onclick = function(){
@@ -23,6 +17,9 @@ window.onload = function(){
     });
 }
 var ELE = {
+    "lv2-nav": document.getElementsByClassName("lv2-nav")[0],
+    "lv2-container": document.getElementsByClassName("lv2-container")[0],
+    "user-base-toggle": document.getElementById("user-base-toggle"),
     "ava_pattern": document.getElementById("ava_pattern"),
     "ava_text": document.getElementById("ava_text"),
     "dia_bg": document.querySelector(".dia_bg"),
@@ -31,6 +28,12 @@ var ELE = {
     "color_picker": trans2Arr(document.querySelectorAll(".color_picker")),
     "tmp_color_input": document.getElementById("fg_color"),
     "avatars_form": null
+}
+ELE["lv2-container"].onscroll = function(){
+    this.scrollTop ? my_utils.removeClass(ELE["lv2-nav"], "topped") : my_utils.addClass(ELE["lv2-nav"], "topped");
+};
+ELE["lv2-container"].onclick = function(){
+    ELE["user-base-toggle"].checked = false;
 }
 ELE["dia_bg"].onclick = function(e){
     stopBubble(e);

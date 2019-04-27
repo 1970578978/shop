@@ -36,14 +36,12 @@ const slogan__ =
     }
 ];
 window.addEventListener("load", function(){
-    my_utils.Ajax({
-        method: "POST",
-        url: "http://shop.com/api/carousel_map",
-        dataType: "text",
-        success: function(data){
+    AjaxRequest.post({
+        "url": "http://shop.com/api/carousel_map",
+        "onSuccess": function(data){
             new contributeCarousel(document.getElementById("carousel_scroll"), data);
         },
-        error: function(){
+        "onError": function(){
             console.log("aaaa")
             new contributeCarousel(document.getElementById("carousel_scroll"), slogan__);
         }

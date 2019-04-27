@@ -52,26 +52,21 @@ ELE.identifyBtn.onclick = function(){
                 ELE.nicknameInput.blur() || 
                 ELE.passConfirmInput.blur() || 
                 ELE.passInput.blur() || 
-                my_utils.Ajax({
+                AjaxRequest.post({
                     "url": baseURL + "api/register",
-                    "method": "POST",
-                    "dataType": "text",
-                    "data": {
-                        email: ELE.idInput.value.replace(/ /g, ""),
-                        name: ELE.nicknameInput.value,
-                        password: ELE.passInput.value,
-                        c_password: ELE.passConfirmInput.value
-                    },
-                    "beforeSend": function(oXML){
-                        oXML.setRequestHeader("Accept", "application\/json");
-                    },
-                    success: function(res, code){
-                        my_utils.setCookie("token", JSON.parse(res).token, 1);
+                    "queryString": joint({
+                        "email": ELE.idInput.value.replace(/ /g, ""),
+                        "name": ELE.nicknameInput.value,
+                        "password": ELE.passInput.value,
+                        "c_password": ELE.passConfirmInput.value
+                    }),
+                    "onSuccess": function(req){
+                        my_utils.setCookie("token", JSON.parse(req.responseText).token, 1);
                         window.location = baseURL + "needEmail";
                     },
-                    error: function(err, code){
-                        var errMsg = JSON.parse(err);
-                        console.log(errMsg, code);
+                    "onError": function(req){
+                        var errMsg = JSON.parse(req.responseText);
+                        console.log(errMsg);
                         var err_email = errMsg["error"]["email"][0]; 
                         if(err_email === "该邮箱已被注册"){
                             // my_utils.addClass(ELE["idInput"].parentNode.querySelector(".err-words"), "name-isRegistered");
