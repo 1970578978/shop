@@ -1,4 +1,5 @@
 window.onload = function(e){
+    volSetRipple(".panel-body");
     setMenuBtnColor("#000");
     prev_menuBtnColor = "#000";
     fitMenu();
@@ -8,8 +9,8 @@ window.onload = function(e){
             item.onclick();
         });
     });
-    
-    ELE["aside-list"][1].onclick();
+    new contributeTabBar(document.getElementById("tab_case_"), document.getElementById("tab_container_"))
+    ELE["aside-list"][4].onclick();
 };
 window.addEventListener("resize", function(){
     fitMenu();
@@ -25,7 +26,8 @@ var ELE = {
     "for-user-tip": document.getElementsByClassName("for-user-tip")[0],
     "boolMenuList": [],
     "b_selections": [],
-    "_orderForm": document.getElementById("_orderForm")
+    "_orderForm": document.getElementById("_orderForm"),
+    "multi-line": document.getElementById("multi-line")
 };
 ELE["aside-list"].myForEach(function(item, idx){
     ELE["boolMenuList"][idx] = false;
@@ -33,6 +35,7 @@ ELE["aside-list"].myForEach(function(item, idx){
 
     item.onclick = function(){
         fetchInfoData(item);
+        idx === 6 && ELE["multi-line"].focus();
     }
 });
 ELE["sort-by-btn"].onclick = function(e){
@@ -43,6 +46,12 @@ ELE["_orderForm"].onclick = function(e){
     stopBubble(e);
     my_utils.removeClass(ELE["under-selection"], "shown");
 };
+ELE["multi-line"].addEventListener("focus", function(){
+    my_utils.addClass(this.parentNode.parentNode, "focused");
+});
+ELE["multi-line"].addEventListener("blur", function(){
+    ELE["multi-line"].value.length || my_utils.removeClass(this.parentNode.parentNode, "focused");
+});
 for(var a=0; a<ELE["selections"].length; ELE["b_selections"][++a] = false){
     console.log(a)
     classListExist(ELE["selections"][a], "active") && (ELE["b_selections"][a] = true);
@@ -138,7 +147,7 @@ function fetchInfoData(item){
             my_utils.removeClass(loading_cover, "nowLoading");
         }, 500);
     };
-    loading.start();
+    // loading.start();
     AjaxRequest.post({
         "url": "http://127.0.0.1:2121/",
         "onSuccess": function(req){
