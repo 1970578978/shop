@@ -3,14 +3,16 @@ body{overflow: hidden;}
 .lv2-nav.topped{box-shadow: 0; border-bottom: 1px solid rgba(218, 220, 224, 1); box-shadow: none;}
 .lv2-nav-inner{height: inherit; background-color: transparent; max-width: 792px; display: flex; justify-content: space-between;}
 .lv2-nav-inner .nav-name{width: auto; height: 56px;}
-.lv2-nav-inner .nav-name .backwards{width: 56px; height: 56px; color: #5f6368; border-radius: 50%; cursor: pointer; -webkit-tap-highlight-color: transparent;}
-.lv2-nav-inner .nav-name .backwards:active{background-color: rgba(0, 0, 0, .04);}
+.lv2-nav-inner .nav-name .backwards, .lv2-nav-inner .nav-name .close_{width: 56px; height: 56px; color: #5f6368; border-radius: 50%; cursor: pointer; -webkit-tap-highlight-color: transparent;}
+.lv2-nav-inner .nav-name .backwards:active, .lv2-nav-inner .nav-name .close_:active{background-color: rgba(0, 0, 0, .04);}
 .nav-name .md-text-setting{font-size: 1.25rem; line-height: 2.25rem; padding-left: 4px;}
 .lv2-nav-inner .nav-avatars{width: 56px; height: 56px; position: relative;}
 .nav-avatars .user_profile{width: 32px; height: 32px; border-radius: 50%; background-size: 32px; background-repeat: no-repeat; background-color: #fff; position: relative; cursor: pointer; -webkit-tap-highlight-color: transparent;}
 .nav-avatars .user_profile::before{content: ""; display: block; position: absolute; width: 40px; height: 40px; left: -4px; top: -4px; border-radius: 50%; cursor: pointer; -webkit-tap-highlight-color: transparent;}
 .nav-avatars .user_profile:hover::before{background-color: rgba(60, 64, 67, .08)}
 .nav-avatars label{display: block; width: 56px; height: 56px; position: absolute; left: 0; top: 0;}
+.nav-options{height: 56px; background-color: green;}
+
 .user-base-box{position: absolute; display: flex;flex-wrap: nowrap; width: 268px; height: 108px; padding: 16px; background-color: rgba(0, 0, 0, .87); border-radius: 8px; top: 50px; right: 12px; box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .1), 0 1px 10px 0 rgba(0, 0, 0, .08), 0 2px 4px -1px rgba(0, 0, 0, .16); transform-origin: top right; transform: translateY(-44px); opacity: 0; visibility: hidden; transition-timing-function: ease-out; z-index: 3;}
 input#user-base-toggle:checked ~ .user-base-box{transform: translateY(0) scale(1); opacity: 1; visibility: visible;}
 .user-base-avatars{width: 108px; height: 108px; background-size: 108px; background-repeat: no-repeat; background-position: center; background-color: #fff; border-radius: 50%;}
@@ -103,6 +105,10 @@ ul.placeList{padding: 0; list-style-type: none; margin: 0;}
 .button-opt{padding-top: 25px; justify-content: space-around;}
 .button-opt .deleteBtn{border-color: #d13239;}
 .button-opt .deleteBtn span{color: #d13239;}
+.button-opt .sm-btn{margin: 0; padding: 8px 12px; min-width: 32px; height: auto;}
+.button-opt .sm-btn span{padding: 0; font-size: 13px; user-select: none;}
+.button-opt .sm-btn:hover{background-color: rgba(66, 133, 244,.04); border-color: rgba(210, 227, 252)}
+.button-opt .sm-btn:active{border-color: rgba(210, 227, 252); background: transparent; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 3px 6px 2px}
 /* --- */
 .md-for-input{box-sizing: border-box; display: flex; flex-direction: column; position: relative; vertical-align: top;}
 .md-for-input.isEmpty::after, .md-for-input.not_a_phone_number::after{content: "不能为空"; display: block; position: absolute; left: 0; bottom: -15px; font-size: 14px; color: #d13239;}
