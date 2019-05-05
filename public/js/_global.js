@@ -717,3 +717,10 @@ function joint(json){
     }
     return empty.join("&");
 }
+function unique(arr){
+    var n_arr = [];
+    for(var idx=0; idx<arr.length; idx++) n_arr.indexOf(arr[idx]) === -1 && n_arr.push(arr[idx]);
+    return n_arr;
+}
+console.log("%c警告\nWARNING!:", "color: red; background: yellow; font-size: 24px;")
+console.log("%c使用此控制台可能会导致攻击程序利用 Self-XSS 攻击冒充您并窃取您的信息。请勿输入或粘贴您不明白的代码。\nUsing this console may allow attackers to impersonate you and steal your information using an attack called Self-XSS.Do not enter or paste code that you do not understand.", "color: black; font-size: 18px;")

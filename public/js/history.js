@@ -68,11 +68,8 @@ var ELE = {
     "nav-scroll-outer": document.getElementById("nav-scroll-outer"),
     "navigate_to_": document.getElementById("navigate_to_"),
     "delete_item_": document.getElementById("delete_item_"),
-    "checkedArr": [] // 存放复选框的 ID { String }
-};
-ELE["lv2-container"].onscroll = function(){
-    this.scrollTop ? my_utils.removeClass(ELE["lv2-nav"], "topped") : my_utils.addClass(ELE["lv2-nav"], "topped");
-    ELE["selection_bg"].style.visibility = "hidden";
+    "checkedArr": [], // 存放复选框的 ID { String }
+    "singleCheckedItem": [] // 存放单个要删除的 ID
 };
 ELE["close_"].onclick = ELE["cancel_"].onclick = function(){
     my_utils.removeClass(ELE["nav-scroll-outer"], "scroll_");
@@ -81,32 +78,36 @@ ELE["close_"].onclick = ELE["cancel_"].onclick = function(){
     };
     ELE["checkedArr"].splice(0);
 };
+ELE["selection_bg"].onclick = function(e){
+    stopBubble(e);
+    this.style.visibility = "hidden";
+    ELE["items-total"].innerText = ELE["checkedArr"].length;
+    ELE["checkedArr"].length === 0 && my_utils.removeClass(ELE["nav-scroll-outer"], "scroll_");
+};
+ELE["lv2-container"].onscroll = function(){
+    this.scrollTop ? my_utils.removeClass(ELE["lv2-nav"], "topped") : my_utils.addClass(ELE["lv2-nav"], "topped");
+    ELE["selection_bg"].onclick();
+};
 ELE["dia-box"].onclick = function(e){
     stopBubble(e);
 };
 ELE["dia_bg"].onclick = function(e){
     my_utils.removeClass(this, "show_dia");
 };
-ELE["selection_bg"].onclick = function(e){
-    stopBubble(e);
-    this.style.visibility = "hidden";
-};
 ELE["delete_item_"].onclick = function(e){
     stopBubble(e);
-    my_utils.removeClass(ELE["nav-scroll-outer"], "scroll_");
-    optimizePage();
-    ELE["checkedArr"].splice(0);
-    ELE["selection_bg"].style.visibility = "hidden";
+    optimizePage(ELE["singleCheckedItem"]);
+    ELE["checkedArr"].splice(ELE["checkedArr"].indexOf(ELE["singleCheckedItem"])[0], 1);
+    ELE["selection_bg"].onclick();
 };
 ELE["navigate_to_"].onclick = function(e){
     stopBubble(e);
     var href = document.getElementById(ELE["checkedArr"][0]).parentNode.parentNode.querySelector("a").href;
-    ELE["checkedArr"].splice(0);
-    ELE["selection_bg"].style.visibility = "hidden";
+    ELE["selection_bg"].onclick();
     window.open(href);
 };
 window.addEventListener("resize", function(){
-    ELE["selection_bg"].style.visibility = "hidden";
+    ELE["selection_bg"].onclick();
 });
 ELE["delete_selected_"].onclick = function(){
     setDialog({
@@ -122,17 +123,21 @@ ELE["delete_selected_"].onclick = function(){
             {
                 "label": "删除",
                 "fn": function(){
-                    optimizePage();
+                    optimizePage(ELE["checkedArr"]);
+                    ELE["items-total"].innerText = ELE["checkedArr"].length
+                    my_utils.removeClass(ELE["nav-scroll-outer"], "scroll_");
+                    ELE["checkedArr"].splice(0);
                 }
             }
         ]
     });
     my_utils.addClass(ELE["dia_bg"], "show_dia");
 };
-function optimizePage(){ // 检查列表是否为空，优化页面结构
-    for(var i=0; i<ELE["checkedArr"].length; i++){
-        var target = document.getElementById(ELE["checkedArr"][i]);
+function optimizePage(arr__){ // 检查列表是否为空，优化页面结构
+    for(var i=0; i<arr__.length; i++){
+        var target = document.getElementById(arr__[i]);
         var x = target.parentNode.parentNode.parentNode.removeChild(target.parentNode.parentNode);
+        console.log("刚才删除的项目 \u001b[34m%s", arr__[i]);
         if(x.nodeType === 1) x=null;
     };
     var oSHELF_TITLE = document.querySelectorAll(".shelf-title");
@@ -144,9 +149,9 @@ function optimizePage(){ // 检查列表是否为空，优化页面结构
         }
     };
     ELE["shelf-container"].getElementsByClassName("md-shelf").length === 0 && my_utils.addClass(ELE["shelf-container"], "empty");
-    ELE["checkedArr"].splice(0);
+    // arr__.splice(0);
     ELE["dia_bg"].onclick();
-    ELE["close_"].onclick();
+    // ELE["close_"].onclick();
 };
 function setSelctionMoreBtn(){
     // 建议在此方法前 清除子元素
@@ -187,7 +192,7 @@ function mk_History_day_group(array){
             parseFloat(getStyle(moveTar, "bottom")) < 0 && (ELE["lv2-container"].scrollTop += ((-parseFloat(getStyle(moveTar, "bottom"))) + 8));
             moveTar.style.left = (rectVal.left - tar_width + 20) + "px";
             var tmp_idx = this.parentNode.parentNode.getElementsByClassName("cbx")[0].getAttribute("for");
-            ELE["checkedArr"].push(tmp_idx);
+            ELE["singleCheckedItem"][0] = tmp_idx;
         };
         return oDiv;
     };
