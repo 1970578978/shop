@@ -15,7 +15,7 @@ window.onload = function(){
             console.log(data);
         }
     });
-}
+};
 var ELE = {
     "lv2-nav": document.getElementsByClassName("lv2-nav")[0],
     "lv2-container": document.getElementsByClassName("lv2-container")[0],
@@ -28,13 +28,13 @@ var ELE = {
     "color_picker": trans2Arr(document.querySelectorAll(".color_picker")),
     "tmp_color_input": document.getElementById("fg_color"),
     "avatars_form": null
-}
+};
 ELE["lv2-container"].onscroll = function(){
     this.scrollTop ? my_utils.removeClass(ELE["lv2-nav"], "topped") : my_utils.addClass(ELE["lv2-nav"], "topped");
 };
 ELE["lv2-container"].onclick = function(){
     ELE["user-base-toggle"].checked = false;
-}
+};
 ELE["dia_bg"].onclick = function(e){
     stopBubble(e);
     my_utils.removeClass(this, "show_dia");
@@ -174,4 +174,4 @@ function setAvatars(json){
     pattern.setAttribute("d", profile_data_base[json.bg_color] || profile_data_base[3]);
     text.innerHTML = json.fg_text.substr(0, 1);
     text.style.fill = json.fg_color || "#ff6789"
-}
+};

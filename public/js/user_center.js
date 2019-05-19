@@ -27,8 +27,14 @@ var ELE = {
     "boolMenuList": [],
     "b_selections": [],
     "_orderForm": document.getElementById("_orderForm"),
-    "multi-line": document.getElementById("multi-line")
+    "multi-line": document.getElementById("multi-line"),
+    "header-banner": document.getElementById("header-banner")
 };
+ELE["content-container"].myForEach(function(item, idx){
+    item.onscroll = function(){
+        this.scrollTop ? my_utils.removeClass(ELE["header-banner"], "topped") : my_utils.addClass(ELE["header-banner"], "topped");
+    }
+});
 ELE["aside-list"].myForEach(function(item, idx){
     ELE["boolMenuList"][idx] = false;
     ELE["boolMenuList"][0] = true;

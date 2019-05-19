@@ -280,6 +280,10 @@ const topGap = 125;
 var page_shell = document.getElementById("page-shell");
 var page_pro_gress_bar = document.getElementById("page-progress-bar");
 
+/* ------- */
+var ELE = {
+    "product-tags-inner": document.getElementsByClassName("product-tags-inner")[0]
+}
 window.onload = function(){
     setMenuBtnColor("#000");
     prev_menuBtnColor = "#000";
@@ -292,5 +296,6 @@ window.onscroll = function(){
     page_pro_gress_bar.style.transform = "translateX(" + (p_y/scrollLength*100) + "%)";
     p_y >= 125 && my_utils.addClass(page_shell, "slideDown");
     p_y < 125 && my_utils.removeClass(page_shell, "slideDown");
-    console.log(p_y)
+    
+    p_y ? my_utils.addClass(ELE["product-tags-inner"], "trans-to-card") : my_utils.removeClass(ELE["product-tags-inner"], "trans-to-card");
 }

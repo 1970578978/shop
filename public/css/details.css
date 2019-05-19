@@ -60,7 +60,8 @@ ul{margin: 0}
     to{opacity: 0;}
 }
 /* --- */
-.product-tags-inner{width: 90%; margin: 0 auto; padding: 10px 4%; background-color: #fff; transform: translateY(-35px); border-radius: 8px; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)}
+.product-tags-inner{width: 90%; margin: 0 auto; padding: 10px 4%; background-color: #fff; border-radius: 8px; margin: 0 auto; transition-property: transform;}
+.product-tags-inner.trans-to-card{transform: translateY(-35px); box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);}
 .title-tag{margin-top: 10px; position: relative;}
 .title-tag .product-logo{width: 100px; height: 100px; position: absolute; left: 0; top: 0; border-radius: 8px; background: royalblue; overflow: hidden}
 .product-logo:hover .ico-cover{opacity: 1;}
@@ -79,12 +80,37 @@ ul{margin: 0}
 .price-tag span.price{padding-right: 15px; position: relative; font-weight: 600; font-size: 30px; color: #d13239  ; margin-top: 10px; height: auto; width: auto; line-height: 35px}
 .price-tag span.price::before{content: "￥"; width: 15px; position: absolute; right: 0; top: 0; font-size: 14px; font-weight: 600; color: #bbb; line-height: 14px}
 .vary-tag{width: auto; padding: 0 10px; height: 45px; background: none; box-sizing: border-box; border-top: 1px solid rgba(0, 0, 0, .06); position: relative;}
-.vary-tag .tag-th, .vary-tag .tag-tb, .vary-tag .tag-tb{display: inline-flex; height: 100%; font-size: 16px; font-weight: 600; color: rgba(0, 0, 0, .55); position: relative;}
-.vary-tag .tag-tb{color: #999; padding-left: 10px; font-size: 14px}
+.vary-tag .tag-th, .vary-tag .tag-tb, .vary-tag .tag-tb{display: inline-flex; height: 100%; font-size: 16px; font-weight: 600; color: rgba(0, 0, 0, .55); position: relative; justify-content: flex-start;}
+.vary-tag .tag-tb{color: #999; padding-left: 10px; font-size: 14px; text-align: left;}
 .vary-tag .tag-te{position: absolute; width: 30px; height: 100%; right: 0; top: 0; background-color: none}
 .vary-tag .tag-te .product-pieces{height: 100%; position: absolute; right: 45px; padding-right: 10px; font-size: 16px; font-weight: 600; color: #d13239}
 .vary-tag .tag-te i.md-ico{color: #bbb; border-radius: 4px; cursor: pointer;}
 
+.product-info, .product-comments-part{display: block; width: 100%; background-color: #fff;}
+.product-info h4, .product-comments-part h4{padding-left: .5rem; border-left: .125rem solid #4082ff; font-size: 15px; line-height: 16px; font-weight: 400;}
+.table{box-sizing: border-box; border: 1px solid rgba(0, 0, 0, .1); margin: 0 8px; background-color: #fff;}
+.table > .row{padding: 0; margin: 0;}
+.table > .row > .col-xs-3{text-align: right; box-sizing: border-box;}
+.table-header{color: #bbb; box-sizing: border-box;}
+.table-header > div{padding: 8px 0;}
+.table-header > div:nth-child(1), .table-body > div:nth-child(1){padding-right: 1em;}
+.table-header > div:nth-child(2), .table-body > div:nth-child(2){padding-left: 1em;}
+.table-body{color: #999;}
+.table-body > div{padding: 5px 0;}
+
+.table > .table-body:nth-child(2n){background-color: rgba(0, 0, 0, .02);}
+
+.blade-display{display: flex; justify-content: space-around; align-items: center;}
+.blade-display > img{display: block; width: 120px;}
+
+.comment-part{display: flex; justify-content: flex-start; position: relative; margin: 5px 0;}
+.comment-part .comment-avatars{padding: 5px 8px; }
+.comment-part .comment-avatars > img{display: block; width: 40px; border-radius: 50%;}
+.comment-said .margin-box{height: 40px; padding: 5px 0;}
+.comment-said .user-name{height: 20px; font-size: 15px; color: #888; line-height: 15px; display: flex; justify-content: flex-start; align-items: flex-end;}
+.comment-said .comment-date{height: 20px; font-size: 12px; color: #9c9e9d; display: flex; justify-content: flex-start; align-items: flex-start; -webkit-text-size-adjust: none;}
+.comment-said .said-what{font-size: 16.5px; line-height: 24px; color: #303030;}
+.comment-part .stars{position: absolute; padding-right: 5px; right: 0; top: 0;}
 @keyframes shift{
     from{transform: translateX(-40px); opacity: 0;}
     to{transform: translateX(0); opacity: 1;}
@@ -102,5 +128,5 @@ ul{margin: 0}
     .tag-te i.md-ico{padding: 2px; border-radius: 50%!important}
     .tag-te i.md-ico:hover{background-color: rgba(0, 0, 0, .06)}
     .product-tags-inner{width: auto; margin: 0; padding: 0; transform: translateY(0); border-radius: 0; box-shadow: unset}
-
+    .product-tags-inner.trans-to-card{transform: translateY(0); box-shadow: none;}
 }
