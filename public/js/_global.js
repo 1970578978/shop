@@ -246,7 +246,23 @@ function hide_cart_list(){
     my_utils.removeClass(cartList, "slidedown");
     cartList.style.display = "none";
 };
-
+/* 兼容 IE, getComputedStyle */
+if (!window.getComputedStyle) {
+    window.getComputedStyle = function(el, pseudo) {
+        this.el = el;
+        this.getPropertyValue = function(prop) {
+            var re = /(\-([a-z]){1})/g;
+            if (prop == 'float') prop = 'styleFloat';
+            if (re.test(prop)) {
+                prop = prop.replace(re, function () {
+                    return arguments[2].toUpperCase();
+                });
+            }
+            return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+        }
+        return this;
+    }
+};
 function getStyle(obj, name){
     return obj.currentStyle?obj.currentStyle[name]:getComputedStyle(obj, false)[name];
 }
@@ -283,62 +299,6 @@ function my_utils(){
             }else if(cn.indexOf(name) === -1){
                 if(isSVG) ele.setAttribute("class", cn.replace(/\s*$/,' '+name));
                 else ele.className = cn.replace(/\s*$/,' '+name);
-            }
-        }
-    };
-    this.Ajax = function(opt){
-        /** 封装 Ajax 函数
-         * @param {string} opt.method http 连接的方式
-         * @param {string} opt.url 发送请求的 url
-         * @param {boolean} opt.async 是否为异步请求，true 异步，false 同步
-         * @param {object} opt.data 发送的参数，格式类型为 Object
-         * @param {string} opt.dataType 发送的参数类型，格式类型为 String
-         * @param {string} opt.contentType 发送的数据格式类型，格式类型为 String
-         * @param {function} opt.beforeSend ajax 发送前调用的函数，本身会回调一个 xmlHttpRequest 对象
-         * @param {function} opt.success ajax 发送并接受成功调用的函数
-         * @param {function} opt.error ajax 发送失败调用的函数
-         */
-        opt = opt || {};
-        opt.method = opt.method.toUpperCase() || "POST"; //
-        opt.url = opt.url || ""; //
-        opt.async = opt.async || true; //
-        opt.data = opt.data || null; //
-        opt.dataType = opt.dataType || "json";
-        opt.contentType = opt.contentType || "application/x-www-form-urlencoded;charset=utf-8";
-        opt.beforeSend = opt.beforeSend || function(){};
-        opt.success = opt.success || function(){};
-        opt.error = opt.error || function(){};
-        var xmlHttp = null;
-        if(XMLHttpRequest){
-            xmlHttp = new XMLHttpRequest();
-        }else{
-            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlHttp.responseType = opt.dataType;
-        var params = [];
-        for(var key in opt.data){
-            params.push(key + "=" + opt.data[key]);
-        }
-        var postData = params.join("&");
-        if(opt.method.toUpperCase() === "POST"){
-            console.log(postData);
-            xmlHttp.open(opt.method, opt.url, opt.async);
-            opt.beforeSend(xmlHttp);
-            // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-            xmlHttp.setRequestHeader("Content-Type", opt.contentType);
-            xmlHttp.send(postData);
-        }else if(opt.method.toUpperCase() === "GET"){
-            xmlHttp.open(opt.method, opt.url + "?" + postData, opt.async);
-            opt.beforeSend(xmlHttp);
-            xmlHttp.send(null);
-        }
-        xmlHttp.onreadystatechange = function(){
-            if(xmlHttp.readyState == 4){
-                if(xmlHttp.status >= 200 && xmlHttp.status < 300){
-                    opt.success(xmlHttp.responseText, xmlHttp.status);
-                }else{
-                    opt.error(xmlHttp.responseText, xmlHttp.status)
-                }
             }
         }
     };
@@ -452,7 +412,10 @@ function my_utils(){
         }else{
             console.log('删除失败');
         }
-    }
+    };
+    this.isIE = function () { //ie、Edge?
+        return !!window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1;
+    };
 }
 function createRipple(obj, offset){
     var oLeft = offset?offset.x:0;
@@ -722,5 +685,9 @@ function unique(arr){
     for(var idx=0; idx<arr.length; idx++) n_arr.indexOf(arr[idx]) === -1 && n_arr.push(arr[idx]);
     return n_arr;
 }
-console.log("%c警告\nWARNING!:", "color: red; background: yellow; font-size: 24px;")
-console.log("%c使用此控制台可能会导致攻击程序利用 Self-XSS 攻击冒充您并窃取您的信息。请勿输入或粘贴您不明白的代码。\nUsing this console may allow attackers to impersonate you and steal your information using an attack called Self-XSS.Do not enter or paste code that you do not understand.", "color: black; font-size: 18px; background-color: #fff; padding: 10px 0; line-height: 1.5rem;")
+// === //
+let warn = ["\u8b66\u544a\u000a\u0057\u0041\u0052\u004e\u0049\u004e\u0047\u0021\u003a", "\u4f7f\u7528\u6b64\u63a7\u5236\u53f0\u53ef\u80fd\u4f1a\u5bfc\u81f4\u653b\u51fb\u7a0b\u5e8f\u5229\u7528\u0020\u0053\u0065\u006c\u0066\u002d\u0058\u0053\u0053\u0020\u653b\u51fb\u5192\u5145\u60a8\u5e76\u7a83\u53d6\u60a8\u7684\u4fe1\u606f\u3002\u000a\u8bf7\u52ff\u8f93\u5165\u6216\u7c98\u8d34\u60a8\u4e0d\u660e\u767d\u7684\u4ee3\u7801\u3002\u000a\u0055\u0073\u0069\u006e\u0067\u0020\u0074\u0068\u0069\u0073\u0020\u0063\u006f\u006e\u0073\u006f\u006c\u0065\u0020\u006d\u0061\u0079\u0020\u0061\u006c\u006c\u006f\u0077\u0020\u0061\u0074\u0074\u0061\u0063\u006b\u0065\u0072\u0073\u0020\u0074\u006f\u0020\u0069\u006d\u0070\u0065\u0072\u0073\u006f\u006e\u0061\u0074\u0065\u0020\u0079\u006f\u0075\u0020\u0061\u006e\u0064\u0020\u0073\u0074\u0065\u0061\u006c\u0020\u0079\u006f\u0075\u0072\u0020\u0069\u006e\u0066\u006f\u0072\u006d\u0061\u0074\u0069\u006f\u006e\u0020\u0075\u0073\u0069\u006e\u0067\u0020\u0061\u006e\u0020\u0061\u0074\u0074\u0061\u0063\u006b\u0020\u0063\u0061\u006c\u006c\u0065\u0064\u0020\u0053\u0065\u006c\u0066\u002d\u0058\u0053\u0053\u002e\u000a\u0044\u006f\u0020\u006e\u006f\u0074\u0020\u0065\u006e\u0074\u0065\u0072\u0020\u006f\u0072\u0020\u0070\u0061\u0073\u0074\u0065\u0020\u0063\u006f\u0064\u0065\u0020\u0074\u0068\u0061\u0074\u0020\u0079\u006f\u0075\u0020\u0064\u006f\u0020\u006e\u006f\u0074\u0020\u0075\u006e\u0064\u0065\u0072\u0073\u0074\u0061\u006e\u0064\u002e",
+"color: red; background: yellow; font-size: 24px;", "color: black; font-size: 18px; background-color: #fff; padding: 10px 0; line-height: 1.75em"];
+let C = {"log": function(S,s){console.log("%c"+S,s);return this;}, "clear": function(){console.clear();return this;}, "error": function(S){for(var x=0;x<S.split("\n").length;x++)console.error(S.split("\n")[x]);return this;}}
+my_utils.isIE() ? C.clear().error(warn[0]).error(warn[1]) : C.log(warn[0],warn[2]).log(warn[1],warn[3]);
+// === //

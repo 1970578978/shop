@@ -11,7 +11,34 @@ function addMsgToggle () {
     targets.myForEach(function (item) {
         item.onclick = function(){
             var parNode = item.parentNode;
-            classListExist(parNode, "active") ? my_utils.removeClass(parNode, "active") : my_utils.addClass(parNode, "active");
+            var isActive = classListExist(parNode, "active");
+            item.overHeight || (item.overHeight = 
+                parseFloat(window.getComputedStyle(
+                    parNode.querySelector(".part-container"), "").getPropertyValue("height")
+                ) > 384 // 24rem
+            );
+            item.h || (
+                item.h = Math.min(parseFloat(
+                    window.getComputedStyle(
+                        parNode.querySelector(".part-container"), "")
+                        .getPropertyValue("height")) + (item.overHeight ? 0 : 20)
+                , 384)
+            );
+            var timer = null;
+            var msg_dis_con = parNode.querySelector(".message-display-container");
+            item.overHeight === false && (msg_dis_con.style.overflow = "hidden");
+            if (isActive) {
+                msg_dis_con.style.height = 0 + "px";
+                my_utils.removeClass(parNode, "active");
+                timer = setTimeout(function(){
+                    msg_dis_con.style.display = "none";
+                    clearTimeout(timer);
+                }, 250);
+            }else{
+                my_utils.addClass(parNode, "active");
+                msg_dis_con.style.display = "block";
+                msg_dis_con.style.height = item.h + "px";
+            };
             my_utils.removeClass(this, "not-read");
         };
     });

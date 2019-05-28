@@ -1,4 +1,5 @@
-.setting-group-box{position: relative; z-index: 2; margin-bottom: 15px;}
+/* body{will-change: height;} */
+.setting-group-box{position: relative; z-index: 2; margin-bottom: 15px; will-change: height;}
 .setting-group-box.active{box-shadow: none;}
 .setting-list.message-list{border-bottom: 0;}
 .setting-list.message-list .content-main{padding-left: 68px;}
@@ -15,9 +16,9 @@
 .refresh-messages:active::after{background-color: rgba(0, 0, 0, .04);}
 .header-icon .avatars-logo{width: 60px; height: 60px; background: #4082fc; border-radius: 50%;}
 
-.message-display-container{padding: 0 15px 15px; background-color: #fff; transform-origin: top center; display: none; transform: scaleY(0); max-height: 32rem; overflow-y: auto;}
-.setting-group-box.active .message-display-container{display: block; animation: expand 200ms 50ms forwards;}
-.message-part{display: flex; justify-content: flex-start; margin-bottom: 1.5rem; position: relative;}
+.message-display-container{padding: 0 15px; height: 0; background-color: #fff; transform-origin: top center; transition: height 250ms ease-in-out; overflow-x: hidden; will-change: height;}
+.message-part{display: flex; justify-content: flex-start; margin-bottom: 1.5rem; position: relative; will-change: height;}
+.part-container{padding-bottom: 20px;}
 .message-part .message-date-time{display: flex; justify-content: flex-start; width: 60px; flex-direction: column; background-color: none; margin-top: 5px; color: #ccc;}
 .message-part .message-date-time span{display: block; -webkit-text-size-adjust: none; font-size: 12px; line-height: 12px; white-space: nowrap; padding: 2px; text-align: right;}
 .message-part .message-content-words{width: calc(100% - 45px); padding-left: 15px;}
@@ -29,9 +30,9 @@
 .under-is-prev span{padding: 5px; border-radius: 6px; background-color: rgba(0, 0, 0, .16);}
 .under-is-prev span::before{content: "以上为收到的\ "; -webkit-text-size-adjust: none; font-size: 12px;}
 .under-is-prev span::after{content: "\ 条最新消息"; -webkit-text-size-adjust: none; font-size: 12px;}
-@keyframes expand{
-    to{transform: scaleY(1)}
-}
+/* @keyframes expand{
+    to{transform: scaleY(1); height: auto;}
+} */
 @media only screen and (min-width: 700px){
     .setting-list.message-list{padding: 10px 20px; height: 74px;}
     .setting-list:hover .hl{background-color: rgba(0, 0, 0, .08)}
