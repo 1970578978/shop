@@ -145,6 +145,6 @@ ul{margin: 0}
 
     .content{width: 100%; height: calc(100vh - 75px);}
     
-    .tabs_container{width: 100%; height: calc(100% - 178px);}
+    .tabs_container{width: 100%; /* height: calc(100% - 178px); */}
     .tabs_container .c_2a2a2a{height: calc(100% - 168px);}
 }

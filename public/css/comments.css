@@ -1,0 +1,41 @@
+.commentsLen::before{content: "（"}
+.commentsLen::after{content: "）"}
+.commentsLen{color: #111; padding: 0!important; display: flex; justify-content: center; align-items: center;}
+.commentsLen:empty{visibility: hidden;}
+.goods-banner{height: 5em; background-color: none; padding: .5em .6em;}
+.goods-banner .banner-body{display: flex; justify-content: flex-start; height: 100%; background-color: #fff; cursor: pointer;}
+.goods-banner .banner-body:active{opacity: .45; transform: scale(.95); transition-timing-function: ease-in-out;}
+.banner-body .banner-front{width: 80px; height: 80px; background-color: red;}
+.banner-body .banner-end{display: flex; flex-direction: column; justify-content: center; flex-wrap: wrap; width: calc(100% - 88px); padding-left: 8px; position: relative;}
+.banner-end .end-title{width: calc(100% - 2em); font-size: 18px; color: #666; line-height: 20px; padding-bottom: .25rem; letter-spacing: .0125rem; height: auto;}
+.banner-end .end-sub{width: calc(100% - 2em); font-size: 13px; -webkit-text-size-adjust: none; color: #999; letter-spacing: .0125rem; height: auto;}
+.banner-body .banner-end .chevron-right{position: absolute; right: 0; top: 0; width: 32px; height: 100%; background: url(../img/chevron-right.svg) no-repeat center; opacity: .35;}
+
+.goods-selector-group{display: inlie-flex; justify-content: flex-start; flex-wrap: wrap; align-items: center;}
+.goods-selector-group .selector-title{padding-left: 8px;}
+.goods-selector-group .selector-group{display: inline-block;}
+.goods-selector-group .selector{height: 100%; white-space: nowrap; display: inline-flex; justify-content: flex-start; padding: 5px 8px; margin: .125rem 0; background-color: #eee; border-radius: 4px; margin-right: 15px; position: relative; cursor: pointer;}
+.goods-selector-group .selector:active{border-color: rgba(210, 227, 252); background: #f6fafe; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 3px 6px 2px;}
+.selector .selector-label{display: block; padding: .25rem; padding-right: 10px; background-color: none; letter-spacing: .025rem;}
+.selector .expand-more{display: inline-flex; justify-content: center; align-items: center; }
+.selector .expand-more::after{content: "\e5cf"; font-family: "Material Icons"; display: block;}
+.selector .selector-selections{position: absolute; left: 0; top: 0; width: 130px; background-color: #fff; z-index: 1; padding: 8px 0; border-radius: 4px; box-shadow: rgb(158, 158, 158) 0px 2px 6px 0px; visibility: hidden; transform: translateY(-20px) scaleY(.75); transform-origin: top center; opacity: 0; cursor: default;}
+.selector .selector-selections.active{transform: translateY(-8px) scaleY(1); opacity: 1; visibility: visible;}
+.selector .selector-selections .selector-item{padding: 0 24px; height: 32px; display: flex; justify-content: flex-start; align-items: center; cursor: pointer; cursor: pointer;}
+.selector .selector-selections .selector-item span{font-size: 13px; color: #111; white-space: nowrap; -webkit-text-size-adjust: none;}
+.selector .selector-selections .selector-item.active span{color: #1a73e8}
+.selector .selector-selections .selector-item:hover{background-color: #e8eaed;}
+.selection_bg{position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 0; visibility: hidden;}
+/* plugins */
+.goods-all-comments{margin: 0 8px;}
+.comment-part{display: flex; justify-content: flex-start; position: relative; margin: 5px 0;}
+.comment-part .comment-avatars{padding: 5px 8px; width: 40px;}
+.comment-part .comment-avatars > svg{display: block; transform: scale(.8); transform-origin: top left; border-radius: 50%;}
+.comment-part .comment-avatars > img{display: block; width: 40px; border-radius: 50%;}
+.comment-said{width: 100%;}
+.comment-said .margin-box{height: 40px; padding: 5px 0;}
+.comment-said .user-name{height: 20px; font-size: 15px; color: #888; line-height: 15px; display: flex; justify-content: flex-start; align-items: flex-end;}
+.comment-said .comment-date{height: 20px; font-size: 12px; color: #9c9e9d; display: flex; justify-content: flex-start; align-items: flex-start; -webkit-text-size-adjust: none;}
+.comment-said .said-what{font-size: 16.5px; line-height: 24px; color: #303030; padding-bottom: 8px; border-bottom: 1px solid #dadcde; box-sizing: border-box; display: block;}
+.comment-said .said-what p{word-break: break-all;}
+.comment-part .stars{position: absolute; padding-right: 5px; right: 0; top: 0;}
