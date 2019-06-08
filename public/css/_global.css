@@ -4,6 +4,7 @@
 @import "./animationKeyframes.css";
 
 /* 自定义的一些属性名 */
+.text-right{text-align: right!important;}
 .flex-center{display: flex; align-items: center; justify-content: center}
 .trans-bc-100{transition: background-color 100ms; -webkit-transition: background-color 100ms; -o-transition: background-color 100ms; -moz-transition: background-color 100ms;}
 .trans-bc-500{transition: background-color 500ms; -webkit-transition: background-color 500ms; -o-transition: background-color 500ms; -moz-transition: background-color 500ms;}
