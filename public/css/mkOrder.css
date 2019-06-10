@@ -1,18 +1,3 @@
-
-.goods-banner{height: 5em; background-color: none; padding: .5em .6em;}
-.goods-banner .banner-body{display: flex; justify-content: flex-start; height: 100%; background-color: #fff; cursor: pointer; position: relative;}
-.goods-banner .banner-body::after{content: ""; display: block; position: absolute; bottom: -2.5px; left: 0; height: 2.5px; width: 100%; background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSIzIj48cGF0aCBkPSJNMjEuODY5IDBsLTIuODMzIDNINDAuNTVsMi44MzItM3oiIGZpbGw9IiM4MmM4ZmQiLz48cGF0aCBkPSJNMCAwdjNoNS41NDhsMi44MzMtM3ptNTYuODY4IDBsLTIuODMyIDNINzBWMHoiIGZpbGw9IiNmZDgyODIiLz48L3N2Zz4=);}
-.goods-banner .banner-body:active{opacity: .45; transform: scale(.95); transition-timing-function: ease-in-out;}
-.banner-body .banner-front{width: 80px; height: 80px; background-color: #fff; position: relative;}
-.banner-body .banner-front .address-label{width: 100%; height: 100%; position: absolute; left: 0; top: 0; font-size: 26px; font-weight: 900; color: teal;}
-.banner-body .banner-front .address-label span{padding-bottom: 3px; border-bottom: 3px solid teal; transform: translateY(3px)}
-.banner-body .banner-end{display: flex; flex-direction: column; justify-content: center; flex-wrap: wrap; width: calc(100% - 88px); padding-left: 8px; position: relative;}
-.banner-end .end-title{width: calc(100% - 2em); font-size: 18px; color: #666; line-height: 20px; padding-bottom: .25rem; letter-spacing: .0125rem; height: auto;}
-.banner-end .end-title.user_name{font-weight: bold;}
-.banner-end .end-sub{width: calc(100% - 2em); font-size: 13px; -webkit-text-size-adjust: none; color: #999; letter-spacing: .0125rem; height: auto;}
-.banner-end .end-sub.tel{color: #666;}
-.banner-body .banner-end .chevron-right{position: absolute; right: 0; top: 0; width: 32px; height: 100%; background: url(../img/chevron-right.svg) no-repeat center; opacity: .35;}
-
 /* Plugins */
 .panel-box{border: 1px solid rgb(218, 220, 224); background-color: #fff; border-radius: 8px; margin: 8px 0; overflow: hidden;}
 .panel-header{display: flex; padding: 16px; position: relative;}

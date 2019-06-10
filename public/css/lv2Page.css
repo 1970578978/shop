@@ -124,6 +124,21 @@ ul.placeList{padding: 0; list-style-type: none; margin: 0;}
 .md-for-input.focused .multi-out::after{transform: scaleX(1);}
 .md-textarea{border-color: transparent; outline: none; background-attachment: scroll; background-color: rgba(0, 0, 0, 0); color: rgba(0, 0,0, .87); cursor: text; display: flex; font-size: 16px; letter-spacing: normal; line-height: 19px; overflow-wrap: break-word; resize: none; text-align: start; text-rendering: auto; white-space: pre-wrap; width: 100%; -webkit-tap-highlight-color: transparent; }
 input.md-textarea{padding-bottom: 3px;}
+/* --- */
+.goods-banner{height: 5em; background-color: none; padding: .5em .6em; position: relative;}
+.goods-banner::after{content: ""; display: block; position: absolute; bottom: calc(.5em - 2.5px); left: .6em; height: 2.5px; width: calc(100% - 1.2em); background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSIzIj48cGF0aCBkPSJNMjEuODY5IDBsLTIuODMzIDNINDAuNTVsMi44MzItM3oiIGZpbGw9IiM4MmM4ZmQiLz48cGF0aCBkPSJNMCAwdjNoNS41NDhsMi44MzMtM3ptNTYuODY4IDBsLTIuODMyIDNINzBWMHoiIGZpbGw9IiNmZDgyODIiLz48L3N2Zz4=);}
+.goods-banner .banner-body{display: flex; justify-content: flex-start; height: 100%; background-color: #fff; cursor: pointer;}
+.goods-banner .banner-body:active{opacity: .45; transform: scale(.95); transition-timing-function: ease-in-out;}
+.banner-body .banner-front{width: 80px; height: 80px; background-color: #fff; position: relative;}
+.banner-body .banner-front .address-label{width: 100%; height: 100%; position: absolute; left: 0; top: 0; font-size: 26px; font-weight: 900; color: teal;}
+.banner-body .banner-front .address-label span{padding-bottom: 3px; border-bottom: 3px solid teal; transform: translateY(3px)}
+.banner-body .banner-end{display: flex; flex-direction: column; justify-content: center; flex-wrap: wrap; width: calc(100% - 88px); padding-left: 8px; position: relative;}
+.banner-end .end-title{width: calc(100% - 2em); font-size: 18px; color: #666; line-height: 20px; padding-bottom: .25rem; letter-spacing: .0125rem; height: auto;}
+.banner-end .end-title.user_name{font-weight: bold;}
+.banner-end .end-sub{width: calc(100% - 2em); font-size: 13px; -webkit-text-size-adjust: none; color: #999; letter-spacing: .0125rem; height: auto;}
+.banner-end .end-sub.tel{color: #666;}
+.banner-body .banner-end .chevron-right{position: absolute; right: 0; top: 0; width: 32px; height: 100%; background: url(../img/chevron-right.svg) no-repeat center; opacity: .35;}
+
 @media only screen and (min-width: 700px){
     h2.title{padding-left: 0}
     .setting-group-box{border-radius: 4px; box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .1), 0 1px 8px 0 rgba(0, 0, 0, .08), 0 3px 3px -2px rgba(0, 0, 0, .16); }
