@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+	<title>Mall - 商品索引</title>
+	<link rel="stylesheet" href="./css/classify.css">
+</head>
+<body>
+    <div class="container-fluid header">
+        <div class="banner-container flex-center topped trans-all-200" id="header-banner"> <!-- z-index 1 -->
+            <div class="banner-limit">
+                <!-- menu -->
+                <div class="mains">
+                    <div class="search-container flex-center">
+                        <div class="search-ico flex-center"><img src="./img/mobi-icon-search.svg" width="15" height="15"></div>
+                        <input class="md-text-setting" name="mobi-search" id="search_bar" type="input" maxlength="40" placeholder="点击输入你想要的~">
+                    </div>
+                    <div class="menu-box xs-d-none sm-d-none md-d-flex">
+                        <ul class="menu-lists pre-text-stting xs-d-none sm-d-none md-d-flex" id="menu_lists">
+                            <li class="flex-center"><a href="#">首页</a></li>
+                            <li class="flex-center"><a href="#">新品</a></li>
+                            <li class="flex-center"><a href="#">支持</a></li>
+                            <!-- <li class="flex-center"><a href="#">关于我们</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="logo flex-center"><img src="./mall.svg" alt="logo"></div>
+                <!-- right items -->
+                <div class="banner-items" style="position: relative">
+                    <div class="item flex-center xs-d-none sm-d-none md-d-flex">
+                        <i class="search-ico flex-center" id="btn-search">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 40 40">
+                                <path id="md-search-ico" d="M39.212,35.729l-7.701-7.701 c2.215-2.932,3.545-6.57,3.545-10.528c0-9.665-7.835-17.5-17.5-17.5s-17.5,7.835-17.5,17.5c0,9.664,7.835,17.5,17.5,17.5 c3.902,0,7.494-1.293,10.404-3.452l7.717,7.717c0.863,0.863,2.446,1.09,3.535,0C40.234,38.242,40.262,36.779,39.212,35.729z M17.556,31c-7.456,0-13.5-6.045-13.5-13.5c0-7.456,6.044-13.5,13.5-13.5c7.456,0,13.5,6.044,13.5,13.5 C31.056,24.955,25.012,31,17.556,31z"/>
+                            </svg>
+                        </i>
+                    </div>
+                    <div class="md-search-box xs-d-none sm-d-none md-d-block">
+                        <div class="md-search-outer">
+                            <div class="button-go" id="btn-go">
+                                
+                            </div>
+                            <input class="pre-text-setting" id="md-search" type="text" placeholder="按下回车键搜索" maxlength="40">
+                            <div class="search-list" id="search-list">
+                                <div class="list">
+                                    <div class="feature-content pre-text-setting trans-bc-100" id="test">
+                                        <span>这是一串检索结果检索结果检这是一串检索结这是一串检索结果检索结果检这是一串检索结</span>
+                                    </div>
+                                    <div class="feature-icon"></div>
+                                    <div class="toTop trans-bc-100"></div>
+                                </div>
+                                <div class="list">
+                                    <div class="feature-content pre-text-setting trans-bc-100" id="test">
+                                        <span>0123</span>
+                                    </div>
+                                    <div class="feature-icon"></div>
+                                    <div class="toTop trans-bc-100"></div>
+                                </div>
+                                <div class="list">
+                                    <div class="feature-content pre-text-setting trans-bc-100" id="test">
+                                        <span>789898</span>
+                                    </div>
+                                    <div class="feature-icon"></div>
+                                    <div class="toTop trans-bc-100"></div>
+                                </div>
+                                <div class="list">
+                                    <div class="feature-content pre-text-setting trans-bc-100" id="test">
+                                        <span>789898</span>
+                                    </div>
+                                    <div class="feature-icon"></div>
+                                    <div class="toTop trans-bc-100"></div>
+                                </div>
+                                <div class="list">
+                                    <div class="feature-content pre-text-setting trans-bc-100" id="test">
+                                        <span>789898</span>
+                                    </div>
+                                    <div class="feature-icon"></div>
+                                    <div class="toTop trans-bc-100"></div>
+                                </div>
+                                <div class="list">
+                                    <div class="feature-content pre-text-setting trans-bc-100" id="test">
+                                        <span>789898</span>
+                                    </div>
+                                    <div class="feature-icon"></div>
+                                    <div class="toTop trans-bc-100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item flex-center xs-d-none sm-d-none md-d-flex">
+                        <i class="md-ico trans-bc-100" id="my_account">&#xe853;</i>
+                    </div>
+                    <div class="item flex-center xs-d-none sm-d-none md-d-flex">
+                        <i class="md-ico trans-bc-100" id="my_cart">&#xe8cc;</i>
+                        <span class="tip flex-center"><i class="md-ico sm_num">&#xe400;</i></span>
+                    </div>
+                    <div class="item flex-center xs-d-flex sm-d-flex md-d-none">
+                        <!-- <i class="md-ico trans-bc-100" id="menu_button">&#xe5d2;</i> -->
+                        <span class="tip flex-center"><i class="md-ico sm_num">&#xe400;</i></span>
+                        <svg class="ham hamRotate ham4" id="menu_button" viewBox="0 0 100 100" width="55" height="55" onclick="this.classList.toggleClass('active')">
+                            <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20"></path>
+                            <path class="line middle" d="m 70,50 h -40"></path>
+                            <path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20"></path>
+                        </svg>
+                    </div>
+                </div>
+                <!-- hidden -->
+                <div class="menu-slide md-shadow md-text-setting" id="cart-list">
+                    <div class="menu-item">
+                        <div class="things-look flex-center">
+                            <i class="md-ico trans-bc-100">&#xe5c3;</i>
+                        </div>
+                        <div class="things-name flex-center"><nowrap class="md-text-setting text-nowrap">商品商品上商品商品上商品商品上商品商品上商品商品上</nowrap><div class="number flex-center"><span class="md-text-setting">x1</span></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="things-look flex-center">
+                            <i class="md-ico trans-bc-100">&#xe5c3;</i>
+                        </div>
+                        <div class="things-name flex-center text-nowrap"><nowrap class="md-text-setting">商品商品上</nowrap><div class="number flex-center"><span class="md-text-setting">x1</span></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="things-look flex-center">
+                            <i class="md-ico trans-bc-100">&#xe5c3;</i>
+                        </div>
+                        <div class="things-name flex-center text-nowrap"><nowrap class="md-text-setting">商品商品上</nowrap><div class="number flex-center"><span class="md-text-setting">x1</span></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="things-look flex-center">
+                            <i class="md-ico trans-bc-100">&#xe5c3;</i>
+                        </div>
+                        <div class="things-name flex-center text-nowrap"><nowrap class="md-text-setting">商品商品上</nowrap><div class="number flex-center"><span class="md-text-setting">x1</span></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="things-look flex-center">
+                            <i class="md-ico trans-bc-100">&#xe5c3;</i>
+                        </div>
+                        <div class="things-name flex-center text-nowrap"><nowrap class="md-text-setting">商品商品上</nowrap><div class="number flex-center"><span class="md-text-setting">x1</span></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="things-look flex-center">
+                            <i class="md-ico trans-bc-100">&#xe5c3;</i>
+                        </div>
+                        <div class="things-name flex-center text-nowrap"><nowrap class="md-text-setting">商品商品上</nowrap><div class="number flex-center"><span class="md-text-setting">x1</span></div></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="things-look flex-center">
+                            <i class="md-ico trans-bc-100">&#xe5c3;</i>
+                        </div>
+                        <div class="things-name flex-center text-nowrap"><nowrap class="md-text-setting">商品商品上</nowrap><div class="number flex-center"><span class="md-text-setting">x1</span></div></div>
+                    </div>
+                    <!-- more -->
+                    <div class="menu-item flex-center viewAll">
+                        <i class="md-ico trans-bc-100" data-change="not_change">&#xe5d3;</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body-limit" style="padding-top: 75px; height: auto;">
+            <div class="fadepart">
+                <div class="fadepart-left"></div>
+                <div class="fadepart-right"></div>
+            </div>
+            <section class="bread_crumb">
+                <ol>
+                    <li><a>主页</a></li>
+                    <li><a>商品列表</a></li>
+                    <li><a>店铺名称</a></li>
+                    <li><a class="now">商品展示商品展示商品展示</a></li>
+                </ol>
+            </section>
+        </div>
+	</div>
+	<div class="body-limit under-menu">
+		<!-- <div class="big-banner">
+			<div class="big-banner-inner">
+				<img src="./img/classify/big-banner-sg.jpg" alt="fruit&veg" srcset="">
+				<div class="banner-bg">
+					<p class="b-title md-text-setting">蔬果</p>
+					<p class="b-subtitle md-text-setting">补充维生素，促进消化和吸收</p>
+				</div>
+			</div>
+		</div> -->
+		<div class="classify-container">
+			<div class="classify-sidebar shrink">
+				<ol class="sideMenu md-text-setting">
+					<li class="sideMenu-list">
+						<div class="l-icon flex-center" title="收起/展开" id="classify-toggle" style="position: relative; letter-spacing: .0125rem;"><span>展开</span><div class="circle-bg"></div></div>
+					</li>
+					<li class="sideMenu-list tab actived" title="糙粮" style="border-top: 0;" data-target="cl-part">
+						<div class="l-icon flex-center"><img src="./img/classify/cl-hl.svg" data-src="./img/classify/cl.svg" data-hl-src="./img/classify/cl-hl.svg" alt="糙粮"></div>
+						<div class="l-label"><span>糙粮</span></div>
+					</li>
+					<li class="sideMenu-list tab" title="蔬果" data-target="sg-part">
+						<div class="l-icon flex-center"><img src="./img/classify/sg.svg" data-src="./img/classify/sg.svg" data-hl-src="./img/classify/sg-hl.svg" alt="蔬果"></div>
+						<div class="l-label"><span>蔬果</span></div>
+					</li>
+					<li class="sideMenu-list tab" title="油炸" data-target="yzsp-part">
+						<div class="l-icon flex-center"><img src="./img/classify/yzsp.svg" data-src="./img/classify/yzsp.svg" data-hl-src="./img/classify/yzsp-hl.svg" alt="油炸食品"></div>
+						<div class="l-label"><span>油炸食品</span></div>
+					</li>
+					<li class="sideMenu-list tab" title="甜点" data-target="rzp-part">
+						<div class="l-icon flex-center"><img src="./img/classify/rzp.svg" data-src="./img/classify/rzp.svg" data-hl-src="./img/classify/rzp-hl.svg" alt="乳制品"></div>
+						<div class="l-label"><span>甜点</span></div>
+					</li>
+					<li class="sideMenu-list tab" title="水产" data-target="sc-part">
+						<div class="l-icon flex-center"><img src="./img/classify/sc.svg" data-src="./img/classify/sc.svg" data-hl-src="./img/classify/sc-hl.svg" alt="水产"></div>
+						<div class="l-label"><span>水产</span></div>
+					</li>
+					<li class="sideMenu-list tab" title="坚果" data-target="jg-part">
+						<div class="l-icon flex-center"><img src="./img/classify/jg.svg" data-src="./img/classify/jg.svg" data-hl-src="./img/classify/jg-hl.svg" alt="坚果"></div>
+						<div class="l-label"><span>坚果</span></div>
+					</li>
+					<li class="sideMenu-list tab" title="其他" style="border-bottom: 0;" data-target="others-part">
+						<div class="l-icon flex-center"><img src="./img/classify/others.svg" data-src="./img/classify/others.svg" data-hl-src="./img/classify/others-hl.svg" alt="其他"></div>
+						<div class="l-label"><span>其他</span></div>
+					</li>
+				</ol>
+			</div>
+			<div class="classify-content">
+				<div class="cl-part" name="classify-part">
+					<div class="container-fluid">
+						<div class="row flex-center">
+							<h2 class="gap-title md-text-setting">糙粮</h2>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>面包</span>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>面包</span>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>面包</span>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>面包</span>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>面包</span>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>面包</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="sg-part" name="classify-part" style="width: 100%; height: 4500px; background-color: skyblue;">
+					<div class="container-fluid">
+						<div class="row flex-center">
+							<h2 class="gap-title md-text-setting">蔬果</h2>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>花椰菜</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="yzsp-part" name="classify-part" style="width: 100%; height: 500px; background-color: aquamarine;">
+					<div class="container-fluid">
+						<div class="row flex-center">
+							<h2 class="gap-title md-text-setting">油炸食品</h2>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>油条</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="rzp-part" name="classify-part" style="width: 100%; height: 3500px; background-color: chocolate;">
+					<div class="container-fluid">
+						<div class="row flex-center">
+							<h2 class="gap-title md-text-setting">甜点</h2>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>奶酪</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="sc-part" name="classify-part" style="width: 100%; height: 1500px; background-color: rebeccapurple;">
+					<div class="container-fluid">
+						<div class="row flex-center">
+							<h2 class="gap-title md-text-setting">水产</h2>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>鱿鱼片</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="jg-part" name="classify-part" style="width: 100%; height: 500px; background-color: wheat;">
+					<div class="container-fluid">
+						<div class="row flex-center">
+							<h2 class="gap-title md-text-setting">坚果</h2>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>花生</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="others-part" name="classify-part" style="width: 100%; height: 1000px; background-color: wheat;">
+					<div class="container-fluid">
+						<div class="row flex-center">
+							<h2 class="gap-title md-text-setting">其他</h2>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4 col-md-3">
+								<div class="product-item flex-center">
+									<span></span>
+								</div>
+								<div class="item-label flex-center md-text-setting">
+									<span>可乐</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="search_panel" id="search_panel">
+		<div class="panel_box">
+			<div class="box_inner trans-all-200">
+				<div class="sm-search_part xs-d-none" id="sm-search_part" style="min-height: 100px; background-color: #fff; margin-bottom: 10px">
+					<div class="row">
+						<div class="sm-search_part-list col-sm-6 col-xs-12">
+							<div class="list">
+								<div class="feature-content pre-text-setting trans-bc-100" id="test">
+									<span>这是一串检索结果检索结果检</span>
+								</div>
+								<div class="feature-icon"></div>
+								<div class="toTop trans-bc-100"></div>
+							</div>
+						</div>
+						<div class="sm-search_part-list col-sm-6 col-xs-12">
+							<div class="list">
+								<div class="feature-content pre-text-setting trans-bc-100" id="test">
+									<span>0123</span>
+								</div>
+								<div class="feature-icon"></div>
+								<div class="toTop trans-bc-100"></div>
+							</div>
+						</div>
+						<div class="sm-search_part-list col-sm-6 col-xs-12">
+							<div class="list">
+								<div class="feature-content pre-text-setting trans-bc-100" id="test">
+									<span>0000</span>
+								</div>
+								<div class="feature-icon"></div>
+								<div class="toTop trans-bc-100"></div>
+							</div>
+						</div>
+						<div class="sm-search_part-list col-sm-6 col-xs-12">
+							<div class="list">
+								<div class="feature-content pre-text-setting trans-bc-100" id="test">
+									<span>1111</span>
+								</div>
+								<div class="feature-icon"></div>
+								<div class="toTop trans-bc-100"></div>
+							</div>
+						</div>
+						<div class="sm-search_part-list col-sm-6 col-xs-12">
+							<div class="list">
+								<div class="feature-content pre-text-setting trans-bc-100" id="test">
+									<span>46546878798</span>
+								</div>
+								<div class="feature-icon"></div>
+								<div class="toTop trans-bc-100"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="inner_part" id="suggest_part">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<div class="col_title">
+								<span class="ico flex-center"><i class="md-ico" style="background-color: #fbb507">&#xe8d0;</i></span>
+								<span class="txt flex-center"><span>新品商品</span></span>
+								<span class="more flex-center"><span><a href="#">更多</a></span></span>
+							</div>
+							<div class="col_list">
+								<div class="col_list_item flex-center"><span class="md-text-setting">半斤瓜子</span></div>
+								<div class="col_list_item flex-center"><span class="md-text-setting">水果</span></div>
+								<div class="col_list_item flex-center"><span class="md-text-setting">沙拉</span></div>
+								<div class="col_list_item flex-center"><span class="md-text-setting">01313</span></div>
+								<div class="col_list_item flex-center"><span class="md-text-setting">鲜果</span></div>
+								<div class="col_list_item flex-center"><span class="md-text-setting">鲜果</span></div>
+								<div class="col_list_item flex-center"><span class="md-text-setting">鲜果</span></div>
+								<div class="col_list_item flex-center"><span class="md-text-setting">5465465</span></div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6" style="padding-bottom: 30px">
+							<div class="col_title">
+								<span class="ico flex-center"><i class="md-ico">&#xe8f6;</i></span>
+								<span class="txt flex-center"><span>推荐栏目</span></span>
+								<span class="more flex-center"><span><a href="#">更多</a></span></span>
+							</div>
+							<div class="col_content">
+								<div class="row">
+									<div class="col_content_item col-sm-4 col-xs-6 col_content_list">
+										<div class="suggest_part flex-center">
+											<div class="profile"></div>
+										</div>
+										<div class="text_part flex-center md-text-setting">
+											<span>鲜果</span>
+										</div>
+									</div>
+									<div class="col_content_item col-sm-4 col-xs-6 col_content_list">
+										<div class="suggest_part flex-center">
+											<div class="profile"></div>
+										</div>
+										<div class="text_part flex-center md-text-setting">
+											<span>鲜果</span>
+										</div>
+									</div>
+									<div class="col_content_item col-sm-4 col-xs-6 col_content_list">
+										<div class="suggest_part flex-center">
+											<div class="profile"></div>
+										</div>
+										<div class="text_part flex-center md-text-setting">
+											<span>鲜果</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="menu_panel" id="menu-box">
+		<div class="panel_box">
+			<div class="box_inner">
+				<div class="container-fluid">
+					<div class="flex-center row">
+						<div class="menu_item col-xs-12 col-sm-3 col-md-3">
+							<div class="icon-outer flex-center"><i class="md-ico">&#xe853;</i></div>
+							<div class="key-outer flex-center md-text-setting"><span>登录/ 注册</span></div>
+						</div>
+						<div class="menu_item col-xs-12 col-sm-3 col-md-3">
+							<div class="icon-outer flex-center">
+								<i class="md-ico trans-bc-100">&#xe8cc;</i>
+								<span class="tip flex-center" style="pointer-events: none"><i class="md-ico sm_num">&#xe400;</i></span>
+							</div>
+							<div class="key-outer flex-center md-text-setting"><span>购物车</span></div>
+						</div>
+						<div class="menu_item col-xs-12 col-sm-3 col-md-3">
+							<div class="icon-outer flex-center trans-bc-100"><i class="md-ico">&#xe545;</i></div>
+							<div class="key-outer flex-center md-text-setting"><span>支持</span></div>
+						</div>
+						<!-- <div class="menu_item col-xs-12 col-sm-3 col-md-3">
+							<div class="icon-outer flex-center trans-bc-100"><i class="md-ico">&#xe7ef;</i></div>
+							<div class="key-outer flex-center md-text-setting"><span>关于我们</span></div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="loading-cover flex-center"> 
+		<div class="for-loading-ani">
+			<div class="loading-ani flex-center">
+				<div class="loading-box trans-all-200">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="./js/_global.js" type="text/javascript"></script>
+<script src="./js/AjaxToolbox.js" type="text/javascript"></script>
+<script src="./js/classify.js" type="text/javascript"></script>
+</html>
